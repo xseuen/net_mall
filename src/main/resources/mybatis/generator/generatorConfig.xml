@@ -36,7 +36,7 @@
 
 
         <table tableName="cart" domainObjectName="Cart"/>
-        <table tableName="category" domainObjectName="Categoty"/>
+        <table tableName="category" domainObjectName="Category"/>
         <table tableName="member" domainObjectName="Member"/>
         <table tableName="order" domainObjectName="Order"/>
         <table tableName="product" domainObjectName="Product"/>

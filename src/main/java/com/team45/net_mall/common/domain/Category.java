@@ -1,6 +1,6 @@
 package com.team45.net_mall.common.domain;
 
-public class Categoty {
+public class Category {
     private String cid;
 
     private String cname;

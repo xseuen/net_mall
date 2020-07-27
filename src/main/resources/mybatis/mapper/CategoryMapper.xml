@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.team45.net_mall.mapper.CategotyMapper">
-  <resultMap id="BaseResultMap" type="com.team45.net_mall.common.domain.Categoty">
+<mapper namespace="com.team45.net_mall.mapper.CategoryMapper">
+  <resultMap id="BaseResultMap" type="com.team45.net_mall.common.domain.Category">
     <id column="cid" jdbcType="VARCHAR" property="cid" />
     <result column="cname" jdbcType="VARCHAR" property="cname" />
   </resultMap>
@@ -66,7 +66,7 @@
   <sql id="Base_Column_List">
     cid, cname
   </sql>
-  <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.CategotyExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.CategoryExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
@@ -90,17 +90,17 @@
     delete from category
     where cid = #{cid,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.team45.net_mall.common.domain.CategotyExample">
+  <delete id="deleteByExample" parameterType="com.team45.net_mall.common.domain.CategoryExample">
     delete from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.team45.net_mall.common.domain.Categoty">
+  <insert id="insert" parameterType="com.team45.net_mall.common.domain.Category">
     insert into category (cid, cname)
     values (#{cid,jdbcType=VARCHAR}, #{cname,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Categoty">
+  <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Category">
     insert into category
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="cid != null">
@@ -119,7 +119,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.team45.net_mall.common.domain.CategotyExample" resultType="java.lang.Long">
+  <select id="countByExample" parameterType="com.team45.net_mall.common.domain.CategoryExample" resultType="java.lang.Long">
     select count(*) from category
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -147,7 +147,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.team45.net_mall.common.domain.Categoty">
+  <update id="updateByPrimaryKeySelective" parameterType="com.team45.net_mall.common.domain.Category">
     update category
     <set>
       <if test="cname != null">
@@ -156,7 +156,7 @@
     </set>
     where cid = #{cid,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.Categoty">
+  <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.Category">
     update category
     set cname = #{cname,jdbcType=VARCHAR}
     where cid = #{cid,jdbcType=VARCHAR}

@@ -4,9 +4,13 @@ import com.team45.net_mall.common.domain.Product;
 import com.team45.net_mall.common.domain.ProductExample;
 import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface ProductMapper {
+import com.team45.net_mall.mapper.extend.ProductMapperExtend;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface ProductMapper extends ProductMapperExtend {
     long countByExample(ProductExample example);
 
     int deleteByExample(ProductExample example);

@@ -10,6 +10,6 @@ public class MainController {
     public String showAll(){
         return "/front-end/index.html";
     }
-//这是dev1开发线的测试
+     //这是dev1开发线的测试
 
 }

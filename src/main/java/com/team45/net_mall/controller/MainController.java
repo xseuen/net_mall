@@ -12,9 +12,5 @@ public class MainController {
         return "/front-end/index.html";
     }
      //这是dev1开发线的测试
-    @GetMapping("/index")
-    public String toAdminlte(){
-        return "/index.html";
-    }
 
 }

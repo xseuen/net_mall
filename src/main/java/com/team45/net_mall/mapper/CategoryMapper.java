@@ -3,9 +3,13 @@ package com.team45.net_mall.mapper;
 import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.CategoryExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface CategoryMapper {
+import com.team45.net_mall.mapper.extend.CategoryMapperExtend;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface CategoryMapper extends CategoryMapperExtend {
     long countByExample(CategoryExample example);
 
     int deleteByExample(CategoryExample example);

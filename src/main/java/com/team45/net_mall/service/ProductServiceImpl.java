@@ -17,7 +17,23 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<Product> getList() {
         //页码  页面大小
-        PageHelper.startPage(1, 3);//第1页 每页5条
+        PageHelper.startPage(1, 10);//第1页 每页5条
         return productMapper.list();
     }
+
+    @Override
+    public Product selectByid(Integer id) {
+        return productMapper.selectByPrimaryKey(id);
+    }
+    @Override
+    public int update(Product product) {
+        return  productMapper.updateByPrimaryKey(product);
+    }
+
+    @Override
+    public int deleteById(Integer id) {
+        //设置deleteStatus为1
+        return productMapper.deleteByPrimaryKey(id);
+    }
+
 }

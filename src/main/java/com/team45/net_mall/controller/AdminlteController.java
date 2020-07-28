@@ -8,7 +8,7 @@ public class AdminlteController {
 
 //    @RequestMapping("/adminlte")
 //    public String toAdminlte(){
-//        return "/list";
+//        return "/product/list";
 //    }
 }
 

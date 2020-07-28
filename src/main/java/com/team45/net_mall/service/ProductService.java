@@ -7,4 +7,10 @@ import java.util.List;
 public interface ProductService {
 
     List<Product> getList();
+
+    Product selectByid(Integer id);
+
+    int update(Product product);
+
+    int deleteById(Integer id);
 }

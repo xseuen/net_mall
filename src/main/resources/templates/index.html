@@ -47,7 +47,7 @@
       <!-- mini logo for sidebar mini 50x50 pixels -->
       <span class="logo-mini"><b>T</b>45</span>
       <!-- logo for regular state and mobile devices -->
-      <span class="logo-lg"><b>商店后台管理</b></span>
+      <span class="logo-lg"><b>商城后台管理</b></span>
     </a>
     <!-- Header Navbar: style can be found in header.less -->
     <nav class="navbar navbar-static-top">
@@ -159,13 +159,13 @@
     <!-- Content Header (Page header) -->
     <section class="content-header">
       <h1>
-        Dashboard
-        <small>Control panel</small>
+        欢迎进入T45网上商城后台
+        <small>控制面板</small>
       </h1>
-      <ol class="breadcrumb">
-        <li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>
-        <li class="active">Dashboard</li>
-      </ol>
+      <!--<ol class="breadcrumb">-->
+        <!--<li><a href="#"><i class="fa fa-dashboard"></i> Home</a></li>-->
+        <!--<li class="active">Dashboard</li>-->
+      <!--</ol>-->
     </section>
 
     <!-- Main content -->
@@ -190,13 +190,13 @@
                   <th>操作</th>
                 </tr>
                 <tr th:each="pro:${pros}">
-                  <td th:text="${pro.pid}"></td>
-                  <td th:text="${pro.pname}"></td>
+                  <td th:text="${pro.id}"></td>
+                  <td th:text="${pro.name}"></td>
                   <td th:text="${pro.price}"></td>
-                  <td th:text="${pro.flag}==1?'已上架':'已下架'"></td>
+                  <td th:text="${pro.publishStatus}==1?'已上架':'已下架'"></td>
                   <td th:text="${pro.category.cname}"></td>
-                  <td><a th:href="@{/product/selectByPid(pid=${pro.pid})}" class="btn btn-primary">修改</a>
-                    <a th:href="@{/product/deleteById(pid=${pro.pid})}" class="btn btn-danger">删除</a>
+                  <td><a th:href="@{/product/selectByPid(pid=${pro.id})}" class="btn btn-primary">修改</a>
+                    <a th:href="@{/product/deleteById(pid=${pro.id})}" class="btn btn-danger">删除</a>
                   </td>
                 </tr>
                 </thead>

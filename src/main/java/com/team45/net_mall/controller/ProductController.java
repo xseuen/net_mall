@@ -19,8 +19,7 @@ public class ProductController {
         //调用服务层的获取数据的方法
         List<Product> list = productService.getList();
         model.addAttribute("pros", list);
-        System.out.println(list);
-        return "/index";
+        return "index";
     }
 
 }

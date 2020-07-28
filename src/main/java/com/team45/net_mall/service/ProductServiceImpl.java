@@ -3,6 +3,7 @@ package com.team45.net_mall.service;
 
 import com.github.pagehelper.PageHelper;
 import com.team45.net_mall.common.domain.Product;
+import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.mapper.ProductMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,8 +33,12 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public int deleteById(Integer id) {
-        //设置deleteStatus为1
         return productMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int add(ProductWithBLOBs productWithBLOBs) {
+        return productMapper.insert(productWithBLOBs);
     }
 
 }

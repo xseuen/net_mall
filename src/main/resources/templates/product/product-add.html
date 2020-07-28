@@ -140,8 +140,8 @@
             </span>
                     </a>
                     <ul class="treeview-menu">
-                        <li class="active"><a href="/product/list"><i class="fa fa-circle-o"></i> 商品列表</a></li>
-                        <li><a href="/product/productadd"><i class="fa fa-circle-o"></i> 增加商品</a></li>
+                        <li><a href="/product/list"><i class="fa fa-circle-o"></i> 商品列表</a></li>
+                        <li class="active"><a href="/product/productadd"><i class="fa fa-circle-o"></i> 增加商品</a></li>
                     </ul>
                 </li>
                 <li><a href="https://adminlte.io/docs"><i class="fa fa-book"></i> <span>Documentation</span></a></li>
@@ -177,32 +177,31 @@
                         <!-- Horizontal Form -->
                         <div class="box box-info">
                             <div class="box-header with-border">
-                                <h3 class="box-title">Horizontal Form</h3>
+                                <h3 class="box-title">增加商品</h3>
                             </div>
                             <!-- /.box-header -->
                             <!-- form start -->
                             <form class="form-horizontal" id="product-form">
-                                <input type="hidden" id="pid" name="pid" th:value="${pro.id}">
                                 <div class="box-body">
                                     <div class="form-group">
                                         <label class="col-sm-2 control-label">商品名称</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="pname" id="pname" th:value="${pro.name}" class="form-control" placeholder="Email">
+                                            <input type="text" name="pname" id="pname" value="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">商品价格</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="price" id="price" th:value="${pro.price}" class="form-control">
+                                            <input type="text" name="price" id="price" value="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">商品数量</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="num" id="num" th:value="${pro.num}" class="form-control">
+                                            <input type="text" name="num" id="num" value="" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -222,7 +221,7 @@
                                                     required lay-verify="required"  class="form-control">
                                                 <option
                                                         th:each="cate : ${categoryList}"
-                                                        th:selected="${pro.categoryId  eq cate.cid}"
+                                                        th:selected="${cate.cid}"
                                                         th:value="${cate.cid}"
                                                         th:text="${cate.cname}"></option>
                                             </select>
@@ -231,8 +230,7 @@
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <a href="/product/list" class="btn btn-primary" style="margin-right: 10px">返回</a>
-                                    <button type="button" id="pro-update" class="btn btn-info pull-right">保存</button>
+                                    <button type="button" id="pro-update" class="btn btn-info pull-right">添加</button>
                                 </div>
                                 <!-- /.box-footer -->
                             </form>
@@ -301,7 +299,6 @@
     $(function () {
         $("#pro-update").click(function () {
             var formdata={
-                "id":$("#pid").val(),
                 "name":$("#pname").val(),
                 "price":$("#price").val(),
                 "num":$("#num").val(),
@@ -309,7 +306,7 @@
                 "categoryId":$("#categoryId").val()
             }
             $.ajax({
-                url: "/product/update",
+                url: "/product/add",
                 type: "post",
                 contentType: "application/json",
                 data: JSON.stringify(formdata),

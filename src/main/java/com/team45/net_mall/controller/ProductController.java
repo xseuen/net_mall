@@ -2,6 +2,7 @@ package com.team45.net_mall.controller;
 
 import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.Product;
+import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.CategoryService;
 import com.team45.net_mall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,9 +28,28 @@ public class ProductController {
         return "product/product-list";
     }
 
+    @RequestMapping("/productadd")
+    // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
+    public String selectAllCategory(Model model) {
+        //获取所有类别
+        List<Category> list = categoryService.list();
+        model.addAttribute("categoryList", list);
+        return "product/product-add";
+    }
+    @PostMapping("/add")
+    @ResponseBody//不跳转页面了，直接将数据返回给当前页面
+    public Boolean add(@RequestBody ProductWithBLOBs productWithBLOBs) {
+        int i=0;
+        if(productWithBLOBs.getDeleteStatus()==null){
+            productWithBLOBs.setDeleteStatus(0);
+            i = productService.add(productWithBLOBs);
+        }
+        return i==0?false:true;
+    }
+
     @RequestMapping("/selectByid")
     // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
-    public String selectByPid(Integer id, Model model) {
+    public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
         Product product = productService.selectByid(id);
         //获取所有类别

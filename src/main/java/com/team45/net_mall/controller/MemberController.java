@@ -42,7 +42,7 @@ public class MemberController {
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();//清除登录信息
-        return "/";
+        return "forward:/";
     }
 
     @GetMapping("/selectByName")

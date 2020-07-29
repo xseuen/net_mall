@@ -9,9 +9,9 @@ public interface ProductService {
 
     List<Product> getList();
 
-    Product selectByid(Integer id);
+    ProductWithBLOBs selectByid(Integer id);
 
-    int update(Product product);
+    int update(ProductWithBLOBs productWithBLOBs);
 
     int deleteById(Integer id);
 

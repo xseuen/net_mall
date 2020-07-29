@@ -23,12 +23,12 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public Product selectByid(Integer id) {
+    public ProductWithBLOBs selectByid(Integer id) {
         return productMapper.selectByPrimaryKey(id);
     }
     @Override
-    public int update(Product product) {
-        return  productMapper.updateByPrimaryKey(product);
+    public int update(ProductWithBLOBs productWithBLOBs) {
+        return  productMapper.updateByPrimaryKeyWithBLOBs(productWithBLOBs);
     }
 
     @Override

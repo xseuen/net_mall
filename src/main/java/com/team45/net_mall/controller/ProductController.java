@@ -1,6 +1,7 @@
 package com.team45.net_mall.controller;
 
 import com.team45.net_mall.common.domain.Category;
+import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.Product;
 import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.CategoryService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpSession;
 import java.util.List;
 
 @Controller
@@ -21,7 +23,12 @@ public class ProductController {
     private CategoryService categoryService;
     @RequestMapping("/list")
     // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
-    public String list(Model model) {
+    public String list(Model model,HttpSession session) {
+//        //判断是否登录
+//        Member loginUser = (Member) session.getAttribute("loginUser");
+//        if (loginUser==null||loginUser.getId()==null){
+//                return "redirect:/";
+//            }
         //调用服务层的获取数据的方法
         List<Product> list = productService.getList();
         model.addAttribute("pros", list);
@@ -51,29 +58,29 @@ public class ProductController {
     // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
-        Product product = productService.selectByid(id);
+        ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
         //获取所有类别
         List<Category> list = categoryService.list();
         model.addAttribute("categoryList",list);
-        model.addAttribute("pro", product);
+        model.addAttribute("pro", productWithBLOBs);
         return "product/product-edit";
     }
     @PostMapping("/update")
     @ResponseBody//不跳转页面了，直接将数据返回给当前页面
-    public Boolean update(@RequestBody Product product) {
+    public Boolean update(@RequestBody ProductWithBLOBs productWithBLOBs) {
         int i=0;
-        if(product.getDeleteStatus()==null){
-            product.setDeleteStatus(0);
-            i = productService.update(product);
+        if(productWithBLOBs.getDeleteStatus()==null){
+            productWithBLOBs.setDeleteStatus(0);
+            i = productService.update(productWithBLOBs);
         }
         return i==0?false:true;
     }
     @GetMapping("/deleteById")
     //@ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public String deleteById(@RequestParam("id") Integer id) {
-        Product product = productService.selectByid(id);
-        product.setDeleteStatus(1);
-        productService.update(product);
+        ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
+        productWithBLOBs.setDeleteStatus(1);
+        productService.update(productWithBLOBs);
         //int i=  productService.deleteById(id);
         return "forward:/product/list";
     }

@@ -17,7 +17,7 @@ public class MemberController {
 
     @RequestMapping(value = "/tologin",method = RequestMethod.GET)
     public String tologin(){
-        return "pages/examples/login.html";
+        return "pages/examples/login";
     }
 
     @RequestMapping(value = "/login",method =RequestMethod.POST)
@@ -26,23 +26,23 @@ public class MemberController {
         if (memberInDB == null) {
             model.addAttribute("member", member);
             model.addAttribute("msg", "用户名或密码错误");
-            return "pages/examples/login.html";
+            return "pages/examples/login";
         } else {
-            //登录成功s
+            //登录成功
             session.setAttribute("loginUser",memberInDB);
-            return "front-end/index.html";
+            return "front-end/index";
         }
     }
 
     @GetMapping("/toRegister")
     public String toRegister() {
-        return "pages/examples/register.html";
+        return "pages/examples/register";
     }
 
     @GetMapping("/logout")
     public String logout(HttpSession session) {
         session.invalidate();//清除登录信息
-        return "pages/examples/login.html";
+        return "/";
     }
 
     @GetMapping("/selectByName")

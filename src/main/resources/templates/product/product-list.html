@@ -95,7 +95,7 @@
                   <a href="#" class="btn btn-default btn-flat">个人资料</a>
                 </div>
                 <div class="pull-right">
-                  <a href="#" class="btn btn-default btn-flat">退出登录</a>
+                  <a  class="btn btn-default btn-flat" id="logout">退出登录</a>
                 </div>
               </li>
             </ul>
@@ -262,4 +262,10 @@
 <!-- AdminLTE for demo purposes -->
 <script src="../dist/js/demo.js"></script>
 </body>
+<script>
+  $("#logout").click(function (){
+    sessionStorage.clear();
+    window.location.href="/";
+  });
+</script>
 </html>

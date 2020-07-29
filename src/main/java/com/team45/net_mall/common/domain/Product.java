@@ -1,6 +1,8 @@
 package com.team45.net_mall.common.domain;
 
-public class Product {
+import com.team45.net_mall.common.domain.extend.ProductExtend;
+
+public class Product extends ProductExtend {
     private Integer id;
 
     private String name;

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team45.net_mall.mapper.CategoryMapper">
+    <resultMap id="MyResultMap" type="com.team45.net_mall.common.domain.Category">
+        <id column="cid" jdbcType="VARCHAR" property="cid" />
+        <result column="cname" jdbcType="VARCHAR" property="cname" />
+        <!--如何包装一个集合-->
+        <collection property="product" ofType="com.team45.net_mall.common.domain.Product" resultMap="MyResultMap">
+            <id column="id" jdbcType="INTEGER" property="id" />
+            <result column="name" jdbcType="VARCHAR" property="name" />
+            <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
+            <result column="publish_status" jdbcType="INTEGER" property="publishStatus" />
+            <result column="price" jdbcType="DOUBLE" property="price" />
+            <result column="num" jdbcType="INTEGER" property="num" />
+            <result column="category_id" jdbcType="VARCHAR" property="categoryId" />
+        </collection>
+    </resultMap>
+    <select id="list" resultMap="MyResultMap">
+        SELECT * FROM category,product WHERE product.`category_id` = category.`cid` order by id
+    </select>
+</mapper>

@@ -1,5 +1,5 @@
 ﻿<!doctype html>
-<html class="no-js" lang="en">
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -39,11 +39,18 @@
                         <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
 
                         </div>
-                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
-                            <div class="header_right_area">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12" >
+                            <div class="header_right_area" th:if="${session.loginUser.username==null}">
                                 <ul>
                                     <li>
-                                        <a class="account" href="/adminlte">进入后台</a>
+                                        <a class="log-in" href="/login">亲爱的用户，请注册/登录！！</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header_right_area" th:if="${session.loginUser.username!=null}">
+                                <ul>
+                                    <li th:if="${session.loginUser.type==1}">
+                                        <a class="account" href="/product/list">进入后台</a>
                                     </li>
                                     <li>
                                         <a class="account" href="#">我的账户</a>

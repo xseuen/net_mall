@@ -1,6 +1,8 @@
 package com.team45.net_mall.common.domain;
 
-public class Category {
+import com.team45.net_mall.common.domain.extend.CategoryExtend;
+
+public class Category extends CategoryExtend {
     private String cid;
 
     private String cname;

@@ -17,6 +17,6 @@
         </association>
     </resultMap>
     <select id="list" resultMap="MyResultMap">
-        SELECT * FROM product,category WHERE product.`category_id` = category.`cid` order by product.`id`
+        SELECT * FROM product,category WHERE product.`category_id` = category.`cid` and product.`delete_status`= 0 order by product.`id`
     </select>
 </mapper>

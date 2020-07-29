@@ -2,7 +2,7 @@ package com.team45.net_mall.controller;
 
 
 import com.team45.net_mall.common.domain.Member;
-import com.team45.net_mall.service.MemberService;
+import com.team45.net_mall.service.MemberServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class MemberController {
-
-    private MemberService memberService;
+    @Autowired
+    private MemberServiceImpl memberService;
 
     @RequestMapping(value = "/tologin",method = RequestMethod.GET)
     public String tologin(){

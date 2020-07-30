@@ -9,4 +9,6 @@ public interface MemberService {
     boolean selectByName(String name);
 
     int insert(Member member);
+
+    int update(Member member);
 }

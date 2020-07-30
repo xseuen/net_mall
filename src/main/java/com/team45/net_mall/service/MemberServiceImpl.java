@@ -33,4 +33,9 @@ public class MemberServiceImpl implements MemberService {
     public int insert(Member member) {
         return memberMapper.insert(member);
     }
+
+    @Override
+    public int update(Member member) {
+        return memberMapper.updateByPrimaryKey(member);
+    }
 }

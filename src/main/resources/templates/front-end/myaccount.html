@@ -1,0 +1,1138 @@
+﻿<!doctype html>
+<html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>我的账户</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- all css here -->
+        <!-- bootstrap v3.3.6 css -->
+        <link rel="stylesheet" href="front-end/css/bootstrap.min.css">
+        <!-- animate css -->
+        <link rel="stylesheet" href="front-end/css/animate.css">
+        <!-- jquery-ui.min css -->
+        <link rel="stylesheet" href="front-end/css/jquery-ui.min.css">
+        <!-- meanmenu css -->
+        <link rel="stylesheet" href="front-end/css/meanmenu.min.css">
+        <!-- nivo slider css -->
+        <link rel="stylesheet" href="front-end/lib/css/nivo-slider.css" type="text/css" />
+        <link rel="stylesheet" href="front-end/lib/css/preview.css" type="text/css" />
+        <!-- owl.carousel css -->
+        <link rel="stylesheet" href="front-end/css/owl.carousel.css">
+        <!-- font-awesome css -->
+        <link rel="stylesheet" href="front-end/css/font-awesome.min.css">
+        <!-- style css -->
+        <link rel="stylesheet" href="front-end/style.css">
+        <!-- responsive css -->
+        <link rel="stylesheet" href="front-end/css/responsive.css">
+        <!-- modernizr js -->
+        <script src="front-end/js/vendor/modernizr-2.8.3.min.js"></script>
+    </head>
+    <body>
+        <!--header top area start-->
+        <div class="header_area">
+            <div class="header_border">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12">
+
+                        </div>
+                        <div class="col-md-6 col-lg-6 col-sm-6 col-xs-12" >
+                            <div class="header_right_area" th:if="${session == null || session == ''||session.loginUser==null}">
+                                <ul>
+                                    <li>
+                                        <a class="log-in" href="/tologin">亲爱的用户，请注册/登录！！</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="header_right_area" th:if="${session!=null && session.loginUser!=null }">
+                                <ul>
+                                    <li th:if="${session!=null && session.loginUser!=null && session.loginUser.type==1}">
+                                        <a class="account" href="/product/list">进入后台</a>
+                                    </li>
+                                    <li>
+                                        <a class="account" href="#">我的账户</a>
+                                    </li>
+                                    <!--<li>-->
+                                    <!--<a class="wishlist" href="#">愿望单</a>-->
+                                    <!--</li>-->
+                                    <li>
+                                        <a class="Shopping cart" href="#">购物车</a>
+                                    </li>
+                                    <li>
+                                        <a class="Checkout" href="#">我的订单</a>
+                                    </li>
+                                    <li>
+                                        <a class="Checkout"   href="logout">退出登录</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--header top area end-->
+            <!--header middle area start-->
+            <div class="header_middle">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-3">
+                            <div class="logo_area">
+                                <a href="index.html"><img src="front-end/img/logo-pic/logo.png" alt="" /></a>
+                            </div>
+                        </div>
+                        <div class="col-md-9">
+                            <div class="header_all search_box_area">
+                                <form class="new_search" role="search" method="get" action="#">
+                                    <input id="mix_search" class="search-field" placeholder="搜索商品…" value="" name="s" title="Search for:" type="search">
+                                    <input value="Search" type="submit">
+                                    <input name="post_type" value="product" type="hidden">
+                                </form>
+                            </div>
+                            <div class="header_all shopping_cart_area">
+                                <div class="widget_shopping_cart_content">
+                                    <div class="topcart">
+                                        <a class="cart-toggler" href="">
+                                            <i class="icon"></i>
+                                            <span class="my-cart">购物车</span>
+                                            <span class="qty">2件物品</span>
+                                            <span class="fa fa-angle-down"></span>
+                                        </a>
+                                        <div class="new_cart_section">
+                                            <ol class="new-list">
+                                                <!-- single item -->
+                                                <li class="wimix_area">
+                                                    <a class="pix_product" href="">
+                                                        <img alt="" src="front-end/img/product-pic/7-150x98.jpg">
+                                                    </a>
+                                                    <div class="product-details">
+                                                        <a href="#">Adipiscing cursus eu</a>
+                                                        <span class="sig-price">1×$300.00</span>
+                                                    </div>
+                                                    <div class="cart-remove">
+                                                        <a class="action" href="#">
+                                                            <i class="fa fa-close"></i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <!-- single item -->
+                                                <!-- single item -->
+                                                <li class="wimix_area">
+                                                    <a class="pix_product" href="#">
+                                                        <img alt="" src="front-end/img/product-pic/1-150x98.jpg">
+                                                    </a>
+                                                    <div class="product-details">
+                                                        <a href="#">Duis convallis</a>
+                                                        <span class="sig-price">1×$100.00</span>
+                                                    </div>
+                                                    <div class="cart-remove">
+                                                        <a class="action" href="#">
+                                                            <i class="fa fa-close"></i>
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                                <!-- single item -->
+                                            </ol>
+                                            <div class="top-subtotal">
+                                                共计: <span class="sig-price">$400.00</span>
+                                            </div>
+                                            <div class="cart-button">
+                                                <ul>
+                                                    <li>
+                                                        <a href="#">查看我的购物车<i class="fa fa-angle-right"></i></a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="#">下单支付<i class="fa fa-angle-right"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--header footer area start-->
+            <div class="all_menu_area">
+                <div class="menu_inner">
+                    <div class="container">
+                        <div class="full_menu clearfix">
+                            <div class="new_menu">
+                                <div class="drp-menu">
+                                    <div class="col-md-3 pr pl">
+                                        <div class="all_catagories">
+                                            <div class="enable_catagories">
+                                                <i class="fa fa-bars"></i>
+                                                <span>所有分类</span>
+                                                <i class="fa fa-angle-down"></i>
+                                            </div>
+                                        </div>
+                                        <div class="catagory_menu_area">
+                                            <div class="catagory_mega_menu">
+                                                <div class="cat_mega_start">
+                                                    <ul class="list">
+                                                        <li class="next_area">
+                                                            <a class="item_link" href="#">
+                                                                <i class="fa fa-television"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        Electronics
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus </span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                            <ul class="electronics_drpdown">
+                                                                <li class="parent">
+                                                                    <a href="#"></a>
+                                                                    <div class="mega_menu">
+                                                                        <div class="mega_menu_coloumn">
+                                                                            <ul>
+                                                                                <li><a href="#">Men's</a></li>
+                                                                                <li><a href="#">Hats</a></li>
+                                                                                <li><a href="#">Mirriors</a></li>
+                                                                                <li><a href="#">Singles</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="mega_menu_coloumn">
+                                                                            <ul>
+                                                                                <li><a href="#">Sports& Outdoors</a></li>
+                                                                                <li><a href="#">Smartphones</a></li>
+                                                                                <li><a href="#">Womens</a></li>
+                                                                                <li><a href="#">Health & Beauty</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="mega_menu_coloumn">
+                                                                            <ul>
+                                                                                <li class="mega_content"><a href="#">Accessories</a></li>
+                                                                                <li><a href="#">Hobbies</a></li>
+                                                                                <li><a href="#">networking</a></li>
+                                                                                <li><a href="#">accessories</a></li>
+                                                                                <li><a href="#">electronics</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                        <div class="mega_menu_coloumn">
+                                                                            <ul>
+                                                                                <li><a href="#">Laptops & Accessories</a></li>
+                                                                                <li><a href="#">hoodies</a></li>
+                                                                                <li><a href="#">watches</a></li>
+                                                                                <li><a href="#">flashlights</a></li>
+                                                                                <li><a href="#">mirriors</a></li>
+                                                                            </ul>
+                                                                        </div>
+                                                                    </div>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="differ_sec_area">
+                                                            <a class="item_link" href="#">
+                                                                <i class="fa fa-mobile"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        Smartphone & Tablets
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus </span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                            <ul class="another_drop_menu">
+                                                                <li class="discrip">
+                                                                    <a class="new_link_2 with_icon" href="#" tabindex="1">Posters</a>
+                                                                    <ul class="new_miup_menu">
+                                                                        <li>
+                                                                            <ul class="new_mixup_tm">
+                                                                                <li class="exact">
+                                                                                    <a class="new_link_8 with_icon" href="#" tabindex="1">Cocktail</a>
+                                                                                    <ul class="decent_mean_menu">
+                                                                                        <li>
+                                                                                            <ul class="new_mixup_tm">
+                                                                                                <li>
+                                                                                                    <a href="#"></a>Cost & Jackets
+                                                                                                </li>
+                                                                                            </ul>
+                                                                                        </li>
+                                                                                    </ul>
+                                                                                </li>
+                                                                                <li><a href="#">Furniture</a></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li class="risk">
+                                                                    <a class="new_link_2 new_link_3 with_icon" href="#" tabindex="1">Watches
+                                                                    </a>
+                                                                    <ul class="new_miup_menu">
+                                                                        <li>
+                                                                            <ul class="new_mixup_tm">
+                                                                                <li><a href="#">Women's</a></li>
+                                                                            </ul>
+                                                                        </li>
+                                                                    </ul>
+                                                                </li>
+                                                                <li><a href="#">Pendants</a></li>
+                                                                <li><a href="#">Chocklates</a></li>
+                                                            </ul>
+                                                        </li>
+                                                        <li class="differ_sec_area">
+                                                            <a class="item_link " href="#">
+                                                                <i class="fa fa-gift"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        Health & Beauty
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                            <ul class="another_drop_menu">
+                                                                <li class="discrip">
+                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
+                                                                        <i class="fa fa-futbol-o"></i>
+                                                                        Sports & Outdoors
+                                                                    </a>
+                                                                </li>
+                                                                <li class="discrip">
+                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
+                                                                        <i class="fa fa-bullseye"></i>
+                                                                        Bags, Shoes & Accessories
+                                                                    </a>
+                                                                </li>
+                                                                <li class="discrip"><a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-file-image-o"></i>
+                                                                    Toys & Hobbies</a>
+                                                                </li>
+                                                                <li class="discrip">
+                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1"><i class="fa fa-television"></i>
+                                                                        Computer & Networking</a>
+                                                                </li>
+                                                                <li class="discrip">
+                                                                    <a class="new_link_2 new_link_4 with_icon" href="#" tabindex="1">
+                                                                        <i class="fa fa-laptop"></i>
+                                                                        Laptops & Accessories
+                                                                    </a>
+                                                                </li>
+                                                            </ul>
+                                                        </li>
+                                                        <li>
+                                                            <a class="item_link item_link_2" href="#">
+                                                                <i class="fa fa-heart"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        Jewelry & Watches
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="item_link item_link_2" href="#">
+                                                                <i class="fa fa-star"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        Flashlights & Lamps
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="item_link item_link_2" href="#">
+                                                                <i class="fa fa-lightbulb-o"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        服装
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus</span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="cost-menu">
+                                                            <a class="item_link item_link_2" href="#">
+                                                                <i class="fa fa-pie-chart"></i>
+                                                                <span class="link_content">
+                                                                    <span class="link_text">
+                                                                        Cost & jackets
+                                                                        <span class="link_descr">Praesent accumsan elementum maximus </span>
+                                                                    </span>
+                                                                </span>
+                                                            </a>
+                                                        </li>
+                                                        <li class="showmore-items shwitm">
+                                                            <i class="fa fa-plus-square-o"></i>
+                                                            <span>More Categories</span>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!--menu area start-->
+                                    <div class="col-md-9 pl">
+                                        <div class="menu_area">
+                                            <div class="menu">
+                                                <nav>
+                                                    <ul>
+                                                        <li><a href="/">首页</a></li>
+                                                        <li><a href="about-us.html">关于</a></li>
+                                                        <li><a href="cart.html">购物车</a></li>
+                                                        <li><a href="list-view.html">商品列表</a></li>
+                                                        <li><a href="/myaccount">我的账户</a></li>
+                                                        <li><a href="simple-product.html">产品详情</a></li>
+                                                        <li><a href="contact-us.html">联系我们</a></li>
+                                                    </ul>
+                                                </nav>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--header area end-->
+        <!--social design arae start-->
+        <div class="link_area">
+            <div class="container">
+                <div class="row">
+                    <div class="social_design on_right">
+                        <ul>
+                            <li>
+                                <a class="facebook" target="_blank" href="#facebook">
+                                <span>
+                                <i class="fa fa-facebook"></i>
+                                <span class="social-text">Follow via Facebook</span>
+                                </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="twitter" target="_blank" href="#twitter.com">
+                                <span>
+                                <i class="fa fa-twitter"></i>
+                                <span class="social-text">Follow via Twitter</span>
+                                </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="google-plus" target="_blank" href="#google-plus">
+                                <span>
+                                <i class="fa fa-google-plus"></i>
+                                <span class="social-text">Follow via Google +</span>
+                                </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="youtube" target="_blank" href="#youtube">
+                                <span>
+                                <i class="fa fa-youtube"></i>
+                                <span class="social-text">Follow via Youtube</span>
+                                </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="pinterest" target="_blank" href="#pinterest">
+                                <span>
+                                <i class="fa fa-pinterest"></i>
+                                <span class="social-text">Follow via Pinterest</span>
+                                </span>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="mail-to" target="_blank" href="mailto:lionthemes88@gmail.com">
+                                <span>
+                                <i class="fa fa-envelope-o"></i>
+                                <span class="social-text">Mail To Us</span>
+                                </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--social design arae end-->
+        <!-- shop area start-->
+        <div class="shop_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="shop_menu shop_menu_tk ">
+                            <ul class="cramb_area cramb_area_2 cramb_area_ktp">
+                                <li><a href="index.html">首页 /</a></li>
+                                <li><a href="/account">我的账号</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- shop area end-->
+        <!--my account area start-->
+        <div class="my_account_area">
+            <div class="container">
+                <!--<div class="row">-->
+                    <!--<div class="col-md-12">-->
+                        <!--<div class="account_heading">-->
+                            <!--<h1>My Account</h1>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <div class="row">
+                    <div class="col-md-12">
+                        <!-- Content Header (Page header) -->
+                        <section class="content-header">
+                            <h1>
+                                个人资料
+                            </h1>
+                            <ol class="breadcrumb">
+                                <li><a href="/"><i class="fa fa-dashboard"></i> 首页</a></li>
+                                <li class="active">我的账户</li>
+                            </ol>
+                        </section>
+
+                        <!-- Main content -->
+                        <section class="content">
+
+                            <div class="row">
+                                <div class="col-md-3">
+
+                                    <!-- Profile Image -->
+                                    <div class="box box-primary">
+                                        <div class="box-body box-profile">
+                                            <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user4-128x128.jpg" alt="User profile picture">
+
+                                            <h3 class="profile-username text-center">Nina Mcintire</h3>
+
+                                            <p class="text-muted text-center">Software Engineer</p>
+
+                                            <ul class="list-group list-group-unbordered">
+                                                <li class="list-group-item">
+                                                    <b>我的钱包</b> <a class="pull-right">1,322</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>我的订单</b> <a class="pull-right">543</a>
+                                                </li>
+                                                <li class="list-group-item">
+                                                    <b>总共花费</b> <a class="pull-right">13,287</a>
+                                                </li>
+                                            </ul>
+
+                                            <a href="#" class="btn btn-primary btn-block"><b>查看订单</b></a>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+
+                                    <!-- About Me Box -->
+                                    <div class="box box-primary">
+                                        <div class="box-header with-border">
+                                            <h3 class="box-title">关于 我</h3>
+                                        </div>
+                                        <!-- /.box-header -->
+                                        <div class="box-body">
+                                            <strong><i class="fa fa-map-marker margin-r-5"></i> 购物地址</strong>
+
+                                            <p class="text-muted">
+                                                四川轻化工大学计算机学院计科X班
+                                            </p>
+
+                                            <hr>
+
+
+                                            <strong><i class="fa fa-pencil margin-r-5"></i> 喜欢的商品</strong>
+
+                                            <p>
+                                                <span class="label label-danger">大刀肉</span>
+                                                <span class="label label-success">Iphone 11 Pro</span>
+                                                <span class="label label-info">花花公子</span>
+                                                <span class="label label-warning">帅气的我</span>
+                                            </p>
+
+                                            <hr>
+
+                                            <strong><i class="fa fa-file-text-o margin-r-5"></i> 个性签名</strong>
+
+                                            <p>暂时未实现</p>
+                                        </div>
+                                        <!-- /.box-body -->
+                                    </div>
+                                    <!-- /.box -->
+                                </div>
+                                <!-- /.col -->
+                                <div class="col-md-9">
+                                    <div class="nav-tabs-custom">
+                                        <ul class="nav nav-tabs">
+                                            <li class="active"><a href="#activity" data-toggle="tab">我的订单</a></li>
+                                            <li><a href="#timeline" data-toggle="tab">我的钱包</a></li>
+                                            <li><a href="#settings" data-toggle="tab">修改信息</a></li>
+                                        </ul>
+                                        <div class="tab-content">
+                                            <div class="active tab-pane" id="activity">
+                                                <!-- Post -->
+                                                <div class="post">
+                                                    <div class="user-block">
+                                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user1-128x128.jpg" alt="user image">
+                                                        <span class="username">
+                          <a href="#">Jonathan Burke Jr.</a>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                                                        <span class="description">Shared publicly - 7:30 PM today</span>
+                                                    </div>
+                                                    <!-- /.user-block -->
+                                                    <p>
+                                                        Lorem ipsum represents a long-held tradition for designers,
+                                                        typographers and the like. Some people hate it and argue for
+                                                        its demise, but others ignore the hate as they create awesome
+                                                        tools to help create filler text for everyone from bacon lovers
+                                                        to Charlie Sheen fans.
+                                                    </p>
+                                                    <ul class="list-inline">
+                                                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                                                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                                                        </li>
+                                                        <li class="pull-right">
+                                                            <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
+                                                                (5)</a></li>
+                                                    </ul>
+
+                                                    <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                                                </div>
+                                                <!-- /.post -->
+
+                                                <!-- Post -->
+                                                <div class="post clearfix">
+                                                    <div class="user-block">
+                                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user7-128x128.jpg" alt="User Image">
+                                                        <span class="username">
+                          <a href="#">Sarah Ross</a>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                                                        <span class="description">Sent you a message - 3 days ago</span>
+                                                    </div>
+                                                    <!-- /.user-block -->
+                                                    <p>
+                                                        Lorem ipsum represents a long-held tradition for designers,
+                                                        typographers and the like. Some people hate it and argue for
+                                                        its demise, but others ignore the hate as they create awesome
+                                                        tools to help create filler text for everyone from bacon lovers
+                                                        to Charlie Sheen fans.
+                                                    </p>
+
+                                                    <form class="form-horizontal">
+                                                        <div class="form-group margin-bottom-none">
+                                                            <div class="col-sm-9">
+                                                                <input class="form-control input-sm" placeholder="Response">
+                                                            </div>
+                                                            <div class="col-sm-3">
+                                                                <button type="submit" class="btn btn-danger pull-right btn-block btn-sm">Send</button>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                                <!-- /.post -->
+
+                                                <!-- Post -->
+                                                <div class="post">
+                                                    <div class="user-block">
+                                                        <img class="img-circle img-bordered-sm" src="../../dist/img/user6-128x128.jpg" alt="User Image">
+                                                        <span class="username">
+                          <a href="#">Adam Jones</a>
+                          <a href="#" class="pull-right btn-box-tool"><i class="fa fa-times"></i></a>
+                        </span>
+                                                        <span class="description">Posted 5 photos - 5 days ago</span>
+                                                    </div>
+                                                    <!-- /.user-block -->
+                                                    <div class="row margin-bottom">
+                                                        <div class="col-sm-6">
+                                                            <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
+                                                        </div>
+                                                        <!-- /.col -->
+                                                        <div class="col-sm-6">
+                                                            <div class="row">
+                                                                <div class="col-sm-6">
+                                                                    <img class="img-responsive" src="../../dist/img/photo2.png" alt="Photo">
+                                                                    <br>
+                                                                    <img class="img-responsive" src="../../dist/img/photo3.jpg" alt="Photo">
+                                                                </div>
+                                                                <!-- /.col -->
+                                                                <div class="col-sm-6">
+                                                                    <img class="img-responsive" src="../../dist/img/photo4.jpg" alt="Photo">
+                                                                    <br>
+                                                                    <img class="img-responsive" src="../../dist/img/photo1.png" alt="Photo">
+                                                                </div>
+                                                                <!-- /.col -->
+                                                            </div>
+                                                            <!-- /.row -->
+                                                        </div>
+                                                        <!-- /.col -->
+                                                    </div>
+                                                    <!-- /.row -->
+
+                                                    <ul class="list-inline">
+                                                        <li><a href="#" class="link-black text-sm"><i class="fa fa-share margin-r-5"></i> Share</a></li>
+                                                        <li><a href="#" class="link-black text-sm"><i class="fa fa-thumbs-o-up margin-r-5"></i> Like</a>
+                                                        </li>
+                                                        <li class="pull-right">
+                                                            <a href="#" class="link-black text-sm"><i class="fa fa-comments-o margin-r-5"></i> Comments
+                                                                (5)</a></li>
+                                                    </ul>
+
+                                                    <input class="form-control input-sm" type="text" placeholder="Type a comment">
+                                                </div>
+                                                <!-- /.post -->
+                                            </div>
+                                            <!-- /.tab-pane -->
+                                            <div class="tab-pane" id="timeline">
+                                                <!-- The timeline -->
+                                                <ul class="timeline timeline-inverse">
+                                                    <!-- timeline time label -->
+                                                    <li class="time-label">
+                        <span class="bg-red">
+                          10 Feb. 2014
+                        </span>
+                                                    </li>
+                                                    <!-- /.timeline-label -->
+                                                    <!-- timeline item -->
+                                                    <li>
+                                                        <i class="fa fa-envelope bg-blue"></i>
+
+                                                        <div class="timeline-item">
+                                                            <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+
+                                                            <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+
+                                                            <div class="timeline-body">
+                                                                Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
+                                                                weebly ning heekya handango imeem plugg dopplr jibjab, movity
+                                                                jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
+                                                                quora plaxo ideeli hulu weebly balihoo...
+                                                            </div>
+                                                            <div class="timeline-footer">
+                                                                <a class="btn btn-primary btn-xs">Read more</a>
+                                                                <a class="btn btn-danger btn-xs">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <!-- END timeline item -->
+                                                    <!-- timeline item -->
+                                                    <li>
+                                                        <i class="fa fa-user bg-aqua"></i>
+
+                                                        <div class="timeline-item">
+                                                            <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
+
+                                                            <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
+                                                            </h3>
+                                                        </div>
+                                                    </li>
+                                                    <!-- END timeline item -->
+                                                    <!-- timeline item -->
+                                                    <li>
+                                                        <i class="fa fa-comments bg-yellow"></i>
+
+                                                        <div class="timeline-item">
+                                                            <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
+
+                                                            <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
+
+                                                            <div class="timeline-body">
+                                                                Take me to your leader!
+                                                                Switzerland is small and neutral!
+                                                                We are more like Germany, ambitious and misunderstood!
+                                                            </div>
+                                                            <div class="timeline-footer">
+                                                                <a class="btn btn-warning btn-flat btn-xs">View comment</a>
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <!-- END timeline item -->
+                                                    <!-- timeline time label -->
+                                                    <li class="time-label">
+                        <span class="bg-green">
+                          3 Jan. 2014
+                        </span>
+                                                    </li>
+                                                    <!-- /.timeline-label -->
+                                                    <!-- timeline item -->
+                                                    <li>
+                                                        <i class="fa fa-camera bg-purple"></i>
+
+                                                        <div class="timeline-item">
+                                                            <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
+
+                                                            <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
+
+                                                            <div class="timeline-body">
+                                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                                <img src="http://placehold.it/150x100" alt="..." class="margin">
+                                                            </div>
+                                                        </div>
+                                                    </li>
+                                                    <!-- END timeline item -->
+                                                    <li>
+                                                        <i class="fa fa-clock-o bg-gray"></i>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- /.tab-pane -->
+
+                                            <div class="tab-pane" id="settings">
+                                                <form class="form-horizontal">
+                                                    <div class="form-group">
+                                                        <label for="username" class="col-sm-2 control-label">用户名</label>
+
+                                                        <div class="col-sm-10">
+                                                            <input type="email" class="form-control" id="username" placeholder="用户名" readonly="true">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="nickName" class="col-sm-2 control-label">昵称</label>
+
+                                                        <div class="col-sm-10">
+                                                            <input type="text" class="form-control" id="nickName" placeholder="昵称">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="phone" class="col-sm-2 control-label">手机号</label>
+
+                                                        <div class="col-sm-10">
+                                                            <input type="tel" class="form-control" id="phone" placeholder="手机号">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pwd1" class="col-sm-2 control-label">密码</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="password" class="form-control" id="pwd1" placeholder="密码">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="pwd2" class="col-sm-2 control-label">确认密码</label>
+                                                        <div class="col-sm-10">
+                                                            <input type="password" class="form-control" id="pwd2" placeholder="确认密码">
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="homeaddress" class="col-sm-2 control-label">收货地址</label>
+
+                                                        <div class="col-sm-10">
+                                                            <textarea class="form-control" id="homeaddress" placeholder="收货地址"></textarea>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <div class="checkbox">
+                                                                <label>
+                                                                    <input type="checkbox" id="agree"> 我同意 <a id="rules">条款和协议</a>
+                                                                </label>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <div class="col-sm-offset-2 col-sm-10">
+                                                            <button type="button" id="setting-btn" class="btn btn-danger">提交</button>
+                                                        </div>
+                                                    </div>
+                                                </form>
+                                            </div>
+                                            <!-- /.tab-pane -->
+                                        </div>
+                                        <!-- /.tab-content -->
+                                    </div>
+                                    <!-- /.nav-tabs-custom -->
+                                </div>
+                                <!-- /.col -->
+                            </div>
+                            <!-- /.row -->
+
+                        </section>
+                        <!-- /.content -->
+                    </div>
+
+                </div>
+                <div class="new-meta">
+                    <a class=" btn btn-default btn-default-tf" href="">
+                        <i class="fa fa-pencil"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <!--my account area end-->
+        <!--newsletter area start-->
+        <div class="all_news_letter">
+            <div class="news_letter">
+                <div class="news_middele">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="news_heading">
+                                    <h3> newsletter </h3>
+                                </div>
+                                <div class="full_form">
+                                    <form id="form-newsletter1" class="widget_wysija" method="post" action="#wysija">
+                                        <p class="wysija-paragraph">
+                                            <input name="wysija[user][email]" class="wysija-input validate[required,custom[email]]" title="Enter Your Mail..." placeholder="Enter Your Mail..." value="" id="form-validation-field-0" style="" type="text">
+                                        </p>
+                                        <input class="wysija-submit wysija-submit-field" value="Subscribe!" type="submit">
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-xs-12">
+                                <div class="news_right">
+                                    <div class="news_heading news_heading_3">
+                                        <h3>Follow us:</h3>
+                                    </div>
+                                    <ul class="social-icons">
+                                        <li>
+                                            <a class="facebook social-icon" href="#facebook" title="" target="_blank" data-toggle="tooltip" data-original-title="Facebook">
+                                            <i class="fa fa-facebook"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="twitter social-icon" href="#twitter.com" title="" target="_blank" data-toggle="tooltip" data-original-title="Twitter">
+                                            <i class="fa fa-twitter"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="google-plus social-icon" href="#google-plus" title="" target="_blank" data-toggle="tooltip" data-original-title="Google-plus">
+                                            <i class="fa fa-google-plus"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="youtube social-icon" href="#youtube" title="" target="_blank" data-toggle="tooltip" data-original-title="Youtube">
+                                            <i class="fa fa-youtube"></i>
+                                            </a>
+                                        </li>
+                                        <li>
+                                            <a class="social-icon instagram" href="#" title="" target="_blank" data-toggle="tooltip" data-original-title="instagram">
+                                            <i class="fa fa-instagram"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--newsletter area end-->
+        <!--footer top area start-->
+        <div class="footer_area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer_menu">
+                            <div class="news_heading_2">
+                                <h3>Information </h3>
+                            </div>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">our blog</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">about our shop</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">secure shopping</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">privecy policy</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer_menu">
+                            <div class="news_heading_2">
+                                <h3>My Account </h3>
+                            </div>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">My Account</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Wishlist</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Shopping Cart</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Checkout</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer_menu">
+                            <div class="news_heading_2">
+                                <h3> Our Services </h3>
+                            </div>
+                            <div class="footer_menu">
+                                <ul>
+                                    <li>
+                                        <a href="#">Shipping & Returns</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Secure Shopping</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">International Shipping</a>
+                                    </li>
+                                    <li>
+                                        <a href="#">Affiliates</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-3 col-sm-6">
+                        <div class="footer_menu footer_menu_2">
+                            <div class="news_heading_2">
+                                <h3> Store Information </h3>
+                            </div>
+                            <ul>
+                                <li>
+                                    <i class="fa fa-home"></i>
+                                    <p>My Company : 42 avenue des Champs Elysées 75000 France</p>
+                                </li>
+                                <li>
+                                    <i class="fa fa-phone"></i>
+                                    <p>Phone: (0123) 456789</p>
+                                </li>
+                                <li>
+                                    <i class="fa fa-envelope"></i>
+                                    <p>Email: admin@hastech.company</p>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!--footer top area end-->
+            <!--footer middle area start-->
+            <div class="footer_middle">
+                <div class="container">
+                    <div class="fotter_inner">
+                        <div class="middele_pic">
+                            <img src="front-end/img/icon/payment-300x30.png" alt="" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!--footer middle area end-->
+        <!--footer bottom area start-->
+        <div class="footer-bottom">
+            <div class="container">
+                <div class="widget-copyright text-center">
+                    Copyright &copy; 2017.Company name All rights reserved.
+                </div>
+            </div>
+        </div>
+		<!--footer bottom area end-->
+
+
+
+
+
+
+        <!-- all js here -->
+        <!-- jquery latest version -->
+        <script src="front-end/js/vendor/jquery-1.12.0.min.js"></script>
+        <!-- bootstrap js -->
+        <script src="front-end/js/bootstrap.min.js"></script>
+        <!-- nivo slider js -->
+        <script src="front-end/lib/js/jquery.nivo.slider.js" type="text/javascript"></script>
+        <script src="front-end/lib/home.js" type="text/javascript"></script>
+        <!-- owl.carousel js -->
+        <script src="front-end/js/owl.carousel.min.js"></script>
+        <!-- meanmenu js -->
+        <script src="front-end/js/jquery.meanmenu.js"></script>
+        <!-- jquery-ui js -->
+        <script src="front-end/js/jquery-ui.min.js"></script>
+        <!-- easing js -->
+        <script src="front-end/js/jquery.easing.1.3.js"></script>
+        <!-- mixitup js -->
+        <script src="front-end/js/jquery.mixitup.min.js"></script>
+        <!-- jquery.countdown js -->
+        <script src="front-end/js/jquery.countdown.min.js"></script>
+        <!-- wow js -->
+        <script src="front-end/js/wow.min.js"></script>
+        <!-- popup js -->
+        <script src="front-end/js/jquery.magnific-popup.min.js"></script>
+        <!-- plugins js -->
+        <script src="front-end/js/plugins.js"></script>
+        <!-- main js -->
+        <script src="front-end/js/main.js"></script>
+    </body>
+</html>
+<script src="layer/layer.js"></script>
+<script>
+    $("#username").click(
+        function () {
+            layer.tips('用户名不可修改', '#username');
+        }
+    )
+    $(function () {
+        $("#setting-btn").click(function () {
+            var check = document.getElementById("agree");
+            if(check.checked){
+                //第一、验证用户名是否存在
+                var name = $("#username").val();
+                var pwd1 = $("#pwd1").val();
+                var nickName = $("#nickName").val();
+                var phone = $("#phone").val();
+                var adress = $("#homeadress").val();
+                if(pwd1==null||pwd1==""||nickName==null||nickName==""||phone==null||phone==""||adress==null||adress==""){
+                    layer.msg('所有信息不能为空，请检查',{icon:2,time:3000})
+                }else{
+                    //验证密码一致
+                    //假如密码一致
+                    //发送注册请求
+                    $.ajax({
+                        url: "/userupdate",
+                        type: "post",//post请求一定是携带json数据
+                        contentType: "application/json",
+                        data: JSON.stringify({"username":name,"password":$("#pwd1").val(),"nickName":$("#nickName").val(),"phone":$("#phone").val(),"address":$("#homeaddress")}),
+                        success: function (res) {
+                            if(res){
+                                //表示更新成功，弹出框提示，然后跳转到登录
+                                layer.msg('更新成功，请重新登录',{icon:1,time:700},function () {
+                                    window.location = "/tologin";
+                                })
+                            }else {
+                                //表示更新失败，弹出框提示，然后继续尝试
+                                layer.msg('更新失败，请稍后再试',{icon:2,time:3000})
+                            }
+                        }
+                    })
+                }
+
+            }else {
+                layer.alert('请认真阅读注册款项', {
+                    icon: 0,
+                    skin: 'layer-ext-moon'
+                })
+            }
+        })
+    });
+    $("#rules").click(function () {
+        layer.alert('所有解释权归本公司所有', {
+            skin: 'layui-layer-molv' //样式类名
+            ,closeBtn: 0
+        }, function(){
+            layer.alert('请仔细检查信息，其他还未想好', {
+                skin: 'layui-layer-lan'
+                ,closeBtn: 0
+                ,anim: 4 //动画类型
+            });
+        });
+    })
+</script>
+

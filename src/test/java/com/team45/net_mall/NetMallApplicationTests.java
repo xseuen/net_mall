@@ -6,8 +6,8 @@ import org.junit.jupiter.api.Test;
 //@SpringBootTest
 class NetMallApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+    //@Test
+    //void contextLoads() {
+    //}
 
 }

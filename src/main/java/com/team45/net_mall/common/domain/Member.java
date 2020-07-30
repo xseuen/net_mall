@@ -1,8 +1,6 @@
 
 package com.team45.net_mall.common.domain;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.util.Date;
 
@@ -95,20 +93,5 @@ public class Member {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", createTime=" + createTime +
-                ", staus=" + staus +
-                ", type=" + type +
-                ", address='" + address + '\'' +
-                '}';
     }
 }

@@ -37,7 +37,7 @@ public class ProductController {
         //调用服务层的获取数据的方法
         List<Product> list = productService.getList();
         model.addAttribute("pros", list);
-        return "product/product-list";
+        return "after-end/product/product-list";
     }
 
     @RequestMapping("/productadd")
@@ -46,7 +46,7 @@ public class ProductController {
         //获取所有类别
         List<Category> list = categoryService.list();
         model.addAttribute("categoryList", list);
-        return "product/product-add";
+        return "after-end/product/product-add";
     }
 
     @PostMapping("/add")
@@ -69,7 +69,7 @@ public class ProductController {
         List<Category> list = categoryService.list();
         model.addAttribute("categoryList", list);
         model.addAttribute("pro", productWithBLOBs);
-        return "product/product-edit";
+        return "after-end/product/product-edit";
     }
 
     @PostMapping("/update")

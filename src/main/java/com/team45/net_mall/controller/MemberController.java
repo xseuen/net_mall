@@ -7,8 +7,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import javax.servlet.http.HttpSession;
+import java.util.Date;
+
 
 @Controller
 public class MemberController {
@@ -17,7 +18,7 @@ public class MemberController {
 
     @RequestMapping(value = "/tologin",method = RequestMethod.GET)
     public String tologin(){
-        return "pages/examples/login";
+        return "front-end/login";
     }
 
     @RequestMapping(value = "/login",method =RequestMethod.POST)
@@ -26,7 +27,7 @@ public class MemberController {
         if (memberInDB == null) {
             model.addAttribute("member", member);
             model.addAttribute("msg", "用户名或密码错误");
-            return "pages/examples/login";
+            return "front-end/login";
         } else {
             //登录成功
             session.setAttribute("loginUser",memberInDB);
@@ -36,7 +37,7 @@ public class MemberController {
 
     @GetMapping("/toRegister")
     public String toRegister() {
-        return "pages/examples/register";
+        return "front-end/register";
     }
 
     @GetMapping("/logout")
@@ -58,7 +59,11 @@ public class MemberController {
     @PostMapping("/register")
     @ResponseBody
     public Boolean register(@RequestBody Member member) {
+        member.setType(0);
+        member.setStaus(1);
+        member.setCreateTime(new Date());
         int i =  memberService.insert(member);
         return i==0?false:true;
     }
+
 }

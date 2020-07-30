@@ -1,7 +1,6 @@
 package com.team45.net_mall.controller;
 
 import com.team45.net_mall.common.domain.Member;
-import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.MemberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -33,9 +32,7 @@ public class AccoutInfoController {
     @PostMapping("/userupdate")
     @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public Boolean update(@RequestBody Member member) {
-
        int  i = memberService.update(member);
-
         return i==0?false:true;
     }
 }

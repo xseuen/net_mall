@@ -36,6 +36,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public int update(Member member) {
-        return memberMapper.updateByPrimaryKey(member);
+        return memberMapper.updateByPrimaryKeyWithBLOBs(member);
     }
 }

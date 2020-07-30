@@ -6,9 +6,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @Controller
 public class AdminlteController {
 
-//    @RequestMapping("/adminlte")
-//    public String toAdminlte(){
-//        return "/product/list";
-//    }
+    @RequestMapping("/adminlte")
+    public String toAdminlte(){
+        return "/product/list";
+    }
 }
 

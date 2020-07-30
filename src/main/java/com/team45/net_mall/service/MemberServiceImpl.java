@@ -17,7 +17,7 @@ public class MemberServiceImpl implements MemberService {
     public Member login(Member member) {
         MemberExample memberExample = new MemberExample();
         memberExample.createCriteria().andUsernameEqualTo(member.getUsername()).andPasswordEqualTo(member.getPassword());
-        List<Member> members = memberMapper.selectByExample(memberExample);
+        List<Member> members = memberMapper.selectByExampleWithBLOBs(memberExample);
         return (members.size()>0?members.get(0):null);
     }
 

@@ -10,14 +10,24 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.HttpSession;
+
 @Controller
 
 public class AccoutInfoController {
     @Autowired
     MemberService memberService;
     @RequestMapping("/myaccount")
-    public String showAccoutInfo(){
-
+    public String showAccoutInfo(HttpSession session){
+        //判断是否登录
+        if (session == null) {
+            return "redirect:/";
+        } else {
+            Member loginUser = (Member) session.getAttribute("loginUser");
+            if (loginUser == null) {
+                return "redirect:/";
+            }
+        }
         return "front-end/myaccount";
     }
     @PostMapping("/userupdate")

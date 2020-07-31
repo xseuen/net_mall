@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.team45.net_mall.mapper.MemberMapper">
+    <resultMap id="MyResultMap" type="com.team45.net_mall.common.domain.Member">
+        <id column="id" jdbcType="INTEGER" property="id" />
+        <result column="username" jdbcType="VARCHAR" property="username" />
+        <result column="password" jdbcType="VARCHAR" property="password" />
+        <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
+        <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+        <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="type" jdbcType="INTEGER" property="type" />
+    </resultMap>
+        <select id="list" resultMap="MyResultMap">
+        select * from member
+    </select>
+</mapper>

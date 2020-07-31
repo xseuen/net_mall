@@ -38,4 +38,14 @@ public class MemberServiceImpl implements MemberService {
     public int update(Member member) {
         return memberMapper.updateByPrimaryKeyWithBLOBs(member);
     }
+
+    @Override
+    public List<Member> getList() {
+        return memberMapper.list();
+    }
+
+    @Override
+    public Member selectByid(Integer id) {
+        return memberMapper.selectByPrimaryKey(id);
+    }
 }

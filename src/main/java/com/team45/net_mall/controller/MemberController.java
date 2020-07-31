@@ -1,7 +1,10 @@
 package com.team45.net_mall.controller;
 
 
+import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.Member;
+import com.team45.net_mall.common.domain.Product;
+import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.MemberServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,6 +12,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
 import java.util.Date;
+import java.util.List;
 
 
 @Controller
@@ -65,5 +69,26 @@ public class MemberController {
         int i =  memberService.insert(member);
         return i==0?false:true;
     }
+
+    @GetMapping("/user_list")
+    public String list(Model model) {
+        //调用服务层的获取数据的方法
+        List<Member> list = memberService.getList();
+        model.addAttribute("users", list);
+        return "after-end/user/user-list";
+    }
+
+    @RequestMapping("/user/selectByid")
+    // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
+    public String selectByid(Integer id, Model model) {
+        //调用服务层的获取数据的方法
+        Member member = memberService.selectByid(id);
+        //获取所有类别
+//        List<> list = memberService.list();
+//        model.addAttribute("categoryList", list);
+        model.addAttribute("user", member);
+        return "after-end/user/user-edit";
+    }
+
 
 }

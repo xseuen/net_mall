@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!-- th:fragment 定义需要引入的代码块，该div包含的内容即为引用的公共内容 -->
+<div th:fragment="slider">
+    <div class="slider">
+        <section class="slider-area">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="bend niceties preview-2">
+                            <div id="ensign-nivoslider" class="slides">
+                                <img src="front-end/img/slider/slider1_1-1.jpg" alt="" title="#slider-caption-1" />
+                                <img src="front-end/img/slider/slider1_2.jpg" alt="" title="#slider-caption-2" />
+                            </div>
+                            <!-- direction 1 -->
+                            <div id="slider-caption-1" class="t-cn slider-direction slider-one">
+                                <div class="slider-progress"></div>
+                                <div class="tld-f1">
+                                    <div class="layer-1-1 animated fadeInDown">
+                                        <h1> $320.00</h1>
+                                    </div>
+                                    <div class="layer-1-2 animated flipInX">
+                                        <h2>$245.00</h2>
+                                    </div>
+                                    <div class="layer-1-3 animated rotateInUpLeft">
+                                        <h1>NOKIA E600</h1>
+                                    </div>
+                                    <div class="layer-1-4  animated rotateInUpLeft">
+                                        <h3>SALE UO TO 30%</h3>
+                                    </div>
+                                    <div class="layer-1-5 animated rotateInUpLeft">
+                                        <a href="#">Shopping Now</a>
+                                    </div>
+                                </div>
+                                <div class="tld-f2">
+                                    <div class="layer-1-6 animated zoomIn">
+                                        <img src="front-end/img/slider/slider_8.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- direction 2 -->
+                            <div id="slider-caption-2" class="slider-direction slider-two">
+                                <div class="slider-progress"></div>
+                                <div class="sld-fl">
+                                    <div class="layer-2-1 animated fadeInLeftBig">
+                                        <h1> $320.00</h1>
+                                    </div>
+                                    <div class="layer-2-2 animated slideInLeft">
+                                        <h2>$245.00</h2>
+                                    </div>
+                                    <div class="layer-2-3 animated slideInLeft">
+                                        <h1>MEN'S </h1>
+                                    </div>
+                                    <div class="layer-2-4 animated slideInLeft">
+                                        <h3>SALE UO TO 30%</h3>
+                                    </div>
+                                    <div class="layer-2-5 animated bounceInUp">
+                                        <a href="#">Shopping Now</a>
+                                    </div>
+                                </div>
+                                <div class="sld-fr">
+                                    <div class="layer-2-6 animated zoomIn">
+                                        <img src="front-end/img/slider/slider-9.png" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+</html>

@@ -55,7 +55,7 @@
             </h1>
             <ol class="breadcrumb">
             <li><a href="/adminlte"><i class="fa fa-dashboard"></i> 后台管理</a></li>
-            <li class="active">产品信息修改</li>
+            <li class="active">用户信息修改</li>
             </ol>
         </section>
 
@@ -67,66 +67,70 @@
                     <div class="col-md-6">
                         <!-- Horizontal Form -->
                         <div class="box box-info">
+                            <div class="box-header with-border">
+                                <h3 class="box-title">Horizontal Form</h3>
+                            </div>
+                            <!-- /.box-header -->
                             <!-- form start -->
                             <form class="form-horizontal" id="product-form">
-                                <input type="hidden" id="pid" name="pid" th:value="${pro.id}">
+                                <input type="hidden" id="uid" name="uid" th:value="${user.id}">
                                 <div class="box-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">商品名称</label>
+                                        <label class="col-sm-2 control-label">用户名</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="pname" id="pname" th:value="${pro.name}" class="form-control" placeholder="Email">
+                                            <input type="text" name="uname" id="uname" th:value="${user.username}" class="form-control" >
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label  class="col-sm-2 control-label">商品价格</label>
+                                        <label  class="col-sm-2 control-label">昵称</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="price" id="price" th:value="${pro.price}" class="form-control">
+                                            <input type="text" name="nickName" id="nickName" th:value="${user.nickName}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label  class="col-sm-2 control-label">商品数量</label>
+                                        <label  class="col-sm-2 control-label">密码</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="num" id="num" th:value="${pro.num}" class="form-control">
+                                            <input type="password" name="pwd" id="pwd" th:value="${user.password}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label  class="col-sm-2 control-label">商品描述</label>
+                                        <label  class="col-sm-2 control-label">手机号</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="description" id="description" th:value="${pro.desciption}" class="form-control">
+                                            <input type="tel" name="description" id="description" th:value="${user.phone}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">是否上架</label>
+                                        <label class="col-sm-2 control-label">是否冻结</label>
 
                                         <div class="col-sm-10">
                                             <select name="flag" id="flag" class="form-control">
-                                                <option value="1">上架</option>
-                                                <option value="0">下架</option>
+                                                <option value="1">正常</option>
+                                                <option value="0">冻结</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <div class="form-group">
-                                        <label  class="col-sm-2 control-label">商品类别</label>
-                                        <div class="col-sm-10">
-                                            <select id="categoryId" name="categoryId"
-                                                    required lay-verify="required"  class="form-control">
-                                                <option
-                                                        th:each="cate : ${categoryList}"
-                                                        th:selected="${pro.categoryId  eq cate.cid}"
-                                                        th:value="${cate.cid}"
-                                                        th:text="${cate.cname}"></option>
-                                            </select>
-                                        </div>
-                                    </div>
+                                    <!--<div class="form-group">-->
+                                        <!--<label  class="col-sm-2 control-label">用户类别</label>-->
+                                        <!--<div class="col-sm-10">-->
+                                            <!--<select id="categoryId" name="categoryId"-->
+                                                    <!--required lay-verify="required"  class="form-control">-->
+                                                <!--<option-->
+                                                        <!--th:each="cate : ${categoryList}"-->
+                                                        <!--th:selected="${pro.categoryId  eq cate.cid}"-->
+                                                        <!--th:value="${cate.cid}"-->
+                                                        <!--th:text="${cate.cname}"></option>-->
+                                            <!--</select>-->
+                                        <!--</div>-->
+                                    <!--</div>-->
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
-                                    <a href="/product/list" class="btn btn-primary" style="margin-right: 10px">返回</a>
-                                    <button type="button" id="pro-update" class="btn btn-info pull-right">保存</button>
+                                    <a href="/user_list" class="btn btn-primary" style="margin-right: 10px">返回</a>
+                                    <button type="button" id="user-update" class="btn btn-info pull-right">保存</button>
                                 </div>
                                 <!-- /.box-footer -->
                             </form>
@@ -145,60 +149,60 @@
     <div th:replace="/common/after-end/footer :: footer"></div>
 
 </div>
-    <!-- jQuery 3 -->
-    <script src="../bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- jQuery UI 1.11.4 -->
-    <script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
-    <script>
-        $.widget.bridge('uibutton', $.ui.button);
-    </script>
-    <!-- Bootstrap 3.3.7 -->
-    <script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- Morris.js charts -->
-    <script src="../bower_components/raphael/raphael.min.js"></script>
-    <script src="../bower_components/morris.js/morris.min.js"></script>
-    <!-- Sparkline -->
-    <script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
-    <!-- jvectormap -->
-    <script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
-    <script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
-    <!-- jQuery Knob Chart -->
-    <script src="../bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
-    <!-- daterangepicker -->
-    <script src="../bower_components/moment/min/moment.min.js"></script>
-    <script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-    <!-- datepicker -->
-    <script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <!-- Bootstrap WYSIHTML5 -->
-    <script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
-    <!-- Slimscroll -->
-    <script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
-    <!-- FastClick -->
-    <script src="../bower_components/fastclick/lib/fastclick.js"></script>
-    <!-- AdminLTE App -->
-    <script src="../dist/js/adminlte.min.js"></script>
-    <!-- AdminLTE dashboard demo (This is only for demo purposes) -->
-    <script src="../dist/js/pages/dashboard.js"></script>
-    <!-- AdminLTE for demo purposes -->
-    <script src="../dist/js/demo.js"></script>
+<!-- jQuery 3 -->
+<script src="../bower_components/jquery/dist/jquery.min.js"></script>
+<!-- jQuery UI 1.11.4 -->
+<script src="../bower_components/jquery-ui/jquery-ui.min.js"></script>
+<!-- Resolve conflict in jQuery UI tooltip with Bootstrap tooltip -->
+<script>
+    $.widget.bridge('uibutton', $.ui.button);
+</script>
+<!-- Bootstrap 3.3.7 -->
+<script src="../bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<!-- Morris.js charts -->
+<script src="../bower_components/raphael/raphael.min.js"></script>
+<script src="../bower_components/morris.js/morris.min.js"></script>
+<!-- Sparkline -->
+<script src="../bower_components/jquery-sparkline/dist/jquery.sparkline.min.js"></script>
+<!-- jvectormap -->
+<script src="../plugins/jvectormap/jquery-jvectormap-1.2.2.min.js"></script>
+<script src="../plugins/jvectormap/jquery-jvectormap-world-mill-en.js"></script>
+<!-- jQuery Knob Chart -->
+<script src="../bower_components/jquery-knob/dist/jquery.knob.min.js"></script>
+<!-- daterangepicker -->
+<script src="../bower_components/moment/min/moment.min.js"></script>
+<script src="../bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
+<!-- datepicker -->
+<script src="../bower_components/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+<!-- Bootstrap WYSIHTML5 -->
+<script src="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<!-- Slimscroll -->
+<script src="../bower_components/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+<!-- FastClick -->
+<script src="../bower_components/fastclick/lib/fastclick.js"></script>
+<!-- AdminLTE App -->
+<script src="../dist/js/adminlte.min.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="../dist/js/pages/dashboard.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="../dist/js/demo.js"></script>
 </body>
 </html>
 <script src="../layer/layer.js"></script>
 <script>
     $(function () {
-        $("#pro-update").click(function () {
+        $("#user-update").click(function () {
             var formdata={
-                "id":$("#pid").val(),
-                "name":$("#pname").val(),
-                "price":$("#price").val(),
-                "num":$("#num").val(),
-                "publishStatus":$("#flag").val(),
-                "desciption":$("#description").val(),
-                "categoryId":$("#categoryId").val()
+                "id":$("#uid").val(),
+                "username":$("#uname").val(),
+                "nickName":$("#nickName").val(),
+                "password":$("#pwd").val(),
+                "status":$("#flag").val()
+                // "desciption":$("#description").val(),
+                // "categoryId":$("#categoryId").val()
             }
             $.ajax({
-                url: "/product/update",
+                url: "/userupdate",
                 type: "post",
                 contentType: "application/json",
                 data: JSON.stringify(formdata),
@@ -206,7 +210,7 @@
                     if(data){
                         //弹出成功，并且跳转页面
                         layer.msg("保存成功",{icon:1,time:800},function () {
-                            window.location.href = "/product/list"
+                            window.location = "/user_list"
                         })
                     }
                 }

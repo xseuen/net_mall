@@ -1,6 +1,9 @@
 package com.team45.net_mall.service;
 
 import com.team45.net_mall.common.domain.Member;
+import com.team45.net_mall.common.domain.Product;
+
+import java.util.List;
 
 public interface MemberService {
 
@@ -11,4 +14,8 @@ public interface MemberService {
     int insert(Member member);
 
     int update(Member member);
+
+    List<Member> getList();
+
+    Member selectByid(Integer id);
 }

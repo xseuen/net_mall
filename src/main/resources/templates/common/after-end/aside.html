@@ -26,19 +26,19 @@
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu" data-widget="tree">
             <li class="header">管理菜单</li>
-            <li class="active treeview" id="pro_manage">
-                <a href="#">
+            <li class="treeview" id="pro_manage">
+                <a href="/product/list">
                     <i class="fa fa-dashboard"></i> <span>商品管理</span>
                     <span class="pull-right-container">
               <i class="fa fa-angle-left pull-right"></i>
             </span>
                 </a>
                 <ul class="treeview-menu">
-                    <li class="active" id="pro_list"><a href="/product/list"><i class="fa fa-circle-o"></i> 商品列表</a></li>
+                    <li class="" id="pro_list"><a href="/product/list"><i class="fa fa-circle-o"></i> 商品列表</a></li>
                     <li id="pro_add"><a href="/product/productadd"><i class="fa fa-circle-o"></i> 增加商品</a></li>
                 </ul>
             </li>
-            <li id="user_manage"><a href="/user_list"><i class="fa fa-users"></i> <span>用户管理</span></a></li>
+            <li id="user_manage" th:if="${session.loginUser.type==2}"><a href="/user_list"><i class="fa fa-users"></i> <span>用户管理</span></a></li>
             <li class="header">快捷功能</li>
             <li><a href="/"><i class="fa fa-circle-o text-red"></i> <span>首页</span></a></li>
             <li><a href="/tologin"><i class="fa fa-circle-o text-yellow"></i> <span>切换账号</span></a></li>

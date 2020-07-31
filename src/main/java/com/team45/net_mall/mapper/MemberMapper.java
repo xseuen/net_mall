@@ -4,9 +4,7 @@ import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.MemberExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface MemberMapper {
     long countByExample(MemberExample example);
 

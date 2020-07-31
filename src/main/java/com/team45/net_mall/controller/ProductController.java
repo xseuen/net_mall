@@ -30,7 +30,7 @@ public class ProductController {
             return "redirect:/";
         } else {
             Member loginUser = (Member) session.getAttribute("loginUser");
-            if (loginUser == null || loginUser.getType() != 1) {
+            if (loginUser == null || loginUser.getType() < 1) {
                 return "redirect:/";
             }
         }

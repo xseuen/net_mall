@@ -48,7 +48,7 @@
                             </div>
                             <div class="header_right_area" th:if="${session!=null && session.loginUser!=null }">
                                 <ul>
-                                    <li th:if="${session!=null && session.loginUser!=null && session.loginUser.type==1}">
+                                    <li th:if="${session!=null && session.loginUser!=null && session.loginUser.type>=1}">
                                         <a class="account" href="/product/list">进入后台</a>
                                     </li>
                                     <li>

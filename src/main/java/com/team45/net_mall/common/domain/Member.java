@@ -1,6 +1,4 @@
-
 package com.team45.net_mall.common.domain;
-
 
 import java.util.Date;
 
@@ -17,7 +15,7 @@ public class Member {
 
     private Date createTime;
 
-    private Integer staus;
+    private Integer status;
 
     private Integer type;
 
@@ -71,12 +69,12 @@ public class Member {
         this.createTime = createTime;
     }
 
-    public Integer getStaus() {
-        return staus;
+    public Integer getStatus() {
+        return status;
     }
 
-    public void setStaus(Integer staus) {
-        this.staus = staus;
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 
     public Integer getType() {

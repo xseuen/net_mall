@@ -60,7 +60,7 @@ public class MemberController {
     @ResponseBody
     public Boolean register(@RequestBody Member member) {
         member.setType(0);
-        member.setStaus(1);
+        member.setStatus(1);
         member.setCreateTime(new Date());
         int i =  memberService.insert(member);
         return i==0?false:true;

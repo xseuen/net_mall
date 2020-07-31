@@ -505,63 +505,63 @@ public class MemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andStausIsNull() {
-            addCriterion("staus is null");
+        public Criteria andStatusIsNull() {
+            addCriterion("status is null");
             return (Criteria) this;
         }
 
-        public Criteria andStausIsNotNull() {
-            addCriterion("staus is not null");
+        public Criteria andStatusIsNotNull() {
+            addCriterion("status is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStausEqualTo(Integer value) {
-            addCriterion("staus =", value, "staus");
+        public Criteria andStatusEqualTo(Integer value) {
+            addCriterion("status =", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausNotEqualTo(Integer value) {
-            addCriterion("staus <>", value, "staus");
+        public Criteria andStatusNotEqualTo(Integer value) {
+            addCriterion("status <>", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausGreaterThan(Integer value) {
-            addCriterion("staus >", value, "staus");
+        public Criteria andStatusGreaterThan(Integer value) {
+            addCriterion("status >", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausGreaterThanOrEqualTo(Integer value) {
-            addCriterion("staus >=", value, "staus");
+        public Criteria andStatusGreaterThanOrEqualTo(Integer value) {
+            addCriterion("status >=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausLessThan(Integer value) {
-            addCriterion("staus <", value, "staus");
+        public Criteria andStatusLessThan(Integer value) {
+            addCriterion("status <", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausLessThanOrEqualTo(Integer value) {
-            addCriterion("staus <=", value, "staus");
+        public Criteria andStatusLessThanOrEqualTo(Integer value) {
+            addCriterion("status <=", value, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausIn(List<Integer> values) {
-            addCriterion("staus in", values, "staus");
+        public Criteria andStatusIn(List<Integer> values) {
+            addCriterion("status in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausNotIn(List<Integer> values) {
-            addCriterion("staus not in", values, "staus");
+        public Criteria andStatusNotIn(List<Integer> values) {
+            addCriterion("status not in", values, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausBetween(Integer value1, Integer value2) {
-            addCriterion("staus between", value1, value2, "staus");
+        public Criteria andStatusBetween(Integer value1, Integer value2) {
+            addCriterion("status between", value1, value2, "status");
             return (Criteria) this;
         }
 
-        public Criteria andStausNotBetween(Integer value1, Integer value2) {
-            addCriterion("staus not between", value1, value2, "staus");
+        public Criteria andStatusNotBetween(Integer value1, Integer value2) {
+            addCriterion("status not between", value1, value2, "status");
             return (Criteria) this;
         }
 

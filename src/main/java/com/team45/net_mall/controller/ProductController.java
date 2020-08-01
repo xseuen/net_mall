@@ -21,10 +21,10 @@ public class ProductController {
     @Autowired
     private CategoryService categoryService;
 
+
     @RequestMapping("/list")
-    // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
-    public String list(Model model, HttpSession session) {
-        //判断是否登录
+    public String list(Model model,HttpSession session) {
+        //判断是否登录和权限
         if (session == null) {
             return "redirect:/";
         } else {

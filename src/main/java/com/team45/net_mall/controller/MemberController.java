@@ -8,7 +8,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
+
 
 
 @Controller
@@ -48,7 +51,6 @@ public class MemberController {
 
     @GetMapping("/selectByName")
     @ResponseBody//表示不是返回页面
-    //ajax请求不能跳转页面
     public Boolean selectByName(String name) {
         //true:表示不存在，可注册
         //false：表示已有，不能注册
@@ -61,7 +63,9 @@ public class MemberController {
     public Boolean register(@RequestBody Member member) {
         member.setType(0);
         member.setStatus(1);
-        member.setCreateTime("");
+        Date date = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        member.setCreateTime(sdf.format(date));
         int i =  memberService.insert(member);
         return i==0?false:true;
     }

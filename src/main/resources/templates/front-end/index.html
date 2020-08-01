@@ -1,6 +1,5 @@
 ﻿<!doctype html>
 <html class="no-js" lang="en" xmlns:th="http://www.thymeleaf.org">
-<<<<<<< HEAD
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
@@ -89,297 +88,8 @@
                                                     <a class="not-rated" href="#">
                                                         <i class="fa fa-star-o" aria-hidden="true"></i>
                                                     </a>
-=======
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>首页</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- all css here -->
-        <!-- bootstrap v3.3.6 css -->
-        <link rel="stylesheet" href="front-end/css/bootstrap.min.css">
-        <!-- animate css -->
-        <link rel="stylesheet" href="front-end/css/animate.css">
-        <!-- jquery-ui.min css -->
-        <link rel="stylesheet" href="front-end/css/jquery-ui.min.css">
-        <!-- meanmenu css -->
-        <link rel="stylesheet" href="front-end/css/meanmenu.min.css">
-        <!-- nivo slider css -->
-        <link rel="stylesheet" href="front-end/lib/css/nivo-slider.css" type="text/css" />
-        <link rel="stylesheet" href="front-end/lib/css/preview.css" type="text/css" />
-        <!-- owl.carousel css -->
-        <link rel="stylesheet" href="front-end/css/owl.carousel.css">
-        <!-- font-awesome css -->
-        <link rel="stylesheet" href="front-end/css/font-awesome.min.css">
-        <!-- style css -->
-        <link rel="stylesheet" href="front-end/style.css">
-        <!-- responsive css -->
-        <link rel="stylesheet" href="front-end/css/responsive.css">
-        <!-- modernizr js -->
-        <script src="front-end/js/vendor/modernizr-2.8.3.min.js"></script>
-    </head>
-    <body>
-    <!--header top area start-->
-    <div th:replace="/common/front-end/header :: myheader"></div>
-        <!--slider area start-->
-    <div th:replace="/common/front-end/slider :: slider"></div>
-        <!--slider area end-->
-        <!--social design arae start-->
-    <div th:replace="/common/front-end/link :: link"></div>
-        <!--social design arae end-->
-        <!--about us area-->
-    <div th:replace="/common/front-end/about_us :: about_us"></div>
-        <!--about us end-->
-        <!--product area start-->
-        <section class="product_area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-9 col-sm-9">
-                        <div class="all_product animated fadeInUp">
-                            <div class="new_product">
-                                <div class="product_heading">
-                                    <i class="fa fa-play-circle"></i>
-                                    <span>食品</span>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="whole_product indicator-brand" >
-                                    <div class="col-md-12" th:each="p:${pro}">
-                                        <div class="all-pros animated fadeInUp">
-                                            <div class="single_product">
-                                                <span>New</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                    <img class="primary-img" th:src="${p.pic}" alt="" />
-                                                    <img class="secondary-img" src="front-end/img/product-pic/product_pic_4.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#" th:text="${p.name}">Duis convallis</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                                <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a class="not-rated" href="#">
-                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">$100.00</span>
-                                                    </div>
-                                                    <div class="last_button_area">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show" >
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
->>>>>>> origin/master
-                                                </div>
-                                            </div>
-                                            <div class="price_box">
-                                                <span class="spical-price" th:text="${p.price}">$1999.00</span>
-                                            </div>
-                                            <div class="last_button_area">
-                                                <ul class="add-to-links clearfix">
-                                                    <li class="addwishlist">
-                                                        <div class="yith-wcwl-add-button show" >
-                                                            <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                        </div>
-                                                    </li>
-                                                    <li>
-                                                        <div class="new_act">
-                                                            <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
-                                                        </div>
-                                                    </li>
-                                                    <li class="addcompare">
-                                                        <div class="woocommerce product compare-button">
-                                                            <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-12">
-                <div class="cosmetc_area">
-                    <div class="cosmatics_heading">
-                        <h3 class="cosmatics_products">
-                            <i class="fa fa-tags"></i>
-                            <span>热销</span>
-                        </h3>
-                    </div>
-                    <div class="row">
-                        <div class="new_cosmatic indicator-brand indicator-brand-2">
-                            <div class="col-md-12">
-                                <div class="all-pros all-pros-8 animated fadeInUp">
-                                    <div class="single_product_3 ">
-                                        <span>sale</span>
-                                    </div>
-                                    <div class="sinle_pic">
-                                        <a href="#">
-                                            <img class="primary-img" src="front-end/img/product-pic/product_pic_4.jpg" alt="" />
-                                            <img class="secondary-img" src="" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="usal_pro usal_pro_eb">
-                                            <div class="product_name_2">
-                                                <h2>
-                                                    <a href="#">Duis convallis</a>
-                                                </h2>
-                                            </div>
-                                            <div class="product_price">
-                                                <div class="price_rating">
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#">
-                                                        <i class="fa fa-star"></i>
-                                                    </a>
-                                                    <a href="#"><i class="fa fa-star"></i>
-                                                    </a>
-                                                    <a class="not-rated" href="#">
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="price_box price_box_dgr">
-                                                <span class="old- price">$2500.00</span>
-                                                <span class="spical-price">$1999.00</span>
-                                            </div>
-                                            <div class="count-down-area">
-                                                <div data-countdown="2017/11/01">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="all-pros all-pros-8 animated fadeInUp">
-                                    <div class="single_product_3 ">
-                                        <span>sale</span>
-                                    </div>
-                                    <div class="sinle_pic">
-                                        <a href="#">
-                                            <img class="primary-img" src="front-end\img\dianzi\P20-q.jpg" alt="" />
-                                            <img class="secondary-img" src="" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="usal_pro usal_pro_eb">
-                                            <div class="product_name_2">
-                                                <h2>
-                                                    <a href="#">华为 HUAWEI P20</a>
-                                                </h2>
-                                            </div>
-                                            <div class="product_price">
-                                                <div class="price_rating">
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#">
-                                                        <i class="fa fa-star"></i>
-                                                    </a>
-                                                    <a href="#"><i class="fa fa-star"></i>
-                                                    </a>
-                                                    <a href="#"><i class="fa fa-star"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="price_box price_box_dgr">
-                                                <span class="old- price">$3999.00</span>
-                                                <span class="spical-price">$3299.00</span>
-                                            </div>
-                                            <div class="count-down-area">
-                                                <div data-countdown="2017/11/01">
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="all-pros all-pros-8 animated fadeInUp">
-                                    <div class="single_product_3 ">
-                                        <span>sale</span>
-                                    </div>
-                                    <div class="sinle_pic">
-                                        <a href="#">
-                                            <img class="primary-img" src="front-end/img/dianzi/iphonexs.jpg" alt="" />
-                                            <img class="secondary-img" src="" alt="" />
-                                        </a>
-                                    </div>
-                                    <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                    </div>
-                                    <div class="product_content">
-                                        <div class="usal_pro usal_pro_eb">
-                                            <div class="product_name_2">
-                                                <h2>
-                                                    <a href="#">iphonex</a>
-                                                </h2>
-                                            </div>
-                                            <div class="product_price">
-                                                <div class="price_rating">
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#"><i class="fa fa-star"></i></a>
-                                                    <a href="#">
-                                                        <i class="fa fa-star"></i>
-                                                    </a>
-                                                    <a href="#"><i class="fa fa-star"></i>
-                                                    </a>
-                                                    <a class="not-rated" href="#">
-                                                        <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                            <div class="price_box price_box_dgr">
-                                                <span class="old- price">$5999.00</span>
-                                                <span class="spical-price">$4399.00</span>
-                                            </div>
-                                            <div class="count-down-area">
-                                                <div data-countdown="2017/11/01">
-                                                </div>
-                                            </div>
+  </div>
+    </div>
                                         </div>
                                     </div>
                                 </div>
@@ -430,7 +140,7 @@
                             <span>食品</span>
                         </div>
                     </div>
-<<<<<<< HEAD
+
                     <div class="row">
                         <div class="whole_product indicator-brand" >
                             <th:block ></th:block>
@@ -784,6 +494,14 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
                                 </div>
                             </div>
                         </div>

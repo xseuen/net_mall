@@ -46,19 +46,19 @@
 
     <form action="" method="post">
       <div class="form-group has-feedback">
-        <input type="text" id="username" class="form-control" placeholder="用户名">
+        <input type="text" id="username" class="form-control" placeholder="用户名" onpropertychange="getlen()">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="text" id="nickName" class="form-control" placeholder="昵称">
+        <input type="text" id="nickName" class="form-control" placeholder="昵称"onpropertychange="getlen()">
         <span class="glyphicon glyphicon-adjust form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="tel" id="phone" class="form-control" placeholder="手机号码">
+        <input type="tel" id="phone" class="form-control" placeholder="手机号码"onpropertychange="getlen()">
         <span class="glyphicon glyphicon-phone  form-control-feedback"></span>
       </div>
-      <div class="form-group has-feedback">
-        <input type="password" id="pwd1" class="form-control" placeholder="密码">
+      <div class="form-group has-feedback" id="pwdd">
+        <input type="password" id="pwd1" class="form-control" placeholder="密码" onpropertychange="getlen()">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
@@ -96,10 +96,49 @@
 <script src="../../plugins/iCheck/icheck.min.js"></script>
 
 <script>
+
   layui.use(['layer', 'form'], function(){
     var layer = layui.layer
             ,form = layui.form;
   });
+  $(function getlen() {
+    var len=document.getElementById('pwd1').value.length;
+    $("#pwd1").blur(function () {
+      if(len<6){
+        layer.tips('密码不得少于6位', '#pwd1', {
+          tips: [1, '#3595CC'],
+          time: 1500
+        });
+      }
+    })
+
+    $("#username").blur(function () {
+      if(document.getElementById('username').value.length==0){
+        layer.tips('用户名不得为空', '#username', {
+          tips: [1, '#3595CC'],
+          time: 1500
+        });
+      }
+    })
+    $("#nickName").blur(function () {
+      if(document.getElementById('nickName').value.length==0){
+        layer.tips('昵称不得为空', '#nickName', {
+          tips: [1, '#3595CC'],
+          time: 1500
+        });
+      }
+    })
+    $("#phone").blur(function () {
+      if(document.getElementById('phone').value.length==0){
+        layer.tips('手机号不得为空', '#phone', {
+          tips: [1, '#3595CC'],
+          time: 1500
+        });
+      }
+    })
+
+
+  })
   $(function () {
     $('input').iCheck({
       checkboxClass: 'icheckbox_square-blue',
@@ -111,7 +150,15 @@
     $("#register-btn").click(function () {
       var check = document.getElementById("agree");
       if(check.checked){
-        //第一、验证用户名是否存在
+        //第一、判断密码是否过短
+        if($("#pwd1").val().length<6){
+          layer.tips('密码不得少于6位', '#pwd1', {
+            tips: [1, '#3595CC'],
+            time: 2000
+          });
+          return false;
+        }
+        //第二、验证用户名是否存在
         var name = $("#username").val();
         var pwd1 = $("#pwd1").val();
         var nickName = $("#nickName").val();

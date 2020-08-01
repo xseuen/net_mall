@@ -7,9 +7,7 @@ import java.util.List;
 
 import com.team45.net_mall.mapper.extend.ProductMapperExtend;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface ProductMapper extends ProductMapperExtend {
     long countByExample(ProductExample example);
 
@@ -23,7 +21,7 @@ public interface ProductMapper extends ProductMapperExtend {
 
     List<ProductWithBLOBs> selectByExampleWithBLOBs(ProductExample example);
 
-   List<Product> selectByExample(ProductExample example);
+    List<Product> selectByExample(ProductExample example);
 
     ProductWithBLOBs selectByPrimaryKey(Integer id);
 

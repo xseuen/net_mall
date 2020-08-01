@@ -23,4 +23,7 @@
     <select id="list" resultMap="MyResultMapWithBLOBs">
         SELECT * FROM product,category WHERE product.`category_id` = category.`cid` and product.`delete_status`= 0 order by product.`id`
     </select>
+    <select id="listByCategory" resultMap="MyResultMapWithBLOBs">
+        SELECT * FROM product WHERE product.`category_id` = #{cid} and product.`delete_status`= 0 order by product.`id`
+    </select>
 </mapper>

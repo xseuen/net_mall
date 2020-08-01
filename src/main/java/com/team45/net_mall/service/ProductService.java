@@ -8,11 +8,11 @@ public interface ProductService {
 
     List<ProductWithBLOBs> getList();
 
+    List<ProductWithBLOBs>  getListByCategory(String cid);
+
     ProductWithBLOBs selectByid(Integer id);
 
     int update(ProductWithBLOBs productWithBLOBs);
-
-    int deleteById(Integer id);
 
     int add(ProductWithBLOBs productWithBLOBs);
 }

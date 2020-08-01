@@ -22,6 +22,11 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
+    public List<ProductWithBLOBs>  getListByCategory(String cid) {
+        return productMapper.listByCategory(cid);
+    }
+
+    @Override
     public ProductWithBLOBs selectByid(Integer id) {
         return productMapper.selectByPrimaryKey(id);
     }
@@ -30,10 +35,6 @@ public class ProductServiceImpl implements ProductService {
         return  productMapper.updateByPrimaryKeyWithBLOBs(productWithBLOBs);
     }
 
-    @Override
-    public int deleteById(Integer id) {
-        return productMapper.deleteByPrimaryKey(id);
-    }
 
     @Override
     public int add(ProductWithBLOBs productWithBLOBs) {

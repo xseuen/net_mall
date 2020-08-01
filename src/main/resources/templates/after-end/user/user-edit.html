@@ -100,7 +100,7 @@
                                         <label  class="col-sm-2 control-label">手机号</label>
 
                                         <div class="col-sm-10">
-                                            <input type="tel" name="description" id="description" th:value="${user.phone}" class="form-control">
+                                            <input type="tel" name="phone" id="phone" th:value="${user.phone}" class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -108,24 +108,22 @@
 
                                         <div class="col-sm-10">
                                             <select name="flag" id="flag" class="form-control">
-                                                <option value="1">正常</option>
-                                                <option value="0">冻结</option>
+                                                <option value="1" th:selected="${user.status}==1">正常</option>
+                                                <option value="0" th:selected="${user.status}==0">冻结</option>
                                             </select>
                                         </div>
                                     </div>
-                                    <!--<div class="form-group">-->
-                                        <!--<label  class="col-sm-2 control-label">用户类别</label>-->
-                                        <!--<div class="col-sm-10">-->
-                                            <!--<select id="categoryId" name="categoryId"-->
-                                                    <!--required lay-verify="required"  class="form-control">-->
-                                                <!--<option-->
-                                                        <!--th:each="cate : ${categoryList}"-->
-                                                        <!--th:selected="${pro.categoryId  eq cate.cid}"-->
-                                                        <!--th:value="${cate.cid}"-->
-                                                        <!--th:text="${cate.cname}"></option>-->
-                                            <!--</select>-->
-                                        <!--</div>-->
-                                    <!--</div>-->
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">用户类别</label>
+                                        <div class="col-sm-10">
+                                            <select id="utype" name="utype"
+                                                    required lay-verify="required"  class="form-control">
+                                                <option value="2" th:selected="${user.type} eq 2">超级管理员</option>
+                                                <option value="1" th:selected="${user.type} eq 1">普通管理员</option>
+                                                <option value="0" th:selected="${user.type} eq 0">普通用户</option>
+                                            </select>
+                                        </div>
+                                    </div>
                                 </div>
                                 <!-- /.box-body -->
                                 <div class="box-footer">
@@ -197,9 +195,10 @@
                 "username":$("#uname").val(),
                 "nickName":$("#nickName").val(),
                 "password":$("#pwd").val(),
-                "status":$("#flag").val()
+                "phone":$("#phone").val(),
+                "status":$("#flag").val(),
                 // "desciption":$("#description").val(),
-                // "categoryId":$("#categoryId").val()
+                "type":$("#utype").val()
             }
             $.ajax({
                 url: "/userupdate",
@@ -217,10 +216,4 @@
             })
         })
     })
-</script>
-<script>
-    $("#logout").click(function (){
-        sessionStorage.clear();
-        window.location.href="/";
-    });
 </script>

@@ -1,17 +1,13 @@
 package com.team45.net_mall.controller;
 
 
-import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.Member;
-import com.team45.net_mall.common.domain.Product;
-import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.MemberServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpSession;
-import java.util.Date;
 import java.util.List;
 
 
@@ -71,7 +67,16 @@ public class MemberController {
     }
 
     @GetMapping("/user_list")
-    public String list(Model model) {
+    public String list(Model model,HttpSession session) {
+        //判断是否登录和权限
+        if (session == null) {
+            return "redirect:/";
+        } else {
+            Member loginUser = (Member) session.getAttribute("loginUser");
+            if (loginUser == null || loginUser.getType() < 2) {
+                return "redirect:/";
+            }
+        }
         //调用服务层的获取数据的方法
         List<Member> list = memberService.getList();
         model.addAttribute("users", list);
@@ -83,10 +88,8 @@ public class MemberController {
     public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
         Member member = memberService.selectByid(id);
-        //获取所有类别
-//        List<> list = memberService.list();
-//        model.addAttribute("categoryList", list);
         model.addAttribute("user", member);
+        System.out.println(member);
         return "after-end/user/user-edit";
     }
 

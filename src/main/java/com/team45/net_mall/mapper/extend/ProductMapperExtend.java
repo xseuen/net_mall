@@ -7,4 +7,5 @@ import java.util.List;
 @Repository
 public interface ProductMapperExtend {
     List<ProductWithBLOBs> list();
+    List<ProductWithBLOBs> listByCategory(String cid);
 }

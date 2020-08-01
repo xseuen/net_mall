@@ -89,7 +89,7 @@
                   <td th:text="${user.password}"></td>
                   <td th:text="${user.phone}"></td>
                   <td th:text="${user.status}==1?'状态正常':'状态异常'"></td>
-                  <td th:text="${user.type}==0?'普通用户':(${user.type}==1?'管理员':'超级管理员')"></td>
+                  <td th:text="${user.type}==0?'普通用户':(${user.type}==1?'普通管理员':'超级管理员')"></td>
                   <!--<td th:text="${user.mtype.tname}"></td>-->
                   <td><a th:href="@{/user/selectByid(id=${user.id})}" class="btn btn-primary">修改</a>
                     <a th:href="@{/user/deleteById(id=${user.id})}" class="btn btn-danger">删除</a>

@@ -22,10 +22,12 @@ public class MainController {
     public String showAll(Model model){
         List<ProductWithBLOBs> list = productService.getListByCategory("c001");
         List<ProductWithBLOBs> list1 = productService.getListByCategory("c002");
-        List<ProductWithBLOBs> list2 = productService.getListByCategory("c003");
+        List<ProductWithBLOBs> list2 = productService.getListByCategory("c004");
+        List<ProductWithBLOBs>  list3=productService.getList();
         model.addAttribute("pro1",list);
         model.addAttribute("pro2",list1);
         model.addAttribute("pro3",list2);
+        model.addAttribute("pro4",list3);
         return "front-end/index";
     }
 

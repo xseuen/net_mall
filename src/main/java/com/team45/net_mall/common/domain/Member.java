@@ -92,19 +92,4 @@ public class Member extends MemberExtend {
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
     }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", status=" + status +
-                ", type=" + type +
-                ", address='" + address + '\'' +
-                '}';
-    }
 }

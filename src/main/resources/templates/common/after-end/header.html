@@ -1,7 +1,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <header class="main-header">
     <!-- Logo -->
-    <a href="" class="logo">
+    <a href="/adminlte" class="logo">
         <!-- mini logo for sidebar mini 50x50 pixels -->
         <span class="logo-mini"><b>T</b>45</span>
         <!-- logo for regular state and mobile devices -->
@@ -27,7 +27,7 @@
                         <li class="user-header">
                             <img src="../dist/img/user2-160x160.jpg" class="img-circle" alt="User Image">
 
-                            <p th:text="${session.loginUser.nickName} + 管理员">
+                            <p th:text="${session.loginUser.nickName} + '&nbsp;&nbsp;管理员'">
                                 xseven-管理员
                                 <small>Member since Nov. 2012</small>
                             </p>

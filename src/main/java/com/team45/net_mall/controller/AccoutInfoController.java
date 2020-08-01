@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import javax.servlet.http.HttpSession;
 
 @Controller
-
 public class AccoutInfoController {
     @Autowired
     MemberService memberService;

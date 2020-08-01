@@ -366,7 +366,7 @@
                                             <div class="tab-pane" id="settings">
                                                 <form class="form-horizontal">
                                                     <div class="form-group">
-                                                        <label for="username" class="col-sm-2 control-label" >用户名</label>
+                                                        <label for="username" class="col-sm-2 control-label" >用&nbsp;&nbsp;户&nbsp;&nbsp;名</label>
 
                                                         <div class="col-sm-10">
                                                             <input type="text" class="form-control" id="username" placeholder="用户名" readonly="true" th:value="${session.loginUser.username}">
@@ -385,23 +385,23 @@
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="nickName" class="col-sm-2 control-label">昵称</label>
+                                                        <label for="nickName" class="col-sm-2 control-label">昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称</label>
 
                                                         <div class="col-sm-10">
-                                                            <input type="text" class="form-control" id="nickName" placeholder="昵称" th:value="${session.loginUser.nickName}">
+                                                            <input type="text" class="form-control" id="nickName" placeholder="昵&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;称" th:value="${session.loginUser.nickName}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="phone" class="col-sm-2 control-label">手机号</label>
+                                                        <label for="phone" class="col-sm-2 control-label">手&nbsp;&nbsp;机&nbsp;&nbsp;号</label>
 
                                                         <div class="col-sm-10">
                                                             <input type="tel" class="form-control" id="phone" placeholder="手机号" th:value="${session.loginUser.phone}">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="pwd1" class="col-sm-2 control-label">密码</label>
+                                                        <label for="pwd1" class="col-sm-2 control-label">密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
                                                         <div class="col-sm-10">
-                                                            <input type="password" class="form-control" id="pwd1" placeholder="密码">
+                                                            <input type="password" class="form-control" id="pwd1" placeholder="密&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码">
                                                         </div>
                                                     </div>
                                                     <div class="form-group">
@@ -587,7 +587,7 @@
                         url: "/userupdate",
                         type: "post",//post请求一定是携带json数据
                         contentType: "application/json",
-                        data: JSON.stringify({"id":$("#uid").val(),"username":name,"password":$("#pwd1").val(),"nickName":$("#nickName").val(),"phone":$("#phone").val(),"address":adress,"staus":$("ustatus").val(),"type":$("#utype").val(),"createTime":$("#udate").val()}),
+                        data: JSON.stringify({"id":$("#uid").val(),"username":name,"password":$("#pwd1").val(),"nickName":$("#nickName").val(),"phone":$("#phone").val(),"address":adress,"status":$("#ustatus").val(),"type":$("#utype").val(),"createTime":$("#udate").val()}),
                         success: function (res) {
                             if(res){
                                 //表示更新成功，弹出框提示，然后跳转到登录

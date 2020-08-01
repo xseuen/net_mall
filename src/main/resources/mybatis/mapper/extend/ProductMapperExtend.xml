@@ -9,6 +9,10 @@
         <result column="price" jdbcType="DOUBLE" property="price" />
         <result column="num" jdbcType="INTEGER" property="num" />
         <result column="category_id" jdbcType="VARCHAR" property="categoryId" />
+    </resultMap>
+    <resultMap extends="MyResultMap" id="MyResultMapWithBLOBs" type="com.team45.net_mall.common.domain.ProductWithBLOBs">
+        <result column="pic" jdbcType="LONGVARCHAR" property="pic" />
+        <result column="desciption" jdbcType="LONGVARCHAR" property="desciption" />
         <!--一个类怎么包装-->
         <association property="category" javaType="com.team45.net_mall.common.domain.Category">
             <!--这里写这个类的映射关系-->
@@ -16,7 +20,7 @@
             <result column="cname" jdbcType="VARCHAR" property="cname" />
         </association>
     </resultMap>
-    <select id="list" resultMap="MyResultMap">
+    <select id="list" resultMap="MyResultMapWithBLOBs">
         SELECT * FROM product,category WHERE product.`category_id` = category.`cid` and product.`delete_status`= 0 order by product.`id`
     </select>
 </mapper>

@@ -35,7 +35,7 @@ public class MemberController {
         } else {
             //登录成功
             session.setAttribute("loginUser",memberInDB);
-            return "front-end/index";
+            return "forward:/";
         }
     }
 
@@ -65,7 +65,7 @@ public class MemberController {
     public Boolean register(@RequestBody Member member) {
         member.setType(0);
         member.setStatus(1);
-        member.setCreateTime(new Date());
+        member.setCreateTime("");
         int i =  memberService.insert(member);
         return i==0?false:true;
     }

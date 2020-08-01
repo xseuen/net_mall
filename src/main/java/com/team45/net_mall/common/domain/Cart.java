@@ -1,7 +1,5 @@
 package com.team45.net_mall.common.domain;
 
-import java.util.Date;
-
 public class Cart {
     private Integer id;
 
@@ -17,7 +15,7 @@ public class Cart {
 
     private Integer deleteStatus;
 
-    private Date createTime;
+    private String createTime;
 
     public Integer getId() {
         return id;
@@ -75,11 +73,11 @@ public class Cart {
         this.deleteStatus = deleteStatus;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime == null ? null : createTime.trim();
     }
 }

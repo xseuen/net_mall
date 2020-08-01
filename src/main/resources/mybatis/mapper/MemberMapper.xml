@@ -7,7 +7,7 @@
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
     <result column="type" jdbcType="INTEGER" property="type" />
   </resultMap>
@@ -132,7 +132,7 @@
       status, type, address
       )
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{phone,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
       #{status,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{address,jdbcType=LONGVARCHAR}
       )
   </insert>
@@ -184,7 +184,7 @@
         #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -222,7 +222,7 @@
         nick_name = #{record.nickName,jdbcType=VARCHAR},
       </if>
       <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        create_time = #{record.createTime,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -245,7 +245,7 @@
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       nick_name = #{record.nickName,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER},
       address = #{record.address,jdbcType=LONGVARCHAR}
@@ -260,7 +260,7 @@
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
       nick_name = #{record.nickName,jdbcType=VARCHAR},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
       type = #{record.type,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -283,7 +283,7 @@
         nick_name = #{nickName,jdbcType=VARCHAR},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -303,7 +303,7 @@
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER},
       address = #{address,jdbcType=LONGVARCHAR}
@@ -315,7 +315,7 @@
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
       type = #{type,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

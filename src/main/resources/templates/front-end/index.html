@@ -50,79 +50,20 @@
                             <div class="new_product">
                                 <div class="product_heading">
                                     <i class="fa fa-play-circle"></i>
-                                    <span>新产品</span>
+                                    <span>食品</span>
                                 </div>
                             </div>
                             <div class="row">
-                                <div class="whole_product indicator-brand">
-                                    <div class="col-md-12">
-                                        <div class="all-pros animated fadeInUp">
+                                <div class="whole_product indicator-brand" >
+                                    <th:block ></th:block>
+                                    <div class="col-md-12" th:each="p:${pro}">
+                                        <div class="animated fadeInUp">
                                             <div class="single_product">
                                                 <span>New</span>
                                             </div>
                                             <div class="sinle_pic">
                                                 <a href="#">
-                                                    <img class="primary-img" src="${pro.pic}" alt="" />
-                                                    <img class="secondary-img" src="front-end/img/product-pic/product_pic_1.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Donec non est at</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                                <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a class="not-rated" href="#">
-                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a class="not-rated" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">$250.00</span>
-                                                    </div>
-                                                    <div class="last_button_area">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show" >
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Go to Buy</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="all-pros all-pros-2 animated fadeInUp">
-                                            <div class="single_product">
-                                                <span>New</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                    <img class="primary-img" src="front-end/img/product-pic/product_pic_3.jpg" alt="" />
+                                                    <img class="primary-img" th:src="${p.pic}" alt="" />
                                                     <img class="secondary-img" src="front-end/img/product-pic/product_pic_4.jpg" alt="" />
                                                 </a>
                                             </div>
@@ -133,7 +74,7 @@
                                                 <div class="usal_pro">
                                                     <div class="product_name_2">
                                                         <h2>
-                                                            <a href="#">Duis convallis</a>
+                                                            <a href="#" th:text="${p.name}">Duis convallis</a>
                                                         </h2>
                                                     </div>
                                                     <div class="product_price">
@@ -151,189 +92,6 @@
                                                     </div>
                                                     <div class="price_box">
                                                         <span class="spical-price">$100.00</span>
-                                                    </div>
-                                                    <div class="last_button_area">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show" >
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="all-pros all-pros-3 animated fadeInUp">
-                                            <div class="single_product">
-                                                <span>New</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                    <img class="primary-img" src="front-end/img/product-pic/product_pic_5.jpg" alt="" />
-                                                    <img class="secondary-img" src="front-end/img/product-pic/product_pic_6.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Adipiscing cursus eu</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a class="not-rated" href="#">
-                                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                            </a>
-                                                            <a class="not-rated" href="#">
-                                                            <i class="fa fa-star-o"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="<spical-></spical->price">$300.00</span>
-                                                    </div>
-                                                    <div class="last_button_area">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show" >
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce                                                       product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="all-pros all-pros-4 animated fadeInUp">
-                                            <div class="single_product single_product_2">
-                                                <span>hot</span>
-                                            </div>
-                                            <div class="single_product_3 ">
-                                                <span>sale</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                <img class="primary-img" src="front-end/img/product-pic/product_pic_7.jpg" alt="" />
-                                                <img class="secondary-img" src="front-end/img/product-pic/product_pic_6.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Cras nec nisl ut erat</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a class="not-rated" href="#"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="old-price">$250.00</span>
-                                                        <span class="spical-price">$200.00</span>
-                                                    </div>
-                                                    <div class="last_button_area">
-                                                        <ul class="add-to-links clearfix">
-                                                            <li class="addwishlist">
-                                                                <div class="yith-wcwl-add-button show" >
-                                                                    <a class="add_to_wishlist" href="" rel="nofollow" data-product-id="45" data-product-type="external" data-toggle="tooltip" title="" data-original-title="Add to Wishlist"><i class="fa fa-heart"></i></a>
-                                                                </div>
-                                                            </li>
-                                                            <li>
-                                                                <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
-                                                                </div>
-                                                            </li>
-                                                            <li class="addcompare">
-                                                                <div class="woocommerce                                                       product compare-button">
-                                                                    <a class="compare button" href="" data-product_id="45" rel="nofollow" data-toggle="tooltip" title="" data-original-title="Compare"><i class="fa fa-refresh"></i></a>
-                                                                </div>
-                                                            </li>
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12  animated fadeInUp">
-                                        <div class="all-pros all-pros-5">
-                                            <div class="single_product">
-                                                <span>New</span>
-                                            </div>
-                                            <div class="sinle_pic">
-                                                <a href="#">
-                                                <img class="primary-img" src="front-end/img/product-pic/product_pic_8.jpg" alt="" />
-                                                <img class="secondary-img" src="front-end/img/product-pic/product_pic_9.jpg" alt="" />
-                                                </a>
-                                            </div>
-                                            <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                                <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
-                                            </div>
-                                            <div class="product_content">
-                                                <div class="usal_pro">
-                                                    <div class="product_name_2">
-                                                        <h2>
-                                                            <a href="#">Nam fringilla augue</a>
-                                                        </h2>
-                                                    </div>
-                                                    <div class="product_price">
-                                                        <div class="price_rating">
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#"><i class="fa fa-star"></i></a>
-                                                            <a href="#">
-                                                            <i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a href="#"><i class="fa fa-star"></i>
-                                                            </a>
-                                                            <a class="not-rated" href="#">
-                                                            <i class="fa fa-star-o" aria-hidden="true"></i>
-                                                            </a>
-                                                        </div>
-                                                    </div>
-                                                    <div class="price_box">
-                                                        <span class="spical-price">$150.00-$300.00</span>
                                                     </div>
                                                     <div class="last_button_area">
                                                         <ul class="add-to-links clearfix">
@@ -379,8 +137,8 @@
                                             </div>
                                             <div class="sinle_pic">
                                                 <a href="#">
-                                                <img class="primary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_1.jpg" alt="" />
-                                                <img class="secondary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_1.jpg" alt="" />
+                                                    <img class="primary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_1.jpg" alt="" />
+                                                    <img class="secondary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_1.jpg" alt="" />
                                                 </a>
                                             </div>
                                             <div class="product-action" data-toggle="modal" data-target="#myModal">
@@ -398,12 +156,12 @@
                                                             <a href="#"><i class="fa fa-star"></i></a>
                                                             <a href="#"><i class="fa fa-star"></i></a>
                                                             <a href="#">
-                                                            <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
                                                             </a>
                                                             <a href="#"><i class="fa fa-star"></i>
                                                             </a>
                                                             <a class="not-rated" href="#">
-                                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -426,8 +184,8 @@
                                             </div>
                                             <div class="sinle_pic">
                                                 <a href="#">
-                                                <img class="primary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_3.jpg" alt="" />
-                                                <img class="secondary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_3.jpg" alt="" />
+                                                    <img class="primary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_3.jpg" alt="" />
+                                                    <img class="secondary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_3.jpg" alt="" />
                                                 </a>
                                             </div>
                                             <div class="product-action" data-toggle="modal" data-target="#myModal">
@@ -445,7 +203,7 @@
                                                             <a href="#"><i class="fa fa-star"></i></a>
                                                             <a href="#"><i class="fa fa-star"></i></a>
                                                             <a href="#">
-                                                            <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
                                                             </a>
                                                             <a href="#"><i class="fa fa-star"></i>
                                                             </a>
@@ -472,8 +230,8 @@
                                             </div>
                                             <div class="sinle_pic">
                                                 <a href="#">
-                                                <img class="primary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_1.jpg" alt="" />
-                                                <img class="secondary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_2.jpg" alt="" />
+                                                    <img class="primary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_1.jpg" alt="" />
+                                                    <img class="secondary-img" src="front-end/img/cosmatics-pic/cosmatic_pix_2.jpg" alt="" />
                                                 </a>
                                             </div>
                                             <div class="product-action" data-toggle="modal" data-target="#myModal">
@@ -491,12 +249,12 @@
                                                             <a href="#"><i class="fa fa-star"></i></a>
                                                             <a href="#"><i class="fa fa-star"></i></a>
                                                             <a href="#">
-                                                            <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
                                                             </a>
                                                             <a href="#"><i class="fa fa-star"></i>
                                                             </a>
                                                             <a class="not-rated" href="#">
-                                                            <i class="fa fa-star-o" aria-hidden="true"></i>
+                                                                <i class="fa fa-star-o" aria-hidden="true"></i>
                                                             </a>
                                                         </div>
                                                     </div>
@@ -3847,6 +3605,5 @@
         <script src="front-end/js/main.js"></script>
     </body>
 </html>
-
 
 

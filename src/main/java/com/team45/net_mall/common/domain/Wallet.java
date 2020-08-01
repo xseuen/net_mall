@@ -1,7 +1,5 @@
 package com.team45.net_mall.common.domain;
 
-import java.util.Date;
-
 public class Wallet {
     private Integer id;
 
@@ -11,7 +9,7 @@ public class Wallet {
 
     private Double balance;
 
-    private Date updateTime;
+    private String updateTime;
 
     public Integer getId() {
         return id;
@@ -45,11 +43,11 @@ public class Wallet {
         this.balance = balance;
     }
 
-    public Date getUpdateTime() {
+    public String getUpdateTime() {
         return updateTime;
     }
 
-    public void setUpdateTime(Date updateTime) {
-        this.updateTime = updateTime;
+    public void setUpdateTime(String updateTime) {
+        this.updateTime = updateTime == null ? null : updateTime.trim();
     }
 }

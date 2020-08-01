@@ -2,7 +2,6 @@ package com.team45.net_mall.controller;
 
 import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.Member;
-import com.team45.net_mall.common.domain.Product;
 import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.CategoryService;
 import com.team45.net_mall.service.ProductService;
@@ -35,7 +34,7 @@ public class ProductController {
             }
         }
         //调用服务层的获取数据的方法
-        List<Product> list = productService.getList();
+        List<ProductWithBLOBs> list = productService.getList();
         model.addAttribute("pros", list);
         return "after-end/product/product-list";
     }

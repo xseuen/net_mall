@@ -23,7 +23,7 @@ public interface ProductMapper extends ProductMapperExtend {
 
     List<ProductWithBLOBs> selectByExampleWithBLOBs(ProductExample example);
 
-    List<Product> selectByExample(ProductExample example);
+   List<Product> selectByExample(ProductExample example);
 
     ProductWithBLOBs selectByPrimaryKey(Integer id);
 

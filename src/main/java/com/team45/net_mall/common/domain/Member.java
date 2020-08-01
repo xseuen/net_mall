@@ -1,8 +1,8 @@
 package com.team45.net_mall.common.domain;
 
-import java.util.Date;
+import com.team45.net_mall.common.domain.extend.MemberExtend;
 
-public class Member {
+public class Member extends MemberExtend {
     private Integer id;
 
     private String username;
@@ -13,7 +13,7 @@ public class Member {
 
     private String nickName;
 
-    private Date createTime;
+    private String createTime;
 
     private Integer status;
 
@@ -61,12 +61,12 @@ public class Member {
         this.nickName = nickName == null ? null : nickName.trim();
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime == null ? null : createTime.trim();
     }
 
     public Integer getStatus() {

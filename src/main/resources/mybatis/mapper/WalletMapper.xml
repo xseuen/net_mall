@@ -6,7 +6,7 @@
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
     <result column="menber_nickname" jdbcType="VARCHAR" property="menberNickname" />
     <result column="balance" jdbcType="DOUBLE" property="balance" />
-    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -103,7 +103,7 @@
     insert into wallet (id, member_id, menber_nickname, 
       balance, update_time)
     values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{menberNickname,jdbcType=VARCHAR}, 
-      #{balance,jdbcType=DOUBLE}, #{updateTime,jdbcType=TIMESTAMP})
+      #{balance,jdbcType=DOUBLE}, #{updateTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Wallet">
     insert into wallet
@@ -138,7 +138,7 @@
         #{balance,jdbcType=DOUBLE},
       </if>
       <if test="updateTime != null">
-        #{updateTime,jdbcType=TIMESTAMP},
+        #{updateTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -164,7 +164,7 @@
         balance = #{record.balance,jdbcType=DOUBLE},
       </if>
       <if test="record.updateTime != null">
-        update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+        update_time = #{record.updateTime,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -177,7 +177,7 @@
       member_id = #{record.memberId,jdbcType=INTEGER},
       menber_nickname = #{record.menberNickname,jdbcType=VARCHAR},
       balance = #{record.balance,jdbcType=DOUBLE},
-      update_time = #{record.updateTime,jdbcType=TIMESTAMP}
+      update_time = #{record.updateTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -195,7 +195,7 @@
         balance = #{balance,jdbcType=DOUBLE},
       </if>
       <if test="updateTime != null">
-        update_time = #{updateTime,jdbcType=TIMESTAMP},
+        update_time = #{updateTime,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -205,7 +205,7 @@
     set member_id = #{memberId,jdbcType=INTEGER},
       menber_nickname = #{menberNickname,jdbcType=VARCHAR},
       balance = #{balance,jdbcType=DOUBLE},
-      update_time = #{updateTime,jdbcType=TIMESTAMP}
+      update_time = #{updateTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

@@ -9,7 +9,7 @@
     <result column="product_price" jdbcType="DECIMAL" property="productPrice" />
     <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
     <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -109,7 +109,7 @@
       delete_status, create_time)
     values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
       #{productName,jdbcType=VARCHAR}, #{productPrice,jdbcType=DECIMAL}, #{memberNickname,jdbcType=VARCHAR}, 
-      #{deleteStatus,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP})
+      #{deleteStatus,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Cart">
     insert into cart
@@ -162,7 +162,7 @@
         #{deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -197,7 +197,7 @@
         delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        create_time = #{record.createTime,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null">
@@ -213,7 +213,7 @@
       product_price = #{record.productPrice,jdbcType=DECIMAL},
       member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
       delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP}
+      create_time = #{record.createTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -240,7 +240,7 @@
         delete_status = #{deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=VARCHAR},
       </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
@@ -253,7 +253,7 @@
       product_price = #{productPrice,jdbcType=DECIMAL},
       member_nickname = #{memberNickname,jdbcType=VARCHAR},
       delete_status = #{deleteStatus,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP}
+      create_time = #{createTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

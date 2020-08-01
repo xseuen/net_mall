@@ -3,9 +3,13 @@ package com.team45.net_mall.mapper;
 import com.team45.net_mall.common.domain.Wallet;
 import com.team45.net_mall.common.domain.WalletExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
-public interface WalletMapper {
+import com.team45.net_mall.mapper.extend.WalletMapperExtend;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface WalletMapper extends WalletMapperExtend {
     long countByExample(WalletExample example);
 
     int deleteByExample(WalletExample example);

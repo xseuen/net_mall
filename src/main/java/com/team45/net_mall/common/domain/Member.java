@@ -2,7 +2,9 @@ package com.team45.net_mall.common.domain;
 
 import com.team45.net_mall.common.domain.extend.MemberExtend;
 
-public class Member extends MemberExtend {
+import java.io.Serializable;
+
+public class Member extends MemberExtend implements Serializable {
     private Integer id;
 
     private String username;
@@ -91,20 +93,5 @@ public class Member extends MemberExtend {
 
     public void setAddress(String address) {
         this.address = address == null ? null : address.trim();
-    }
-
-    @Override
-    public String toString() {
-        return "Member{" +
-                "id=" + id +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", phone='" + phone + '\'' +
-                ", nickName='" + nickName + '\'' +
-                ", createTime='" + createTime + '\'' +
-                ", status=" + status +
-                ", type=" + type +
-                ", address='" + address + '\'' +
-                '}';
     }
 }

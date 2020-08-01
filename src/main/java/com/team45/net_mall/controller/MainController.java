@@ -30,6 +30,4 @@ public class MainController {
         model.addAttribute("pro4",list3);
         return "front-end/index";
     }
-
-
 }

@@ -90,15 +90,5 @@ public class ProductController {
         productService.update(productWithBLOBs);
         return "forward:/product/list";
     }
-
-    @RequestMapping("/info")
-    public String productInfo(@RequestParam("id") Integer id,Model model){
-        if(id==null){
-            return "forward:/";
-        }
-        ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
-        model.addAttribute("pro",productWithBLOBs);
-        return "front-end/simple-product";
-    }
 }
 

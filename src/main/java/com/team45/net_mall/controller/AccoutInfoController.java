@@ -34,7 +34,6 @@ public class AccoutInfoController {
             Wallet wallet = walletService.getWalletByMid(loginUser.getId());
             model.addAttribute(wallet);
         }
-
         return "front-end/myaccount";
     }
     @PostMapping("/userupdate")

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 import java.util.List;
@@ -47,5 +48,14 @@ public class MainController {
     @RequestMapping("/contact-us")
     public String contactUs(Model model){
         return "front-end/contact-us";
+    }
+    @RequestMapping("/product-info")
+    public String productInfo(@RequestParam("id") Integer id, Model model){
+        if(id==null){
+            return "forward:/";
+        }
+        ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
+        model.addAttribute("pro",productWithBLOBs);
+        return "front-end/simple-product";
     }
 }

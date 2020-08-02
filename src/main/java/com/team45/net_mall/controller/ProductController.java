@@ -88,9 +88,17 @@ public class ProductController {
         ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
         productWithBLOBs.setDeleteStatus(1);
         productService.update(productWithBLOBs);
-        //int i=  productService.deleteById(id);
         return "forward:/product/list";
     }
 
+    @RequestMapping("/info")
+    public String productInfo(@RequestParam("id") Integer id,Model model){
+        if(id==null){
+            return "forward:/";
+        }
+        ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
+        model.addAttribute("pro",productWithBLOBs);
+        return "front-end/simple-product";
+    }
 }
 

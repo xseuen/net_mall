@@ -43,4 +43,10 @@ public class AccoutInfoController {
        int  i = memberService.update(member);
         return i==0?false:true;
     }
+    @RequestMapping("/updatepassword")
+    @ResponseBody
+     public Boolean updateByNameAndPhone(@RequestBody Member member) {
+       int i =  memberService.updateByNameAndPhone(member);
+        return i==0?false:true;
+    }
 }

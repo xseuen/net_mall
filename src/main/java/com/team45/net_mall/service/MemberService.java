@@ -18,4 +18,6 @@ public interface MemberService {
     List<Member> getList();
 
     Member selectByid(Integer id);
+
+    int updateByNameAndPhone(Member member);
 }

@@ -55,20 +55,19 @@
                     </div>
                     <div class="row">
                         <div class="whole_product indicator-brand" >
-                            <th:block ></th:block>
                             <div class="col-md-12" th:each="p:${pro2}">
-                                <div class="animated fadeInUp">
+                                <div class="all-pros animated fadeInUp">
                                     <div class="single_product">
                                         <span>New</span>
                                     </div>
                                     <div class="sinle_pic">
                                         <a href="#">
                                             <img class="primary-img" th:src="${p.pic}" alt="" />
-                                            <img class="secondary-img" src="front-end/img/product-pic/product_pic_4.jpg" alt="" />
+                                            <img class="secondary-img" th:src="${p.pic}" alt="" />
                                         </a>
                                     </div>
                                     <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
+                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview" th:onclick="updatesrc([[${p.id}]],[[${p.pic}]],[[${p.name}]],[[${p.price}]],[[${p.desciption}]])">Quick View</button>
                                     </div>
                                     <div class="product_content">
                                         <div class="usal_pro">
@@ -318,20 +317,19 @@
                     </div>
                     <div class="row">
                         <div class="whole_product indicator-brand" >
-                            <th:block ></th:block>
                             <div class="col-md-12" th:each="p:${pro3}">
-                                <div class="animated fadeInUp">
+                                <div class="all-pros animated fadeInUp">
                                     <div class="single_product">
                                         <span>New</span>
                                     </div>
                                     <div class="sinle_pic">
                                         <a href="#">
                                             <img class="primary-img" th:src="${p.pic}" alt="" />
-                                            <img class="secondary-img" src="front-end/img/product-pic/product_pic_4.jpg" alt="" />
+                                            <img class="secondary-img" th:src="${p.pic}" alt="" />
                                         </a>
                                     </div>
                                     <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
+                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview" th:onclick="updatesrc([[${p.pic}]],[[${p.name}]],[[${p.price}]],[[${p.desciption}]])">Quick View</button>
                                     </div>
                                     <div class="product_content">
                                         <div class="usal_pro">
@@ -590,20 +588,19 @@
                     </div>
                     <div class="row">
                         <div class="whole_product indicator-brand" >
-                            <th:block ></th:block>
                             <div class="col-md-12" th:each="p:${pro1}">
-                                <div class="animated fadeInUp">
+                                <div class="all-pros animated fadeInUp">
                                     <div class="single_product">
                                         <span>New</span>
                                     </div>
                                     <div class="sinle_pic">
                                         <a href="#">
                                             <img class="primary-img" th:src="${p.pic}" alt="" />
-                                            <img class="secondary-img" src="front-end/img/product-pic/product_pic_4.jpg" alt="" />
+                                            <img class="secondary-img" th:src="${p.pic}" alt="" />
                                         </a>
                                     </div>
                                     <div class="product-action" data-toggle="modal" data-target="#myModal">
-                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview">Quick View</button>
+                                        <button type="button" class="btn btn-info btn-lg quickview" data-toggle="tooltip" title="Quickview" th:onclick="updatesrc([[${p.pic}]],[[${p.name}]],[[${p.price}]],[[${p.desciption}]])">Quick View</button>
                                     </div>
                                     <div class="product_content">
                                         <div class="usal_pro">
@@ -1678,28 +1675,28 @@
             </div>
             <div class="modal-body">
                 <div class="modal-product">
-                    <div class="row" >
+                    <div class="row">
                         <div class="new_port new_port_2">
                             <div class="port_pix">
-                                <img  alt="">
+                                <img id="pdialog" src="front-end/img/product-pic/product_pic_2.jpg" alt="">
                             </div>
                         </div>
                         <div class="elav_titel elav_titel_2">
                             <div class="elv_heading elv_heading_therteen">
-                                <h3 ></h3>
+                                <h3 id="pname">Donec non est at</h3>
                             </div>
                             <div class="elav_info">
                                 <div class="price_box price_box_pb">
-                                    <span class="spical-price spical-price-nk" ></span>
+                                    <span class="spical-price spical-price-nk" id="pprice">$250.00</span>
                                 </div>
                                 <form class="cart-btn-area cart-btn-area-dec" action="#">
-                                    <a class="see-all" href="#">See all features</a><br>
+                                    <a class="see-all" id="pinfo">See all features</a><br>
                                     <input type="number" value="1">
                                     <button class="add-tocart add-tocart-2" type="submit">Add to cart</button>
                                 </form>
                             </div>
                             <div class="evavet_description evavet_description_dec">
-                                <p ></p>
+                                <p id="pdesc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce posuere metus vitae arcu imperdiet, id aliquet ante scelerisque. Sed sit amet sem vitae urna fringilla tempus.</p>
                             </div>
                             <div class="elavetor_social">
                                 <h3 class="widget-title">Share this product</h3>
@@ -1720,7 +1717,6 @@
     </div>
 </div>
 <!--modal content end-->
-
 
 
 
@@ -1756,5 +1752,15 @@
 <script src="front-end/js/main.js"></script>
 </body>
 </html>
+<script>
+    function updatesrc(pid,psrc,pname,pprice,pdesc) {
+        console.log(pid);
+        document.getElementById("pinfo").href="/product/info?id="+pid;
+        document.getElementById("pdialog").src=psrc;
+        document.getElementById("pname").innerHTML=pname;
+        document.getElementById("pprice").innerHTML=pprice;
+        document.getElementById("pdesc").innerHTML=pdesc;
+    }
+</script>
 
 

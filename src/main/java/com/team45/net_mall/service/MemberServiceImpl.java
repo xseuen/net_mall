@@ -48,4 +48,13 @@ public class MemberServiceImpl implements MemberService {
     public Member selectByid(Integer id) {
         return memberMapper.selectByPrimaryKey(id);
     }
+
+    @Override
+    public int updateByNameAndPhone(Member member) {
+        MemberExample memberExample = new MemberExample();
+        memberExample.createCriteria().andUsernameEqualTo(member.getUsername()).andPhoneEqualTo(member.getPhone());
+        Member member1 = new Member();
+        member1.setPassword(member.getPassword());
+        return memberMapper.updateByExampleSelective(member1,memberExample);
+    }
 }

@@ -30,4 +30,22 @@ public class MainController {
         model.addAttribute("pro4",list3);
         return "front-end/index";
     }
+
+    @RequestMapping("/list-view")
+    public String showList(Model model){
+        return "front-end/list-view";
+    }
+
+    @RequestMapping("/about-us")
+    public String aboutUs(Model model){
+        return "front-end/about-us";
+    }
+    @RequestMapping("/cart")
+    public String cart(Model model){
+        return "front-end/cart";
+    }
+    @RequestMapping("/contact-us")
+    public String contactUs(Model model){
+        return "front-end/contact-us";
+    }
 }

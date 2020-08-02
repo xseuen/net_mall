@@ -14,14 +14,14 @@
                             <div class="header_right_area" th:if="${session == null || session == ''||session.loginUser==null}">
                                 <ul>
                                     <li>
-                                      <p>亲爱的用户，请 <a class="log-in" href="/tologin" style="color:#ba7cef;">&nbsp;&nbsp;注册/登录</a></p>
+                                        <p style="font-size: larger">亲爱的用户，请<a class="log-in" href="/tologin" style="color:#ffb128;">&nbsp;&nbsp;&nbsp;注册/登录</a></p>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="header_right_area" th:if="${session!=null && session.loginUser!=null }">
+                            <div class="header_right_area" th:if="${session!=null && session.loginUser!=null }" >
                                 <ul>
                                     <li th:if="${session!=null && session.loginUser!=null && session.loginUser.type>=1}">
-                                        <a class="account" href="/adminlte">进入后台</a>
+                                        <a class="account" href="/adminlte" >进入后台</a>
                                     </li>
                                     <li>
                                         <a class="account" href="/myaccount">我的账户</a>
@@ -51,7 +51,7 @@
                     <div class="row">
                         <div class="col-md-3">
                             <div class="logo_area">
-                                <a href="index.html"><img src="front-end/img/logo-pic/logo.png" alt="" /></a>
+                                <a href="index.html"><img src="../front-end/img/logo-pic/logo.png" alt="" /></a>
                             </div>
                         </div>
                         <div class="col-md-9">
@@ -62,7 +62,7 @@
                                     <input name="post_type" value="product" type="hidden">
                                 </form>
                             </div>
-                            <div class="header_all shopping_cart_area">
+                            <div class="header_all shopping_cart_area" th:if="${session!=null && session.loginUser!=null }">
                                 <div class="widget_shopping_cart_content">
                                     <div class="topcart">
                                         <a class="cart-toggler" href="">
@@ -341,13 +341,21 @@
                                     <div class="col-md-9 pl">
                                         <div class="menu_area">
                                             <div class="menu">
-                                                <nav>
+                                                <nav th:if="${session!=null && session.loginUser!=null }">
                                                     <ul>
                                                         <li><a href="/">首页</a></li>
                                                         <li><a href="/cart">购物车</a></li>
                                                         <li><a href="/list-view">商品列表</a></li>
                                                         <li><a href="/myaccount">我的账户</a></li>
                                                         <!--<li><a href="/simple-product">产品详情</a></li>-->
+                                                        <li><a href="/about-us">关于我们</a></li>
+                                                        <li><a href="/contact-us">联系我们</a></li>
+                                                    </ul>
+                                                </nav>
+                                                <nav th:if="${session == null || session == ''||session.loginUser==null}">
+                                                    <ul>
+                                                        <li><a href="/">商品首页</a></li>
+                                                        <li><a href="/list-view">商品列表</a></li>
                                                         <li><a href="/about-us">关于我们</a></li>
                                                         <li><a href="/contact-us">联系我们</a></li>
                                                     </ul>

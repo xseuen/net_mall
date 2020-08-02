@@ -12,6 +12,6 @@
         <result column="type" jdbcType="INTEGER" property="type" />
     </resultMap>
         <select id="list" resultMap="MyResultMap">
-        select * from member
+        select * from member order by type DESC
     </select>
 </mapper>

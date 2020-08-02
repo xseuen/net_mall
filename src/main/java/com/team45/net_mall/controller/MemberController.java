@@ -93,8 +93,11 @@ public class MemberController {
         //调用服务层的获取数据的方法
         Member member = memberService.selectByid(id);
         model.addAttribute("user", member);
-        System.out.println(member);
         return "after-end/user/user-edit";
+    }
+    @RequestMapping("/forgot")
+    public String forgotPage(){
+        return "/front-end/forgot";
     }
 
 

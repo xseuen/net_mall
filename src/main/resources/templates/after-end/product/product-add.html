@@ -27,6 +27,8 @@
     <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
+
+    <script src="../layer/layer.js"></script>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper">
@@ -69,28 +71,28 @@
                                         <label class="col-sm-2 control-label">商品名称</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="pname" id="pname" value="" class="form-control">
+                                            <input type="text" name="pname" id="pname"  class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">商品价格</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="price" id="price" value="" class="form-control">
+                                            <input type="number" name="price" id="price"  class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">商品数量</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="num" id="num" value="" class="form-control">
+                                            <input type="number" name="num" id="num"  class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label  class="col-sm-2 control-label">商品描述</label>
 
                                         <div class="col-sm-10">
-                                            <input type="text" name="description" id="description" value="" class="form-control">
+                                            <input type="text" name="description" id="description"  class="form-control">
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -177,9 +179,10 @@
     <script src="../dist/js/pages/dashboard.js"></script>
     <!-- AdminLTE for demo purposes -->
     <script src="../dist/js/demo.js"></script>
+    <script src="../layer/layer.js"></script>
 </body>
 </html>
-<script src="../layer/layer.js"></script>
+
 <script>
     $(function () {
         $("#pro-update").click(function () {
@@ -191,20 +194,32 @@
                 "desciption":$("#description").val(),
                 "categoryId":$("#categoryId").val()
             }
-            $.ajax({
-                url: "/product/add",
-                type: "post",
-                contentType: "application/json",
-                data: JSON.stringify(formdata),
-                success: function (data) {
-                    if(data){
-                        //弹出成功，并且跳转页面
-                        layer.msg("保存成功",{icon:1,time:800},function () {
-                            window.location = "/product/list"
-                        })
+
+            if(formdata.name==null||formdata.name==""){
+                layer.msg('请添加商品名称！',{icon:2,time:2000})
+            }else if(formdata.price==null||formdata.price==""){
+                layer.msg('请添加商品价格！',{icon:2,time:2000})
+            }else if(formdata.num==null||formdata.num==""){
+                layer.msg('请添加商品数目！',{icon:2,time:2000})
+            }else if(formdata.desciption==null||formdata.desciption==""){
+                layer.msg('请添加商品描述！',{icon:2,time:2000})
+            }else{
+                $.ajax({
+                    url: "/product/add",
+                    type: "post",
+                    contentType: "application/json",
+                    data: JSON.stringify(formdata),
+                    success: function (data) {
+                        if(data){
+                            //弹出成功，并且跳转页面
+                            layer.msg("保存成功",{icon:1,time:800},function () {
+                                window.location = "/product/list"
+                            })
+                        }
                     }
-                }
-            })
+                })
+            }
+
         })
     })
 </script>

@@ -357,8 +357,28 @@
                 layer.msg('说点什么吧！',{icon:5,time:3000})
             }
             else{
-                layer.msg('发送成功！感谢您的反馈！',{icon:6,time:3000})
-                window.setTimeout("window.location.reload()", 3000);
+                var formdata={
+                    "cname":name,
+                    "cmail":email,
+                    "comment":msg
+                }
+                $.ajax({
+                    url:"/comment",
+                    type:"post",
+                    contentType:"application/json",
+                    data:JSON.stringify(formdata),
+                    success:function (data) {
+                        if(data=="提交成功"){
+                            layer.msg('发送成功！感谢您的反馈！',{icon:6,time:3000})
+                            window.setTimeout("window.location.reload()", 3000);
+                        }
+                        else{
+                            layer.msg('发送失败！请重试！',{icon:5,time:3000})
+
+                        }
+                    }
+                })
+
             }
         })
 </script>

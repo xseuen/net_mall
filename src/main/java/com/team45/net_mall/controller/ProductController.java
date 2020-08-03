@@ -40,7 +40,6 @@ public class ProductController {
     }
 
     @RequestMapping("/productadd")
-    // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public String selectAllCategory(Model model) {
         //获取所有类别
         List<Category> list = categoryService.list();
@@ -60,7 +59,6 @@ public class ProductController {
     }
 
     @RequestMapping("/selectByid")
-    // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
         ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
@@ -83,14 +81,11 @@ public class ProductController {
     }
 
     @GetMapping("/deleteById")
-    //@ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public String deleteById(@RequestParam("id") Integer id) {
         ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
         productWithBLOBs.setDeleteStatus(1);
         productService.update(productWithBLOBs);
         return "forward:/product/list";
     }
-
-
 }
 

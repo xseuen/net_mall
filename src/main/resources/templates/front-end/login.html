@@ -17,7 +17,25 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
   <link rel="stylesheet" href="layui/css/layui.css">
+  <style>
+    *{margin: 0; padding: 0;}
 
+    .ta_c{text-align: center;
+      margin-top: 100px;}
+
+    @-webkit-keyframes rotation{
+      from {-webkit-transform: rotate(0deg);}
+      to {-webkit-transform: rotate(360deg);}
+    }
+
+    .Rotation{
+      -webkit-transform: rotate(360deg);
+      animation: rotation 3s linear infinite;
+      -moz-animation: rotation 3s linear infinite;
+      -webkit-animation: rotation 3s linear infinite;
+      -o-animation: rotation 3s linear infinite;
+    }
+  </style>
 
 </head>
 <body class="hold-transition login-page">
@@ -28,6 +46,10 @@
   <!-- /.login-logo -->
   <div class="login-box-body">
     <p class="login-box-msg"><b>开始您的购物旅程</b></p>
+    <div class="row"> </div>
+    <div class="login-logo " style="left: -10px;top: -25px;background: #fff;padding: 5px;z-index: 10" >
+      <img id="myavator" style="border-radius: 50%;width: 100px;height: 100px;" src="../../dist/img/user1-128x128.jpg" alt="User Image">
+    </div>
     <hr class="layui-bg-orange">
     <form action="/login" method="post">
       <div class="form-group has-feedback">
@@ -80,6 +102,16 @@
 </body>
 </html>
 <script>
+  document.getElementById('myavator').onmouseover=showit;
+  document.getElementById('myavator').onmouseout=stopit;
+  function showit () {
+    document.getElementById("myavator").className="Rotation";
+
+  }
+  function stopit () {
+    document.getElementById("myavator").className="";
+
+  }
   function toRegister (){
     window.location.href="/toRegister";
   }

@@ -97,11 +97,20 @@ public class MemberController {
     }
 
     @GetMapping("/user/deleteById")
+    @ResponseBody
     public String deleteById(@RequestParam("id") Integer id) {
         Member member = memberService.selectByid(id);
         member.setIsDeleted(1);
         memberService.update(member);
-        return "redirect:/user_list";
+        return memberService.update(member)==1?"删除成功":"删除失败";
+    }
+
+    @RequestMapping("/idCommit")
+    @ResponseBody
+    public String commitByid(@RequestBody Member member){
+        Member member1 = memberService.selectByid(member.getId());
+        return member.getPassword().equals(member1.getPassword())?"密码正确":"密码错误";
+
     }
 
     @RequestMapping("/forgot")

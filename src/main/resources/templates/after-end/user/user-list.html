@@ -137,7 +137,7 @@
   document.getElementById("user_manage").className="active";
 
   function del(id){
-    layer.prompt({title: '输入管理员密码，并确认', formType: 1}, function(pass, index){
+    layer.prompt({title: '请输入管理员密码', formType: 1}, function(pass, index){
       var param={
         "id":[[${session.loginUser.id}]],
         "password":pass
@@ -156,7 +156,7 @@
                 if(res=="删除成功"){
                   layer.close(index);//关闭弹窗
                   layer.msg('删除成功！' );
-                  window.location.reload()
+                  window.setTimeout("window.location.reload()", 2000)
                 }else {
                   //
                 }
@@ -165,6 +165,8 @@
 
           } else{
             layer.msg('管理员密码错误！' );
+            layer.close(index);//关闭弹窗
+
           }
         }
       })

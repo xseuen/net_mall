@@ -29,6 +29,9 @@
         <link rel="stylesheet" href="front-end/css/responsive.css">
         <!-- modernizr js -->
         <script src="front-end/js/vendor/modernizr-2.8.3.min.js"></script>
+        <link rel="stylesheet" href="layui/css/layui.css">
+        <!--<script src="layer/layer.js"></script>-->
+        <script src="layui/layui.js"></script>
     </head>
     <body>
 
@@ -73,31 +76,31 @@
                     <div class="col-md-6">
                         <div class="all_cntnt">
                             <div class="frm_content frm_content_2">
-                                <h2>Leave a comments</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis sed neque vitae bibendum. Nunc auctor dictum risus, a finibus eros iaculis nec. Sed et euismod felis, non euismod est. Maecenas quis nulla ullamcorper, imperdiet lacu</p>
+                                <h2><p>留下你的意见吧</p></h2>
+
                             </div>
                             <form class="side_right">
                                 <div class="al_form-fields al_form-fields-2">
-                                    <p>
-                                        Your Name (required)
-                                        <input type="text">
+                                    <p style="font-size: 15px">
+                                        你的名字 (必填)
+                                        <input type="text" id="name">
                                     </p>
-                                    <p>
-                                        Your Email (required)
-                                        <input type="password">
+                                    <p style="font-size: 15px">
+                                        你的邮箱 (必填)
+                                        <input type="password" id="email">
                                     </p>
-                                    <p>
-                                        Comment
+                                    <p style="font-size: 15px">
+                                        意见
                                         <br>
                                         <span class="wpcf7-form-control-wrap your-message">
-                                        <textarea class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-invalid="false" aria-required="true" rows="10" cols="40" name="your-message"></textarea>
+                                        <textarea class="wpcf7-form-control wpcf7-textarea wpcf7-validates-as-required" aria-invalid="false" aria-required="true" rows="10" cols="40" name="your-message" id="msg"></textarea>
                                         </span>
                                     </p>
-                                    <p>* Required Fields</p>
+                                    <p>* 必填</p>
                                 </div>
                                 <div class="form-action form-action-2">
                                     <div class="new_act new_act_3">
-                                        <a class="button_act button_act_3" href="#">Send</a>
+                                        <button class="button_act button_act_3" id="btn" style="margin-left: 85%">发送</button>
                                     </div>
                                 </div>
                             </form>
@@ -106,19 +109,19 @@
                     <div class="col-md-6">
                         <div class="all_cntnt">
                             <div class="frm_content frm_content_2">
-                                <h2>Contact details</h2>
-                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris convallis sed neque vitae bibendum. Nunc auctor dictum risus, a finibus eros iaculis nec. Sed et euismod felis, non euismod est. Maecenas quis nulla ullamcorper, imperdiet lacu</p>
-                                <h2>OFFICE ADDRESS</h2>
-                                <p>Maecenas quis nulla ullamcorper</p>
-                                <h2>EMAIL</h2>
-                                <p>lion-themes@gmail.com</p>
-                                <h2>PHONE NUMBER</h2>
-                                <p>025 1234 5678 – 025 1234 5779</p>
-                                <h2>TIME HOURS</h2>
-                                <p>Monday to Friday: 10am to 7pm <br>
-                                    Saturday: 10am to 4pm <br>
-                                    Sunday: 12am to 4pm
-                                </p>
+
+                                <h2><p>你可以通过以下方式联系到我们</p></h2>
+                                <p></p>
+                                <h2>工作地址:<p>四川轻化工大学宜宾学院B6-B414</p></h2>
+                                <p></p>
+                                <h2>联系邮箱:<p>xseuen@163.com</p></h2>
+                                <p></p>
+                                <h2>联系电话:<p>025 1234 5678 – 025 1234 5779</p></h2>
+                                <p></p>
+                                <h2>工作时间:<p>周一 to 周五: 10am to 7pm <br>
+                                    周六: 10am to 4pm <br>
+                                    周日: 12am to 4pm
+                                    </p></h2>
                             </div>
                         </div>
                     </div>
@@ -338,6 +341,25 @@
         <!-- main js -->
         <script src="front-end/js/main.js"></script>
     </body>
+<script>
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer
+            ,form = layui.form;
+    });
+        $("#btn").click(function () {
+            var name=$("#name").val();
+            var email=$("#email").val();
+            var msg=$("#msg").val();
+            if(name==""||name==null){
+                layer.msg('姓名不能为空哦！',{icon:2,time:3000})
+            }else if(email==""||email==null){
+                layer.msg('邮箱也不能为空哦！',{icon:2,time:3000})
+            }else if(msg==""||msg==null){
+                layer.msg('说点什么吧！',{icon:5,time:3000})
+            }
+            else{
+                layer.msg('发送成功！感谢您的反馈！',{icon:6,time:3000})
+            }
+        })
+</script>
 </html>
-
-

@@ -235,62 +235,62 @@ public class WalletExample {
         }
 
         public Criteria andMenberNicknameEqualTo(String value) {
-            addCriterion("menber_nickname =", value, "menberNickname");
+            addCriterion("menber_nickname =", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameNotEqualTo(String value) {
-            addCriterion("menber_nickname <>", value, "menberNickname");
+            addCriterion("menber_nickname <>", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameGreaterThan(String value) {
-            addCriterion("menber_nickname >", value, "menberNickname");
+            addCriterion("menber_nickname >", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameGreaterThanOrEqualTo(String value) {
-            addCriterion("menber_nickname >=", value, "menberNickname");
+            addCriterion("menber_nickname >=", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameLessThan(String value) {
-            addCriterion("menber_nickname <", value, "menberNickname");
+            addCriterion("menber_nickname <", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameLessThanOrEqualTo(String value) {
-            addCriterion("menber_nickname <=", value, "menberNickname");
+            addCriterion("menber_nickname <=", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameLike(String value) {
-            addCriterion("menber_nickname like", value, "menberNickname");
+            addCriterion("menber_nickname like", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameNotLike(String value) {
-            addCriterion("menber_nickname not like", value, "menberNickname");
+            addCriterion("menber_nickname not like", value, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameIn(List<String> values) {
-            addCriterion("menber_nickname in", values, "menberNickname");
+            addCriterion("menber_nickname in", values, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameNotIn(List<String> values) {
-            addCriterion("menber_nickname not in", values, "menberNickname");
+            addCriterion("menber_nickname not in", values, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameBetween(String value1, String value2) {
-            addCriterion("menber_nickname between", value1, value2, "menberNickname");
+            addCriterion("menber_nickname between", value1, value2, "memberNickname");
             return (Criteria) this;
         }
 
         public Criteria andMenberNicknameNotBetween(String value1, String value2) {
-            addCriterion("menber_nickname not between", value1, value2, "menberNickname");
+            addCriterion("menber_nickname not between", value1, value2, "memberNickname");
             return (Criteria) this;
         }
 

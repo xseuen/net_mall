@@ -4,7 +4,7 @@
   <resultMap id="BaseResultMap" type="com.team45.net_mall.common.domain.Wallet">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
-    <result column="menber_nickname" jdbcType="VARCHAR" property="menberNickname" />
+    <result column="member_nickname" jdbcType="VARCHAR" property="menberNickname" />
     <result column="balance" jdbcType="DOUBLE" property="balance" />
     <result column="level" jdbcType="DECIMAL" property="level" />
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
@@ -68,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, member_id, menber_nickname, balance, level, update_time
+    id, member_id, member_nickname, balance, level, update_time
   </sql>
   <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.WalletExample" resultMap="BaseResultMap">
     select
@@ -101,7 +101,7 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.Wallet">
-    insert into wallet (id, member_id, menber_nickname, 
+    insert into wallet (id, member_id, member_nickname, 
       balance, level, update_time
       )
     values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{menberNickname,jdbcType=VARCHAR}, 
@@ -118,7 +118,7 @@
         member_id,
       </if>
       <if test="menberNickname != null">
-        menber_nickname,
+        member_nickname,
       </if>
       <if test="balance != null">
         balance,
@@ -167,7 +167,7 @@
         member_id = #{record.memberId,jdbcType=INTEGER},
       </if>
       <if test="record.menberNickname != null">
-        menber_nickname = #{record.menberNickname,jdbcType=VARCHAR},
+        member_nickname = #{record.menberNickname,jdbcType=VARCHAR},
       </if>
       <if test="record.balance != null">
         balance = #{record.balance,jdbcType=DOUBLE},
@@ -187,7 +187,7 @@
     update wallet
     set id = #{record.id,jdbcType=INTEGER},
       member_id = #{record.memberId,jdbcType=INTEGER},
-      menber_nickname = #{record.menberNickname,jdbcType=VARCHAR},
+      member_nickname = #{record.menberNickname,jdbcType=VARCHAR},
       balance = #{record.balance,jdbcType=DOUBLE},
       level = #{record.level,jdbcType=DECIMAL},
       update_time = #{record.updateTime,jdbcType=VARCHAR}
@@ -202,7 +202,7 @@
         member_id = #{memberId,jdbcType=INTEGER},
       </if>
       <if test="menberNickname != null">
-        menber_nickname = #{menberNickname,jdbcType=VARCHAR},
+        member_nickname = #{menberNickname,jdbcType=VARCHAR},
       </if>
       <if test="balance != null">
         balance = #{balance,jdbcType=DOUBLE},
@@ -219,7 +219,7 @@
   <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.Wallet">
     update wallet
     set member_id = #{memberId,jdbcType=INTEGER},
-      menber_nickname = #{menberNickname,jdbcType=VARCHAR},
+      member_nickname = #{menberNickname,jdbcType=VARCHAR},
       balance = #{balance,jdbcType=DOUBLE},
       level = #{level,jdbcType=DECIMAL},
       update_time = #{updateTime,jdbcType=VARCHAR}

@@ -5,7 +5,7 @@ public class Wallet {
 
     private Integer memberId;
 
-    private String menberNickname;
+    private String memberNickname;
 
     private Double balance;
 
@@ -30,11 +30,11 @@ public class Wallet {
     }
 
     public String getMenberNickname() {
-        return menberNickname;
+        return memberNickname;
     }
 
-    public void setMenberNickname(String menberNickname) {
-        this.menberNickname = menberNickname == null ? null : menberNickname.trim();
+    public void setMenberNickname(String memberNickname) {
+        this.memberNickname = memberNickname == null ? null : memberNickname.trim();
     }
 
     public Double getBalance() {

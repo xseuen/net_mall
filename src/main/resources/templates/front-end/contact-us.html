@@ -77,19 +77,18 @@
                         <div class="all_cntnt">
                             <div class="frm_content frm_content_2">
                                 <h2><p>留下你的意见吧</p></h2>
-
                             </div>
                             <form class="side_right">
                                 <div class="al_form-fields al_form-fields-2">
-                                    <p style="font-size: 15px">
+                                    <p style="font-size: 16px">
                                         你的名字 (必填)
                                         <input type="text" id="name">
                                     </p>
-                                    <p style="font-size: 15px">
+                                    <p style="font-size: 16px">
                                         你的邮箱 (必填)
                                         <input type="password" id="email">
                                     </p>
-                                    <p style="font-size: 15px">
+                                    <p style="font-size: 16px">
                                         意见
                                         <br>
                                         <span class="wpcf7-form-control-wrap your-message">
@@ -100,7 +99,7 @@
                                 </div>
                                 <div class="form-action form-action-2">
                                     <div class="new_act new_act_3">
-                                        <button class="button_act button_act_3" id="btn" style="margin-left: 85%">发送</button>
+                                        <button class="button_act button_act_3" id="btn" style="margin-left: 85%" type="button">发送</button>
                                     </div>
                                 </div>
                             </form>
@@ -359,6 +358,7 @@
             }
             else{
                 layer.msg('发送成功！感谢您的反馈！',{icon:6,time:3000})
+                window.setTimeout("window.location.reload()", 3000);
             }
         })
 </script>

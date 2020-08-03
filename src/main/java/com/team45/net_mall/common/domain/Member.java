@@ -2,9 +2,7 @@ package com.team45.net_mall.common.domain;
 
 import com.team45.net_mall.common.domain.extend.MemberExtend;
 
-import java.io.Serializable;
-
-public class Member extends MemberExtend implements Serializable {
+public class Member extends MemberExtend {
     private Integer id;
 
     private String username;
@@ -18,6 +16,8 @@ public class Member extends MemberExtend implements Serializable {
     private String createTime;
 
     private Integer status;
+
+    private Integer isDeleted;
 
     private Integer type;
 
@@ -77,6 +77,14 @@ public class Member extends MemberExtend implements Serializable {
 
     public void setStatus(Integer status) {
         this.status = status;
+    }
+
+    public Integer getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(Integer isDeleted) {
+        this.isDeleted = isDeleted;
     }
 
     public Integer getType() {

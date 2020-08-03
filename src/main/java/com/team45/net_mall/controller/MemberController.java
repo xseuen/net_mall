@@ -63,6 +63,7 @@ public class MemberController {
     public Boolean register(@RequestBody Member member) {
         member.setType(0);
         member.setStatus(1);
+        member.setIsDeleted(0);
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         member.setCreateTime(sdf.format(date));
@@ -88,7 +89,6 @@ public class MemberController {
     }
 
     @RequestMapping("/user/selectByid")
-    // @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
         Member member = memberService.selectByid(id);
@@ -99,7 +99,7 @@ public class MemberController {
     @GetMapping("/user/deleteById")
     public String deleteById(@RequestParam("id") Integer id) {
         Member member = memberService.selectByid(id);
-        member.setStatus(0);
+        member.setIsDeleted(1);
         memberService.update(member);
         return "redirect:/user_list";
     }

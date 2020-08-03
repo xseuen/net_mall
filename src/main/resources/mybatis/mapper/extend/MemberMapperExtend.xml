@@ -9,7 +9,11 @@
         <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="status" jdbcType="INTEGER" property="status" />
+        <result column="is_deleted" jdbcType="INTEGER" property="isDeleted" />
         <result column="type" jdbcType="INTEGER" property="type" />
+    </resultMap>
+    <resultMap extends="MyResultMap" id="MyResultMapWithBLOBs" type="com.team45.net_mall.common.domain.Member">
+        <result column="address" jdbcType="LONGVARCHAR" property="address" />
     </resultMap>
         <select id="list" resultMap="MyResultMap">
         select * from member order by type DESC

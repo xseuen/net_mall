@@ -6,6 +6,7 @@
         <result column="username" jdbcType="VARCHAR" property="username" />
         <result column="password" jdbcType="VARCHAR" property="password" />
         <result column="phone" jdbcType="VARCHAR" property="phone" />
+        <result column="avator" jdbcType="VARCHAR" property="avator" />
         <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
         <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
         <result column="status" jdbcType="INTEGER" property="status" />

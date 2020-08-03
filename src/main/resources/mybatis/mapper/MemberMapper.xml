@@ -6,6 +6,7 @@
     <result column="username" jdbcType="VARCHAR" property="username" />
     <result column="password" jdbcType="VARCHAR" property="password" />
     <result column="phone" jdbcType="VARCHAR" property="phone" />
+    <result column="avator" jdbcType="VARCHAR" property="avator" />
     <result column="nick_name" jdbcType="VARCHAR" property="nickName" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -74,7 +75,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, username, password, phone, nick_name, create_time, status, is_deleted, type
+    id, username, password, phone, avator, nick_name, create_time, status, is_deleted, 
+    type
   </sql>
   <sql id="Blob_Column_List">
     address
@@ -129,13 +131,13 @@
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.Member">
     insert into member (id, username, password, 
-      phone, nick_name, create_time, 
-      status, is_deleted, type, 
-      address)
+      phone, avator, nick_name, 
+      create_time, status, is_deleted, 
+      type, address)
     values (#{id,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{phone,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, #{createTime,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
-      #{address,jdbcType=LONGVARCHAR})
+      #{phone,jdbcType=VARCHAR}, #{avator,jdbcType=VARCHAR}, #{nickName,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{isDeleted,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{address,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Member">
     insert into member
@@ -151,6 +153,9 @@
       </if>
       <if test="phone != null">
         phone,
+      </if>
+      <if test="avator != null">
+        avator,
       </if>
       <if test="nickName != null">
         nick_name,
@@ -183,6 +188,9 @@
       </if>
       <if test="phone != null">
         #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="avator != null">
+        #{avator,jdbcType=VARCHAR},
       </if>
       <if test="nickName != null">
         #{nickName,jdbcType=VARCHAR},
@@ -225,6 +233,9 @@
       <if test="record.phone != null">
         phone = #{record.phone,jdbcType=VARCHAR},
       </if>
+      <if test="record.avator != null">
+        avator = #{record.avator,jdbcType=VARCHAR},
+      </if>
       <if test="record.nickName != null">
         nick_name = #{record.nickName,jdbcType=VARCHAR},
       </if>
@@ -254,6 +265,7 @@
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
+      avator = #{record.avator,jdbcType=VARCHAR},
       nick_name = #{record.nickName,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
@@ -270,6 +282,7 @@
       username = #{record.username,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       phone = #{record.phone,jdbcType=VARCHAR},
+      avator = #{record.avator,jdbcType=VARCHAR},
       nick_name = #{record.nickName,jdbcType=VARCHAR},
       create_time = #{record.createTime,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER},
@@ -290,6 +303,9 @@
       </if>
       <if test="phone != null">
         phone = #{phone,jdbcType=VARCHAR},
+      </if>
+      <if test="avator != null">
+        avator = #{avator,jdbcType=VARCHAR},
       </if>
       <if test="nickName != null">
         nick_name = #{nickName,jdbcType=VARCHAR},
@@ -317,6 +333,7 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      avator = #{avator,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},
@@ -330,6 +347,7 @@
     set username = #{username,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       phone = #{phone,jdbcType=VARCHAR},
+      avator = #{avator,jdbcType=VARCHAR},
       nick_name = #{nickName,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER},

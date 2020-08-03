@@ -41,6 +41,8 @@
         <table tableName="order" domainObjectName="Order"/>
         <table tableName="product" domainObjectName="Product"/>
         <table tableName="wallet" domainObjectName="Wallet"/>
+        <table tableName="comment" domainObjectName="Comment"/>
+        <table tableName="order_item" domainObjectName="OrderItem"/>
 
         <!--<table tableName="Book" domainObjectName="Book"/>-->
 

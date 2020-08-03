@@ -6,6 +6,7 @@
         <result column="member_id" jdbcType="INTEGER" property="memberId" />
         <result column="menber_nickname" jdbcType="VARCHAR" property="menberNickname" />
         <result column="balance" jdbcType="DOUBLE" property="balance" />
+        <result column="level" jdbcType="DECIMAL" property="level" />
         <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
     </resultMap>
     <select id="getWalletByMid" resultMap="MyResultMap">

@@ -6,6 +6,7 @@
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
     <result column="menber_nickname" jdbcType="VARCHAR" property="menberNickname" />
     <result column="balance" jdbcType="DOUBLE" property="balance" />
+    <result column="level" jdbcType="DECIMAL" property="level" />
     <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -67,7 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, member_id, menber_nickname, balance, update_time
+    id, member_id, menber_nickname, balance, level, update_time
   </sql>
   <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.WalletExample" resultMap="BaseResultMap">
     select
@@ -101,9 +102,11 @@
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.Wallet">
     insert into wallet (id, member_id, menber_nickname, 
-      balance, update_time)
+      balance, level, update_time
+      )
     values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{menberNickname,jdbcType=VARCHAR}, 
-      #{balance,jdbcType=DOUBLE}, #{updateTime,jdbcType=VARCHAR})
+      #{balance,jdbcType=DOUBLE}, #{level,jdbcType=DECIMAL}, #{updateTime,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Wallet">
     insert into wallet
@@ -119,6 +122,9 @@
       </if>
       <if test="balance != null">
         balance,
+      </if>
+      <if test="level != null">
+        level,
       </if>
       <if test="updateTime != null">
         update_time,
@@ -136,6 +142,9 @@
       </if>
       <if test="balance != null">
         #{balance,jdbcType=DOUBLE},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=DECIMAL},
       </if>
       <if test="updateTime != null">
         #{updateTime,jdbcType=VARCHAR},
@@ -163,6 +172,9 @@
       <if test="record.balance != null">
         balance = #{record.balance,jdbcType=DOUBLE},
       </if>
+      <if test="record.level != null">
+        level = #{record.level,jdbcType=DECIMAL},
+      </if>
       <if test="record.updateTime != null">
         update_time = #{record.updateTime,jdbcType=VARCHAR},
       </if>
@@ -177,6 +189,7 @@
       member_id = #{record.memberId,jdbcType=INTEGER},
       menber_nickname = #{record.menberNickname,jdbcType=VARCHAR},
       balance = #{record.balance,jdbcType=DOUBLE},
+      level = #{record.level,jdbcType=DECIMAL},
       update_time = #{record.updateTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -194,6 +207,9 @@
       <if test="balance != null">
         balance = #{balance,jdbcType=DOUBLE},
       </if>
+      <if test="level != null">
+        level = #{level,jdbcType=DECIMAL},
+      </if>
       <if test="updateTime != null">
         update_time = #{updateTime,jdbcType=VARCHAR},
       </if>
@@ -205,6 +221,7 @@
     set member_id = #{memberId,jdbcType=INTEGER},
       menber_nickname = #{menberNickname,jdbcType=VARCHAR},
       balance = #{balance,jdbcType=DOUBLE},
+      level = #{level,jdbcType=DECIMAL},
       update_time = #{updateTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

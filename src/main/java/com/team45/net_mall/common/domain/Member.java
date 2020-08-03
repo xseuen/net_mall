@@ -11,6 +11,8 @@ public class Member extends MemberExtend {
 
     private String phone;
 
+    private String avator;
+
     private String nickName;
 
     private String createTime;
@@ -53,6 +55,14 @@ public class Member extends MemberExtend {
 
     public void setPhone(String phone) {
         this.phone = phone == null ? null : phone.trim();
+    }
+
+    public String getAvator() {
+        return avator;
+    }
+
+    public void setAvator(String avator) {
+        this.avator = avator == null ? null : avator.trim();
     }
 
     public String getNickName() {

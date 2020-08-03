@@ -3,7 +3,7 @@ package com.team45.net_mall.common.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MemberExample{
+public class MemberExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -371,6 +371,76 @@ public class MemberExample{
 
         public Criteria andPhoneNotBetween(String value1, String value2) {
             addCriterion("phone not between", value1, value2, "phone");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorIsNull() {
+            addCriterion("avator is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorIsNotNull() {
+            addCriterion("avator is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorEqualTo(String value) {
+            addCriterion("avator =", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorNotEqualTo(String value) {
+            addCriterion("avator <>", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorGreaterThan(String value) {
+            addCriterion("avator >", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorGreaterThanOrEqualTo(String value) {
+            addCriterion("avator >=", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorLessThan(String value) {
+            addCriterion("avator <", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorLessThanOrEqualTo(String value) {
+            addCriterion("avator <=", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorLike(String value) {
+            addCriterion("avator like", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorNotLike(String value) {
+            addCriterion("avator not like", value, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorIn(List<String> values) {
+            addCriterion("avator in", values, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorNotIn(List<String> values) {
+            addCriterion("avator not in", values, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorBetween(String value1, String value2) {
+            addCriterion("avator between", value1, value2, "avator");
+            return (Criteria) this;
+        }
+
+        public Criteria andAvatorNotBetween(String value1, String value2) {
+            addCriterion("avator not between", value1, value2, "avator");
             return (Criteria) this;
         }
 

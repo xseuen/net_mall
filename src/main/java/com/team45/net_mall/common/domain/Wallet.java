@@ -9,6 +9,8 @@ public class Wallet {
 
     private Double balance;
 
+    private Long level;
+
     private String updateTime;
 
     public Integer getId() {
@@ -41,6 +43,14 @@ public class Wallet {
 
     public void setBalance(Double balance) {
         this.balance = balance;
+    }
+
+    public Long getLevel() {
+        return level;
+    }
+
+    public void setLevel(Long level) {
+        this.level = level;
     }
 
     public String getUpdateTime() {

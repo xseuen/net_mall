@@ -31,11 +31,14 @@ public class MemberController {
             model.addAttribute("member", member);
             model.addAttribute("msg", "用户名或密码错误");
             return "front-end/login";
-        } else {
-            //登录成功
-            session.setAttribute("loginUser",memberInDB);
-            return "forward:/";
+        } else if(memberInDB.getStatus()==0){
+            model.addAttribute("member", member);
+            model.addAttribute("msg", "该账号已被冻结，请联系管理员");
+            return "front-end/login";
         }
+        //登录成功
+        session.setAttribute("loginUser",memberInDB);
+        return "forward:/";
     }
 
     @GetMapping("/toRegister")
@@ -101,6 +104,7 @@ public class MemberController {
     public String deleteById(@RequestParam("id") Integer id) {
         Member member = memberService.selectByid(id);
         member.setIsDeleted(1);
+        member.setStatus(0);
         memberService.update(member);
         return memberService.update(member)==1?"删除成功":"删除失败";
     }

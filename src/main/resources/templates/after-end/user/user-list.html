@@ -93,7 +93,7 @@
                   <td th:text="${user.isDeleted}==0?'账号正常':'账号删除'"></td>
                   <td th:text="${user.type}==0?'普通用户':(${user.type}==1?'普通管理员':'超级管理员')"></td>
                   <td th:if="${user.type}!=2"><a th:href="@{/user/selectByid(id=${user.id})}" class="btn btn-primary">修改</a>
-                    <a th:href="@{/user/deleteById(id=${user.id})}" class="btn btn-danger">删除</a>
+                    <a class="btn btn-danger" th:onclick="del([[${user.id}]])">删除</a>
                   </td>
                 </tr>
                 </tr>
@@ -130,8 +130,22 @@
   <script src="../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../dist/js/demo.js"></script>
+  <script src="../layer/layer.js"></script>
+
 </body>
 </html>
 <script>
   document.getElementById("user_manage").className="active";
+
+  function del(id){
+    layer.prompt({title: '输入管理员密码，并确认', formType: 1}, function(pass, index){
+      layer.close(index);
+      layer.prompt({title: '随便写点啥，并确认', formType: 2}, function(text, index){
+        layer.close(index);
+        layer.msg('演示完毕！您的口令：'+ pass +'<br>您最后写下了：'+text);
+      });
+    });
+  }
+
+  // th:href="@{/user/deleteById(id=${user.id})}"
 </script>

@@ -34,6 +34,10 @@ public class MainController {
 
     @RequestMapping("/list-view")
     public String showList(Model model){
+        List<ProductWithBLOBs>  list4=productService.getList();
+        List<ProductWithBLOBs>  list5=productService.getList();
+        model.addAttribute("pro5",list4);
+        model.addAttribute("pro6",list5);
         return "front-end/list-view";
     }
 

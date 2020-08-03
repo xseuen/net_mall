@@ -86,7 +86,7 @@
                                     </p>
                                     <p style="font-size: 16px">
                                         你的邮箱 <b style="font-size: 8px">(必填)</b>
-                                        <input type="password" id="email" style="border-color: #49494d">
+                                        <input type="email" id="email" style="border-color: #49494d">
                                     </p>
                                     <p style="font-size: 16px">
                                         意见
@@ -350,15 +350,35 @@
             var email=$("#email").val();
             var msg=$("#msg").val();
             if(name==""||name==null){
-                layer.msg('姓名不能为空哦！',{icon:2,time:3000})
+                layer.msg('姓名不能为空哦！',{icon:2,time:2000})
             }else if(email==""||email==null){
-                layer.msg('邮箱也不能为空哦！',{icon:2,time:3000})
+                layer.msg('邮箱也不能为空哦！',{icon:2,time:2000})
             }else if(msg==""||msg==null){
-                layer.msg('说点什么吧！',{icon:5,time:3000})
+                layer.msg('说点什么吧！',{icon:5,time:2000})
             }
             else{
-                layer.msg('发送成功！感谢您的反馈！',{icon:6,time:3000})
-                window.setTimeout("window.location.reload()", 3000);
+                var formdata={
+                    "cname":name,
+                    "cmail":email,
+                    "comment":msg
+                }
+                $.ajax({
+                    url:"/comment",
+                    type:"post",
+                    contentType:"application/json",
+                    data:JSON.stringify(formdata),
+                    success:function (data) {
+                        if(data=="提交成功"){
+                            layer.msg('发送成功！感谢您的反馈！',{icon:6,time:2000})
+                            window.setTimeout("window.location.reload()", 2000);
+                        }
+                        else{
+                            layer.msg('发送失败！请重试！',{icon:5,time:2000})
+
+                        }
+                    }
+                })
+
             }
         })
 </script>

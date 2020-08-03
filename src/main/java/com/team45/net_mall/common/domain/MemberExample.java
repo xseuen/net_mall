@@ -374,73 +374,73 @@ public class MemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andAvatorIsNull() {
-            addCriterion("avator is null");
+        public Criteria andAvatarIsNull() {
+            addCriterion("avatar is null");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorIsNotNull() {
-            addCriterion("avator is not null");
+        public Criteria andAvatarIsNotNull() {
+            addCriterion("avatar is not null");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorEqualTo(String value) {
-            addCriterion("avator =", value, "avator");
+        public Criteria andAvatarEqualTo(String value) {
+            addCriterion("avatar =", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorNotEqualTo(String value) {
-            addCriterion("avator <>", value, "avator");
+        public Criteria andAvatarNotEqualTo(String value) {
+            addCriterion("avatar <>", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorGreaterThan(String value) {
-            addCriterion("avator >", value, "avator");
+        public Criteria andAvatarGreaterThan(String value) {
+            addCriterion("avatar >", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorGreaterThanOrEqualTo(String value) {
-            addCriterion("avator >=", value, "avator");
+        public Criteria andAvatarGreaterThanOrEqualTo(String value) {
+            addCriterion("avatar >=", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorLessThan(String value) {
-            addCriterion("avator <", value, "avator");
+        public Criteria andAvatarLessThan(String value) {
+            addCriterion("avatar <", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorLessThanOrEqualTo(String value) {
-            addCriterion("avator <=", value, "avator");
+        public Criteria andAvatarLessThanOrEqualTo(String value) {
+            addCriterion("avatar <=", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorLike(String value) {
-            addCriterion("avator like", value, "avator");
+        public Criteria andAvatarLike(String value) {
+            addCriterion("avatar like", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorNotLike(String value) {
-            addCriterion("avator not like", value, "avator");
+        public Criteria andAvatarNotLike(String value) {
+            addCriterion("avatar not like", value, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorIn(List<String> values) {
-            addCriterion("avator in", values, "avator");
+        public Criteria andAvatarIn(List<String> values) {
+            addCriterion("avatar in", values, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorNotIn(List<String> values) {
-            addCriterion("avator not in", values, "avator");
+        public Criteria andAvatarNotIn(List<String> values) {
+            addCriterion("avatar not in", values, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorBetween(String value1, String value2) {
-            addCriterion("avator between", value1, value2, "avator");
+        public Criteria andAvatarBetween(String value1, String value2) {
+            addCriterion("avatar between", value1, value2, "avatar");
             return (Criteria) this;
         }
 
-        public Criteria andAvatorNotBetween(String value1, String value2) {
-            addCriterion("avator not between", value1, value2, "avator");
+        public Criteria andAvatarNotBetween(String value1, String value2) {
+            addCriterion("avatar not between", value1, value2, "avatar");
             return (Criteria) this;
         }
 

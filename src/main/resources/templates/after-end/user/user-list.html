@@ -92,6 +92,8 @@
                   <td th:text="${user.status}==1?'已激活':'已冻结'"></td>
                   <td th:text="${user.isDeleted}==0?'账号正常':'账号删除'"></td>
                   <td th:text="${user.type}==0?'普通用户':(${user.type}==1?'普通管理员':'超级管理员')"></td>
+                  <td th:if="${user.type}==2"><a style="visibility: hidden" class="btn btn-primary">修改</a>
+                    <a style="visibility: hidden" class="btn btn-danger">删除</a></td>
                   <td th:if="${user.type}!=2"><a th:href="@{/user/selectByid(id=${user.id})}" class="btn btn-primary">修改</a>
                     <a class="btn btn-danger" th:onclick="del([[${user.id}]])">删除</a>
                   </td>

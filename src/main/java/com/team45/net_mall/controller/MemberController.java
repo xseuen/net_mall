@@ -95,6 +95,15 @@ public class MemberController {
         model.addAttribute("user", member);
         return "after-end/user/user-edit";
     }
+
+    @GetMapping("/user/deleteById")
+    public String deleteById(@RequestParam("id") Integer id) {
+        Member member = memberService.selectByid(id);
+        member.setStatus(0);
+        memberService.update(member);
+        return "redirect:/user_list";
+    }
+
     @RequestMapping("/forgot")
     public String forgotPage(){
         return "/front-end/forgot";

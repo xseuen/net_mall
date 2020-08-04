@@ -13,4 +13,9 @@ public class WalletServiceImpl implements WalletService{
     public Wallet getWalletByMid(Integer id) {
         return walletMapper.getWalletByMid(id);
     }
+
+    @Override
+    public int insertWallet(Wallet wallet) {
+        return walletMapper.insert(wallet);
+    }
 }

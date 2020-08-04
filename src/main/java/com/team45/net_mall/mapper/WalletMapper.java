@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.team45.net_mall.mapper.extend.WalletMapperExtend;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface WalletMapper extends WalletMapperExtend {
     long countByExample(WalletExample example);
 

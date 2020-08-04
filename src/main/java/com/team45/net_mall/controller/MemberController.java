@@ -2,7 +2,10 @@ package com.team45.net_mall.controller;
 
 
 import com.team45.net_mall.common.domain.Member;
+import com.team45.net_mall.common.domain.MemberExample;
+import com.team45.net_mall.common.domain.Wallet;
 import com.team45.net_mall.service.MemberServiceImpl;
+import com.team45.net_mall.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,6 +21,8 @@ import java.util.List;
 public class MemberController {
     @Autowired
     private MemberServiceImpl memberService;
+    @Autowired
+    WalletService walletService;
 
     @RequestMapping(value = "/tologin",method = RequestMethod.GET)
     public String tologin(){
@@ -76,11 +81,22 @@ public class MemberController {
         member.setType(0);
         member.setStatus(1);
         member.setIsDeleted(0);
+        member.setAvatar( "dist/img/user1-128x128.jpg");
         Date date = new Date();
         SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         member.setCreateTime(sdf.format(date));
         int i =  memberService.insert(member);
-        return i==0?false:true;
+        if(i!=0){
+            Wallet wallet =new Wallet();
+            wallet.setBalance(0.0);
+            wallet.setLevel(0L);
+            wallet.setMenberNickname(member.getNickName());
+            wallet.setMemberId(memberService.login(member).getId());
+            wallet.setUpdateTime(sdf.format(date));
+            walletService.insertWallet(wallet);
+            return true;
+        }
+        return false;
     }
 
     @GetMapping("/user_list")

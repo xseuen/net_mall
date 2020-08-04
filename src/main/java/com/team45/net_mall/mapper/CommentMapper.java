@@ -3,9 +3,11 @@ package com.team45.net_mall.mapper;
 import com.team45.net_mall.common.domain.Comment;
 import com.team45.net_mall.common.domain.CommentExample;
 import java.util.List;
+
+import com.team45.net_mall.mapper.extend.CommentMapperExtend;
 import org.apache.ibatis.annotations.Param;
 
-public interface CommentMapper {
+public interface CommentMapper extends CommentMapperExtend {
     long countByExample(CommentExample example);
 
     int deleteByExample(CommentExample example);
@@ -27,4 +29,6 @@ public interface CommentMapper {
     int updateByPrimaryKeySelective(Comment record);
 
     int updateByPrimaryKey(Comment record);
+
+
 }

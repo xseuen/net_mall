@@ -13,7 +13,7 @@
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
                         connectionURL="jdbc:mysql://127.0.0.1:3306/net_mall?useUnicode=true&amp;characterEncoding=utf8&amp;zeroDateTimeBehavior=convertToNull"
                         userId="root"
-                        password="root">
+                        password="123456">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -35,14 +35,14 @@
         </javaClientGenerator>
 
 
-        <!--<table tableName="cart" domainObjectName="Cart"/>-->
-        <!--<table tableName="category" domainObjectName="Category"/>-->
+        <table tableName="cart" domainObjectName="Cart"/>
+       <!-- <table tableName="category" domainObjectName="Category"/>
         <table tableName="member" domainObjectName="Member"/>
-        <!--<table tableName="order" domainObjectName="Order"/>-->
-        <!--<table tableName="product" domainObjectName="Product"/>-->
-        <!--<table tableName="wallet" domainObjectName="Wallet"/>-->
-        <!--<table tableName="comment" domainObjectName="Comment"/>-->
-        <!--<table tableName="order_item" domainObjectName="OrderItem"/>-->
+        <table tableName="order" domainObjectName="Order"/>
+        <table tableName="product" domainObjectName="Product"/>
+        <table tableName="wallet" domainObjectName="Wallet"/>
+        <table tableName="comment" domainObjectName="Comment"/>
+        <table tableName="order_item" domainObjectName="OrderItem"/>-->
 
         <!--<table tableName="Book" domainObjectName="Book"/>-->
 

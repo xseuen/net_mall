@@ -17,6 +17,8 @@ public class Product extends ProductExtend {
 
     private String categoryId;
 
+    private String pic;
+
     public Integer getId() {
         return id;
     }
@@ -71,5 +73,13 @@ public class Product extends ProductExtend {
 
     public void setCategoryId(String categoryId) {
         this.categoryId = categoryId == null ? null : categoryId.trim();
+    }
+
+    public String getPic() {
+        return pic;
+    }
+
+    public void setPic(String pic) {
+        this.pic = pic;
     }
 }

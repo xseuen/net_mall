@@ -364,52 +364,52 @@ public class CartExample {
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceEqualTo(Long value) {
+        public Criteria andProductPriceEqualTo(Double value) {
             addCriterion("product_price =", value, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceNotEqualTo(Long value) {
+        public Criteria andProductPriceNotEqualTo(Double value) {
             addCriterion("product_price <>", value, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceGreaterThan(Long value) {
+        public Criteria andProductPriceGreaterThan(Double value) {
             addCriterion("product_price >", value, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceGreaterThanOrEqualTo(Long value) {
+        public Criteria andProductPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("product_price >=", value, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceLessThan(Long value) {
+        public Criteria andProductPriceLessThan(Double value) {
             addCriterion("product_price <", value, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceLessThanOrEqualTo(Long value) {
+        public Criteria andProductPriceLessThanOrEqualTo(Double value) {
             addCriterion("product_price <=", value, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceIn(List<Long> values) {
+        public Criteria andProductPriceIn(List<Double> values) {
             addCriterion("product_price in", values, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceNotIn(List<Long> values) {
+        public Criteria andProductPriceNotIn(List<Double> values) {
             addCriterion("product_price not in", values, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceBetween(Long value1, Long value2) {
+        public Criteria andProductPriceBetween(Double value1, Double value2) {
             addCriterion("product_price between", value1, value2, "productPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProductPriceNotBetween(Long value1, Long value2) {
+        public Criteria andProductPriceNotBetween(Double value1, Double value2) {
             addCriterion("product_price not between", value1, value2, "productPrice");
             return (Criteria) this;
         }
@@ -481,6 +481,66 @@ public class CartExample {
 
         public Criteria andMemberNicknameNotBetween(String value1, String value2) {
             addCriterion("member_nickname not between", value1, value2, "memberNickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountIsNull() {
+            addCriterion("count is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountIsNotNull() {
+            addCriterion("count is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountEqualTo(Integer value) {
+            addCriterion("count =", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountNotEqualTo(Integer value) {
+            addCriterion("count <>", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountGreaterThan(Integer value) {
+            addCriterion("count >", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountGreaterThanOrEqualTo(Integer value) {
+            addCriterion("count >=", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountLessThan(Integer value) {
+            addCriterion("count <", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountLessThanOrEqualTo(Integer value) {
+            addCriterion("count <=", value, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountIn(List<Integer> values) {
+            addCriterion("count in", values, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountNotIn(List<Integer> values) {
+            addCriterion("count not in", values, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountBetween(Integer value1, Integer value2) {
+            addCriterion("count between", value1, value2, "count");
+            return (Criteria) this;
+        }
+
+        public Criteria andCountNotBetween(Integer value1, Integer value2) {
+            addCriterion("count not between", value1, value2, "count");
             return (Criteria) this;
         }
 

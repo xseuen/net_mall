@@ -6,7 +6,9 @@ import java.util.List;
 
 import com.team45.net_mall.mapper.extend.CategoryMapperExtend;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CategoryMapper extends CategoryMapperExtend {
     long countByExample(CategoryExample example);
 

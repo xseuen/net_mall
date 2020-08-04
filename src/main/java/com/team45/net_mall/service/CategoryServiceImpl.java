@@ -1,6 +1,7 @@
 package com.team45.net_mall.service;
 
 import com.team45.net_mall.common.domain.Category;
+import com.team45.net_mall.common.domain.CategoryExample;
 import com.team45.net_mall.mapper.CategoryMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -13,6 +14,7 @@ public class CategoryServiceImpl implements CategoryService{
     CategoryMapper categoryMapper;
     @Override
     public List<Category> list() {
-        return categoryMapper.list();
+        CategoryExample categoryExample =new CategoryExample();
+        return categoryMapper.selectByExample(categoryExample);
     }
 }

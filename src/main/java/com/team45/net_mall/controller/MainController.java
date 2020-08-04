@@ -1,7 +1,9 @@
 package com.team45.net_mall.controller;
 
 
+import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.ProductWithBLOBs;
+import com.team45.net_mall.service.CategoryService;
 import com.team45.net_mall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +20,8 @@ import java.util.List;
 public class MainController {
     @Autowired
     ProductService productService;
+    @Autowired
+    CategoryService categoryService;
 
     @RequestMapping("/")
     public String showAll(Model model){
@@ -34,10 +38,12 @@ public class MainController {
 
     @RequestMapping("/list-view")
     public String showList(Model model){
-        List<ProductWithBLOBs>  list4=productService.getList();
-        List<ProductWithBLOBs>  list5=productService.getList();
-        model.addAttribute("pro5",list4);
-        model.addAttribute("pro6",list5);
+        List<ProductWithBLOBs> list1 = productService.getList();
+        List<ProductWithBLOBs> list2 = productService.getListByCategory("c004");
+        List<Category> list= categoryService.list();
+        model.addAttribute("category",list);
+        model.addAttribute("pro5",list1);
+        model.addAttribute("pro6",list2);
         return "front-end/list-view";
     }
 

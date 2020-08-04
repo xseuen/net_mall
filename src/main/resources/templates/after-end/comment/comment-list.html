@@ -86,7 +86,7 @@
                   <td th:text="${comm.cname}" style="width: 90px"></td>
                   <td th:text="${comm.cmail}" style="width: 90px"></td>
                   <td th:text="${comm.createTime}" style="width: 200px"></td>
-                  <td th:text="${comm.comment}" style="width: 1079px"></td>
+                  <td th:text="${comm.comment}" style="width: 1070px"></td>
                   <!--@{/product/deleteById(id=${pro.id})}-->
                   <td><a th:href="@{/comment/selectById(id=${comm.id})}" class="btn btn-primary">详情</a>
                     <a class="btn btn-danger" th:onclick="del([[${comm.id}]])">删除</a></td>

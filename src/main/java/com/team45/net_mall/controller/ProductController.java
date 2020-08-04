@@ -5,13 +5,17 @@ import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.CategoryService;
 import com.team45.net_mall.service.ProductService;
+import com.team45.net_mall.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.http.HttpSession;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @RequestMapping("/product")
@@ -20,6 +24,8 @@ public class ProductController {
     private ProductService productService;
     @Autowired
     private CategoryService categoryService;
+    @Autowired
+    UploadService uploadService;
 
 
     @RequestMapping("/list")
@@ -86,6 +92,15 @@ public class ProductController {
         productWithBLOBs.setDeleteStatus(1);
         productService.update(productWithBLOBs);
         return "forward:/product/list";
+    }
+    @RequestMapping("/upload")
+    @ResponseBody
+    public Map<String ,Object> upload(@RequestParam Integer id, MultipartFile file){
+
+        Map map = new HashMap<String,Object>();
+        String s = uploadService.logUpload(file, id);
+        map.put("msg",s);
+        return map;
     }
 }
 

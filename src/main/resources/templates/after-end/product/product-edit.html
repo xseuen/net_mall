@@ -89,7 +89,13 @@
                                         <label  class="col-sm-2 control-label">上传图片</label>
 
                                         <div class="col-sm-10">
-                                            <button type="button" class="layui-btn layui-btn-danger" id="test7"><i class="layui-icon"></i>上传图片</button>
+                                            <div class="layui-upload">
+                                                <button type="button" class="layui-btn layui-btn-danger" id="test1"><i class="layui-icon"></i>上传图片</button>
+                                                <div class="layui-upload-list">
+                                                    <img class="layui-upload-img" id="demo1" style="width: 100px;height: 100px">
+                                                    <p id="demoText"></p>
+                                                </div>
+                                            </div>
                                             <div class="layui-inline layui-word-aux">
                                                 图片限制 200KB
                                             </div>
@@ -187,8 +193,10 @@
     <script src="../dist/js/demo.js"></script>
 </body>
 </html>
-<script src="../layer/layer.js"></script>
 <script>
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer;
+    });
     $(function () {
         $("#pro-update").click(function () {
             var formdata={
@@ -227,23 +235,41 @@
     document.getElementById("pro_manage").className="active treeview";
 </script>
 <script>
+
     //layui上传图片配置
     layui.use('upload', function(){
         var upload = layui.upload;
 
         //执行实例
         var uploadInst = upload.render({
-            elem: '#test7' //绑定元素
-            ,auto: false,
-            bindAction:'#pro-update',
-            url: '/front-end/img/upload/',//上传接口
-            acceptMime:'image/*',
-            size:'200KB'
+            elem: '#test1' //绑定元素
+            ,url: '/product/upload?id='+$("#pid").val()//上传接口
+            ,acceptMime:'image/*'
+            ,size:200,
+            before: function(obj){
+                //预读本地文件示例，不支持ie8
+                obj.preview(function(index, file, result){
+                    $('#demo1').attr('src', result); //图片链接（base64）
+                });
+            }
             ,done: function(res){
                 //上传完毕回调
-            }
-            ,error: function(){
-                //请求异常回调
+                if(res.msg=="上传失败"){
+                    layer.alert(res, {
+                        icon: 2,
+                        skin: 'layer-ext-moon'
+                    })
+                }else if(res.msg=="图片已存在"){
+                    layer.alert(res, {
+                        icon: 0,
+                        skin: 'layer-ext-moon'
+                    })
+                }else {
+                    layer.msg('上传中', {
+                        icon: 16,
+                        shade: 0.01
+                    }); //上传loading
+                }
             }
         });
     });

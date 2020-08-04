@@ -263,7 +263,7 @@
                                                         <div class="icon">
                                                             <i class="fa fa-cny"></i>
                                                         </div>
-                                                        <a th:onclick="change()" class="small-box-footer">
+                                                        <a href="#" th:onclick="change()" class="small-box-footer">
                                                             More info <i class="fa fa-arrow-circle-right"></i>
                                                         </a>
 
@@ -584,19 +584,23 @@
         }else {
             var formdata={
                 "id":id,
-                "code":code
+                "md5":code
             }
             $.ajax({
-                url:"/charge?id="+id,
+                url:"/charge",
                 type:"post",
                 contentType:"application/json",
                 data:JSON.stringify(formdata),
-                success(data){
+                success:function(data){
                     if(data=="充值成功"){
                         layer.msg('充值成功！');
-                        window.setTimeout("window.location.reload()", 2000)
+                        window.location.href="#mywallet";
+                    }else if(data=="充值码错误"){
+                        layer.msg(data);
+                    }else if(data=="充值码已失效"){
+                        layer.msg(data);
                     }else {
-                        layer.msg('充值失败！');
+                        layer.msg(data);
                     }
                 }
             })

@@ -1,6 +1,7 @@
 package com.team45.net_mall.controller;
 
 import com.team45.net_mall.common.domain.Member;
+import com.team45.net_mall.common.domain.MoneyCode;
 import com.team45.net_mall.common.domain.Wallet;
 import com.team45.net_mall.service.MemberService;
 import com.team45.net_mall.service.WalletService;
@@ -48,8 +49,8 @@ public class AccoutInfoController {
     }
     @RequestMapping("/charge")
     @ResponseBody
-    public String charge(@RequestParam Integer id, String code){
-        return walletService.updateByUid(id,code);
+    public String charge(@RequestBody MoneyCode moneyCode){
+        return walletService.updateByUid(moneyCode.getId(),moneyCode.getMd5());
     }
 
 

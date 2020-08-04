@@ -5,6 +5,7 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="money" jdbcType="DOUBLE" property="money" />
     <result column="md5" jdbcType="VARCHAR" property="md5" />
+    <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -65,7 +66,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, money, md5
+    id, money, md5, status
   </sql>
   <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.MoneyCodeExample" resultMap="BaseResultMap">
     select
@@ -98,10 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.MoneyCode">
-    insert into money_code (id, money, md5
-      )
-    values (#{id,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{md5,jdbcType=VARCHAR}
-      )
+    insert into money_code (id, money, md5, 
+      status)
+    values (#{id,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{md5,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.MoneyCode">
     insert into money_code
@@ -115,6 +116,9 @@
       <if test="md5 != null">
         md5,
       </if>
+      <if test="status != null">
+        status,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
       <if test="id != null">
@@ -125,6 +129,9 @@
       </if>
       <if test="md5 != null">
         #{md5,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
       </if>
     </trim>
   </insert>
@@ -146,6 +153,9 @@
       <if test="record.md5 != null">
         md5 = #{record.md5,jdbcType=VARCHAR},
       </if>
+      <if test="record.status != null">
+        status = #{record.status,jdbcType=INTEGER},
+      </if>
     </set>
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -155,7 +165,8 @@
     update money_code
     set id = #{record.id,jdbcType=INTEGER},
       money = #{record.money,jdbcType=DOUBLE},
-      md5 = #{record.md5,jdbcType=VARCHAR}
+      md5 = #{record.md5,jdbcType=VARCHAR},
+      status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -169,13 +180,17 @@
       <if test="md5 != null">
         md5 = #{md5,jdbcType=VARCHAR},
       </if>
+      <if test="status != null">
+        status = #{status,jdbcType=INTEGER},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.MoneyCode">
     update money_code
     set money = #{money,jdbcType=DOUBLE},
-      md5 = #{md5,jdbcType=VARCHAR}
+      md5 = #{md5,jdbcType=VARCHAR},
+      status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

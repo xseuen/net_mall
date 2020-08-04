@@ -4,9 +4,7 @@ import com.team45.net_mall.common.domain.MoneyCode;
 import com.team45.net_mall.common.domain.MoneyCodeExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface MoneyCodeMapper {
     long countByExample(MoneyCodeExample example);
 

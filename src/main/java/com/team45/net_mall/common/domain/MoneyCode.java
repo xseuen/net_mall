@@ -7,6 +7,8 @@ public class MoneyCode {
 
     private String md5;
 
+    private Integer status;
+
     public Integer getId() {
         return id;
     }
@@ -29,5 +31,13 @@ public class MoneyCode {
 
     public void setMd5(String md5) {
         this.md5 = md5 == null ? null : md5.trim();
+    }
+
+    public Integer getStatus() {
+        return status;
+    }
+
+    public void setStatus(Integer status) {
+        this.status = status;
     }
 }

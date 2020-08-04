@@ -5,6 +5,8 @@ public class MoneyCode {
 
     private Double money;
 
+    private String code;
+
     private String md5;
 
     private Integer status;
@@ -23,6 +25,14 @@ public class MoneyCode {
 
     public void setMoney(Double money) {
         this.money = money;
+    }
+
+    public String getCode() {
+        return code;
+    }
+
+    public void setCode(String code) {
+        this.code = code == null ? null : code.trim();
     }
 
     public String getMd5() {

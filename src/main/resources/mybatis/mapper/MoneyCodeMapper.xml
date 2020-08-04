@@ -4,6 +4,7 @@
   <resultMap id="BaseResultMap" type="com.team45.net_mall.common.domain.MoneyCode">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="money" jdbcType="DOUBLE" property="money" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
     <result column="md5" jdbcType="VARCHAR" property="md5" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
@@ -66,7 +67,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, money, md5, status
+    id, money, code, md5, status
   </sql>
   <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.MoneyCodeExample" resultMap="BaseResultMap">
     select
@@ -99,10 +100,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.MoneyCode">
-    insert into money_code (id, money, md5, 
-      status)
-    values (#{id,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{md5,jdbcType=VARCHAR}, 
-      #{status,jdbcType=INTEGER})
+    insert into money_code (id, money, code, 
+      md5, status)
+    values (#{id,jdbcType=INTEGER}, #{money,jdbcType=DOUBLE}, #{code,jdbcType=VARCHAR}, 
+      #{md5,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.MoneyCode">
     insert into money_code
@@ -112,6 +113,9 @@
       </if>
       <if test="money != null">
         money,
+      </if>
+      <if test="code != null">
+        code,
       </if>
       <if test="md5 != null">
         md5,
@@ -126,6 +130,9 @@
       </if>
       <if test="money != null">
         #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="code != null">
+        #{code,jdbcType=VARCHAR},
       </if>
       <if test="md5 != null">
         #{md5,jdbcType=VARCHAR},
@@ -150,6 +157,9 @@
       <if test="record.money != null">
         money = #{record.money,jdbcType=DOUBLE},
       </if>
+      <if test="record.code != null">
+        code = #{record.code,jdbcType=VARCHAR},
+      </if>
       <if test="record.md5 != null">
         md5 = #{record.md5,jdbcType=VARCHAR},
       </if>
@@ -165,6 +175,7 @@
     update money_code
     set id = #{record.id,jdbcType=INTEGER},
       money = #{record.money,jdbcType=DOUBLE},
+      code = #{record.code,jdbcType=VARCHAR},
       md5 = #{record.md5,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
@@ -176,6 +187,9 @@
     <set>
       <if test="money != null">
         money = #{money,jdbcType=DOUBLE},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
       </if>
       <if test="md5 != null">
         md5 = #{md5,jdbcType=VARCHAR},
@@ -189,6 +203,7 @@
   <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.MoneyCode">
     update money_code
     set money = #{money,jdbcType=DOUBLE},
+      code = #{code,jdbcType=VARCHAR},
       md5 = #{md5,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}

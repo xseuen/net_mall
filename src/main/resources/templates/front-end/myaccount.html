@@ -86,8 +86,8 @@
                                 <div class="col-md-3">
 
                                     <!-- Profile Image -->
-                                    <div class="box box-primary">
-                                        <div class="box-body box-profile">
+                                    <div class="box box-primary"id="aside">
+                                        <div class="box-body box-profile" >
                                             <img class="profile-user-img img-responsive img-circle" th:src="${session.loginUser.avatar}" alt="">
 
                                             <h3 class="profile-username" style="margin-left: 40%">[[${session.loginUser.nickName}]]</h3>
@@ -594,7 +594,11 @@
                 success:function(data){
                     if(data=="充值成功"){
                         layer.msg('充值成功！');
-                        window.location.href="#mywallet";
+                        document.getElementById("page1").style="";
+                        document.getElementById("page2").style="display:none";
+                        // window.location.href="#mywallet";
+                        $("#mywallet").load(location.href + " #mywallet")
+                        $("#aside").load(location.href + " #aside")
                     }else if(data=="充值码错误"){
                         layer.msg(data);
                     }else if(data=="充值码已失效"){

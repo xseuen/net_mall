@@ -14,7 +14,7 @@
                             <div class="header_right_area" th:if="${session == null || session == ''||session.loginUser==null}">
                                 <ul>
                                     <li>
-                                        <p style="font-size: larger">亲爱的用户，请<a class="log-in" href="/tologin" style="color:#ffb128;">&nbsp;&nbsp;&nbsp;注册/登录</a></p>
+                                        <p style="font-size: larger">亲爱的用户，请<a class="log-in" href="/tologin" style="color:#ffb128;margin-left: 10px">注册/登录</a></p>
                                     </li>
                                 </ul>
                             </div>
@@ -68,10 +68,10 @@
                                         <a class="cart-toggler" href="">
                                             <i class="icon"></i>
                                             <span class="my-cart">购物车</span>
-                                            <span class="qty">2件物品</span>
+                                            <span class="qty">0件物品</span>
                                             <span class="fa fa-angle-down"></span>
                                         </a>
-                                        <div class="new_cart_section">
+                                        <div class="new_cart_section" style="visibility: hidden">
                                             <ol class="new-list">
                                                 <!-- single item -->
                                                 <li class="wimix_area">
@@ -81,22 +81,6 @@
                                                     <div class="product-details">
                                                         <a href="#">Adipiscing cursus eu</a>
                                                         <span class="sig-price">1×$300.00</span>
-                                                    </div>
-                                                    <div class="cart-remove">
-                                                        <a class="action" href="#">
-                                                            <i class="fa fa-close"></i>
-                                                        </a>
-                                                    </div>
-                                                </li>
-                                                <!-- single item -->
-                                                <!-- single item -->
-                                                <li class="wimix_area">
-                                                    <a class="pix_product" href="#">
-                                                        <img alt="" src="front-end/img/product-pic/1-150x98.jpg">
-                                                    </a>
-                                                    <div class="product-details">
-                                                        <a href="#">Duis convallis</a>
-                                                        <span class="sig-price">1×$100.00</span>
                                                     </div>
                                                     <div class="cart-remove">
                                                         <a class="action" href="#">
@@ -343,11 +327,10 @@
                                             <div class="menu">
                                                 <nav th:if="${session!=null && session.loginUser!=null }">
                                                     <ul>
-                                                        <li><a href="/">首页</a></li>
+                                                        <li><a href="/">商品首页</a></li>
                                                         <li><a href="/queryCartData">购物车</a></li>
                                                         <li><a href="/list-view">商品列表</a></li>
                                                         <li><a href="/myaccount">我的账户</a></li>
-                                                        <!--<li><a href="/simple-product">产品详情</a></li>-->
                                                         <li><a href="/about-us">关于我们</a></li>
                                                         <li><a href="/contact-us">联系我们</a></li>
                                                     </ul>
@@ -355,9 +338,9 @@
                                                 <nav th:if="${session == null || session == ''||session.loginUser==null}">
                                                     <ul>
                                                         <li><a href="/">商品首页</a></li>
-                                                        <li><a href="/list-view">商品列表</a></li>
-                                                        <li><a href="/about-us">关于我们</a></li>
-                                                        <li><a href="/contact-us">联系我们</a></li>
+                                                        <li style="margin-left: 30px"><a href="/list-view">商品列表</a></li>
+                                                        <li style="margin-left: 30px"><a href="/about-us">关于我们</a></li>
+                                                        <li style="margin-left: 30px"><a href="/contact-us">联系我们</a></li>
                                                     </ul>
                                                 </nav>
                                             </div>

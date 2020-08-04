@@ -38,6 +38,7 @@
         <!-- AdminLTE Skins. Choose a skin from the css/skins
              folder instead of downloading all of them to reduce the load. -->
         <link rel="stylesheet" href="dist/css/skins/_all-skins.min.css">
+        <link rel="stylesheet" href="layui/css/layui.css">
     </head>
     <body>
         <!--header top area start-->
@@ -150,12 +151,12 @@
                                 <div class="col-md-9">
                                     <div class="nav-tabs-custom">
                                         <ul class="nav nav-tabs">
-                                            <li class="active"><a href="#activity" data-toggle="tab">我的订单</a></li>
-                                            <li ><a href="#timeline" data-toggle="tab">我的钱包</a></li>
+                                            <li class="active"><a href="#myorder" data-toggle="tab">我的订单</a></li>
+                                            <li ><a href="#mywallet" data-toggle="tab">我的钱包</a></li>
                                             <li><a href="#settings" data-toggle="tab">修改信息</a></li>
                                         </ul>
                                         <div class="tab-content">
-                                            <div class="active tab-pane" id="activity">
+                                            <div class="active tab-pane" id="myorder">
                                                     <ul class="timeline timeline-inverse">
                                                         <!-- timeline time label -->
                                                         <li class="time-label">
@@ -249,8 +250,8 @@
                                                     </ul>
                                             </div>
                                             <!-- 我的钱包 -->
-                                            <div class="tab-pane" id="timeline">
-                                                <div class="row">
+                                            <div class="tab-pane" id="mywallet">
+                                                <div class="row" id="page1" style="display: none" >
                                                     <div class="col-lg-6 col-xs-6">
                                                     <!-- small box -->
                                                     <div class="small-box bg-aqua">
@@ -262,7 +263,7 @@
                                                         <div class="icon">
                                                             <i class="fa fa-cny"></i>
                                                         </div>
-                                                        <a href="#" class="small-box-footer">
+                                                        <a th:onclick="charge([[${session.loginUser.id}]])" class="small-box-footer">
                                                             More info <i class="fa fa-arrow-circle-right"></i>
                                                         </a>
                                                     </div>
@@ -317,6 +318,13 @@
                                                                 More info <i class="fa fa-arrow-circle-right"></i>
                                                             </a>
                                                         </div>
+                                                    </div>
+                                                </div>
+                                                <div class="layui-form-item"  >
+                                                    <label class="layui-form-label">输入充值金额</label>
+                                                    <div class="layui-input-inline">
+                                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
+                                                        <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">百搭按钮</button>
                                                     </div>
                                                 </div>
                                             </div>
@@ -576,5 +584,8 @@
             });
         });
     })
+    function charge(id) {
+        $("#page1").
+    }
 </script>
 

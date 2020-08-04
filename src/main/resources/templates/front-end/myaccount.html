@@ -251,7 +251,7 @@
                                             </div>
                                             <!-- 我的钱包 -->
                                             <div class="tab-pane" id="mywallet">
-                                                <div class="row" id="page1" style="display: none" >
+                                                <div class="row" id="page1" >
                                                     <div class="col-lg-6 col-xs-6">
                                                     <!-- small box -->
                                                     <div class="small-box bg-aqua">
@@ -263,9 +263,10 @@
                                                         <div class="icon">
                                                             <i class="fa fa-cny"></i>
                                                         </div>
-                                                        <a th:onclick="charge([[${session.loginUser.id}]])" class="small-box-footer">
+                                                        <a th:onclick="change()" class="small-box-footer">
                                                             More info <i class="fa fa-arrow-circle-right"></i>
                                                         </a>
+
                                                     </div>
                                                 </div>
                                                     <!-- ./col -->
@@ -320,12 +321,18 @@
                                                         </div>
                                                     </div>
                                                 </div>
+                                                <!--充值界面-->
+                                                <div id="page2" style="display: none" >
                                                 <div class="layui-form-item"  >
-                                                    <label class="layui-form-label">输入充值金额</label>
-                                                    <div class="layui-input-inline">
-                                                        <input type="text" name="username" lay-verify="required" placeholder="请输入" autocomplete="off" class="layui-input">
-                                                        <button type="button" class="layui-btn layui-btn-normal layui-btn-radius">百搭按钮</button>
-                                                    </div>
+                                                    <label>输入充值激活码</label>
+
+                                                </div>
+                                                <div class="layui-input-inline">
+                                                <p style="width: 500px;">
+                                                    <input type="text" id="code" lay-verify="required" placeholder="激活码" autocomplete="off" class="layui-input">
+                                                </p>
+                                                </div>
+                                                <button type="button" th:onclick="charge([[${session.loginUser.id}]])" class="layui-btn layui-btn-normal layui-btn-radius">点击充值</button>
                                                 </div>
                                             </div>
                                             <!-- /.我的钱包 -->
@@ -485,13 +492,6 @@
         <!--footer top area start-->
         <div th:replace="/common/front-end/footer :: footer"></div>
         <!--footer middle area end-->
-
-
-
-
-
-
-
         <!-- all js here -->
         <!-- jquery latest version -->
         <script src="front-end/js/vendor/jquery-1.12.0.min.js"></script>
@@ -572,20 +572,39 @@
             }
         })
     });
-    $("#rules").click(function () {
-        layer.alert('所有解释权归本公司所有', {
-            skin: 'layui-layer-molv' //样式类名
-            ,closeBtn: 0
-        }, function(){
-            layer.alert('请仔细检查信息，其他还未想好', {
-                skin: 'layui-layer-lan'
-                ,closeBtn: 0
-                ,anim: 4 //动画类型
-            });
-        });
-    })
-    function charge(id) {
-        $("#page1").
+
+    function change() {
+        document.getElementById("page1").style="display:none";
+        document.getElementById("page2").style="";
     }
+    function charge(id) {
+        var code=$("#code").val()
+        if(code==""||code==null){
+            layer.msg('请添加充值激活码！')
+        }else {
+            var formdata={
+                "id":id,
+                "code":code
+            }
+            $.ajax({
+                url:"/charge?id="+id,
+                type:"post",
+                contentType:"application/json",
+                data:JSON.stringify(formdata),
+                success(data){
+                    if(data=="充值成功"){
+                        layer.msg('充值成功！');
+                        window.setTimeout("window.location.reload()", 2000)
+                    }else {
+                        layer.msg('充值失败！');
+                    }
+                }
+            })
+        }
+
+    }
+
+
+
 </script>
 

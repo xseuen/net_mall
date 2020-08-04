@@ -6,4 +6,6 @@ public interface WalletService {
 
     Wallet getWalletByMid(Integer id);
     int insertWallet(Wallet wallet);
+
+    String  updateByUid(Integer id, String code);
 }

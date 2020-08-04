@@ -2,7 +2,9 @@ package com.team45.net_mall.common.domain;
 
 import com.team45.net_mall.common.domain.extend.MemberExtend;
 
-public class Member extends MemberExtend {
+import java.io.Serializable;
+
+public class Member extends MemberExtend implements Serializable {
     private Integer id;
 
     private String username;

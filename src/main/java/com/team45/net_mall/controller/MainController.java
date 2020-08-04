@@ -68,4 +68,9 @@ public class MainController {
         model.addAttribute("pro",productWithBLOBs);
         return "front-end/simple-product";
     }
+    @RequestMapping("/orderinfo")
+    public String orderInfo(){
+        return "front-end/orderinfo";
+    }
+
 }

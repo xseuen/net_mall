@@ -348,7 +348,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Add To Cart</a>
+                                                                    <a class="button_act" data-quick-id="45" href=""  title="" data-toggle="tooltip" data-original-title="Donec non est at">Add To Cart</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
@@ -421,7 +421,7 @@
                                                                     <ul class="add-to-links clearfix">
                                                                         <li>
                                                                             <div class="new_act">
-                                                                                <a class="button_act button_act_2 button_act_hts" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">Add to Cart</a>
+                                                                                <a class="button_act button_act_2 button_act_hts" data-quick-id="45" href="javascript:;" title="" data-toggle="tooltip" data-original-title="Donec non est at" th:onclick="'javacript:addProToCart('+${p.id}+')'">Add to Cart</a>
                                                                             </div>
                                                                         </li>
                                                                         <li class="addwishlist">
@@ -562,7 +562,7 @@
                                         <form class="cart-btn-area cart-btn-area-dec" action="#">
                                             <a class="see-all" href="#">See all features</a><br>
                                             <input type="number" value="1">
-                                            <button class="add-tocart add-tocart-2" type="submit">Add to cart</button>
+                                            <button class="add-tocart add-tocart-2" type="button" >Add to 132123123</button>
                                         </form>
                                     </div>
                                     <div class="evavet_description evavet_description_dec">
@@ -621,7 +621,33 @@
         <script src="front-end/js/plugins.js"></script>
         <!-- main js -->
         <script src="front-end/js/main.js"></script>
+
+        <script type="text/javascript" src="layer/layer.js"></script>
     </body>
+
+<script>
+    function addProToCart(productId){
+        $.ajax({
+            type: 'get',
+            url: 'addCart',
+            dataType: 'json',
+            data: {
+                "productId": productId
+            },
+            success: function (res) {
+                if (res) {
+                    layer.msg('已添加!', {icon:1,time: 1000});
+                } else {
+                    layer.alert('系统异常，请联系管理员!', {icon: 2});
+                }
+            },
+            error: function (data) {
+                console.log(data.msg);
+            },
+        });
+    }
+</script>
+
 </html>
 
 

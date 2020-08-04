@@ -9,13 +9,17 @@ public class Cart {
 
     private String productName;
 
-    private Long productPrice;
+    private Double productPrice;
 
     private String memberNickname;
+
+    private Integer count;
 
     private Integer deleteStatus;
 
     private String createTime;
+
+    private String productPic;
 
     public Integer getId() {
         return id;
@@ -49,11 +53,11 @@ public class Cart {
         this.productName = productName == null ? null : productName.trim();
     }
 
-    public Long getProductPrice() {
+    public Double getProductPrice() {
         return productPrice;
     }
 
-    public void setProductPrice(Long productPrice) {
+    public void setProductPrice(Double productPrice) {
         this.productPrice = productPrice;
     }
 
@@ -63,6 +67,14 @@ public class Cart {
 
     public void setMemberNickname(String memberNickname) {
         this.memberNickname = memberNickname == null ? null : memberNickname.trim();
+    }
+
+    public Integer getCount() {
+        return count;
+    }
+
+    public void setCount(Integer count) {
+        this.count = count;
     }
 
     public Integer getDeleteStatus() {
@@ -79,5 +91,13 @@ public class Cart {
 
     public void setCreateTime(String createTime) {
         this.createTime = createTime == null ? null : createTime.trim();
+    }
+
+    public String getProductPic() {
+        return productPic;
+    }
+
+    public void setProductPic(String productPic) {
+        this.productPic = productPic == null ? null : productPic.trim();
     }
 }

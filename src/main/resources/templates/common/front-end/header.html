@@ -30,7 +30,7 @@
                                     <a class="wishlist" href="/wishlist">愿望单</a>
                                     </li>
                                     <li>
-                                        <a class="Shopping cart" href="/cart">购物车</a>
+                                        <a class="Shopping cart" href="/queryCartData">购物车</a>
                                     </li>
                                     <li>
                                         <a class="Checkout" href="/myorder">我的订单</a>
@@ -112,7 +112,7 @@
                                             <div class="cart-button">
                                                 <ul>
                                                     <li>
-                                                        <a href="/cart">查看我的购物车<i class="fa fa-angle-right"></i></a>
+                                                        <a href="/queryCartData">查看我的购物车<i class="fa fa-angle-right"></i></a>
                                                     </li>
                                                     <li>
                                                         <a href="/order">下单支付<i class="fa fa-angle-right"></i></a>
@@ -344,7 +344,7 @@
                                                 <nav th:if="${session!=null && session.loginUser!=null }">
                                                     <ul>
                                                         <li><a href="/">首页</a></li>
-                                                        <li><a href="/cart">购物车</a></li>
+                                                        <li><a href="/queryCartData">购物车</a></li>
                                                         <li><a href="/list-view">商品列表</a></li>
                                                         <li><a href="/myaccount">我的账户</a></li>
                                                         <!--<li><a href="/simple-product">产品详情</a></li>-->

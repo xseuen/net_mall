@@ -87,7 +87,7 @@
                                     <!-- Profile Image -->
                                     <div class="box box-primary">
                                         <div class="box-body box-profile">
-                                            <img class="profile-user-img img-responsive img-circle" src="../../dist/img/user1-128x128.jpg" alt="User profile picture">
+                                            <img class="profile-user-img img-responsive img-circle" th:src="${session.loginUser.avatar}" alt="../../dist/img/user1-128x128.jpg">
 
                                             <h3 class="profile-username">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;[[${session.loginUser.nickName}]]</h3>
 

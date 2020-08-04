@@ -27,6 +27,10 @@ public class MemberController {
     @RequestMapping(value = "/login",method =RequestMethod.POST)
     public String login(Member member, Model model, HttpSession session) {
         Member memberInDB = memberService.login(member);
+        if(!member.getAvatar().isEmpty()&&memberInDB!=null) {
+            memberInDB.setAvatar(member.getAvatar());
+             memberService.update(memberInDB);
+        }
         if (memberInDB == null) {
             model.addAttribute("member", member);
             model.addAttribute("msg", "用户名或密码错误");
@@ -52,6 +56,11 @@ public class MemberController {
         return "forward:/";
     }
 
+    /**
+     * 注册查重
+     * @param name
+     * @return
+     */
     @GetMapping("/selectByName")
     @ResponseBody//表示不是返回页面
     public Boolean selectByName(String name) {
@@ -109,6 +118,11 @@ public class MemberController {
         return memberService.update(member)==1?"删除成功":"删除失败";
     }
 
+    /**
+     *  管理员删除用户验证
+     * @param
+     * @return
+     */
     @RequestMapping("/idCommit")
     @ResponseBody
     public String commitByid(@RequestBody Member member){
@@ -117,10 +131,24 @@ public class MemberController {
 
     }
 
+    /**
+     *  用户找回密码
+     * @return
+     */
     @RequestMapping("/forgot")
     public String forgotPage(){
         return "/front-end/forgot";
     }
 
+    /**
+     * 自动获取头像
+     * @param username
+     * @return
+     */
+    @GetMapping("/getAvatar")
+    @ResponseBody
+    public String getAvatarByName(@RequestParam String username){
+        return memberService.getAvatarByName(username);
+    }
 
 }

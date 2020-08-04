@@ -17,6 +17,7 @@
   <!-- iCheck -->
   <link rel="stylesheet" href="plugins/iCheck/square/blue.css">
   <link rel="stylesheet" href="layui/css/layui.css">
+
   <style>
     *{margin: 0; padding: 0;}
 
@@ -38,7 +39,7 @@
   </style>
 
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" onload="tip()">
 <div class="login-box">
   <div class="login-logo">
     <a href="/"><b>T45</b>商城</a>
@@ -47,18 +48,19 @@
   <div class="login-box-body">
     <p class="login-box-msg"><b>开始您的购物旅程</b></p>
     <div class="row"> </div>
-    <div class="login-logo " style="left: -10px;top: -25px;background: #fff;padding: 5px;z-index: 10" >
-      <img id="myavator" style="border-radius: 50%;width: 100px;height: 100px;" src="../../dist/img/user1-128x128.jpg" alt="User Image">
+    <div id="QAvatar" class="login-logo " style="left: -10px;top: -25px;background: #fff;padding: 5px;z-index: 10" >
+      <img id="myavatar" style="border-radius: 50%;width: 100px;height: 100px;" src="../../dist/img/user1-128x128.jpg" th:onclick="getAvatar()" alt="User Image">
     </div>
     <hr class="layui-bg-orange">
     <form action="/login" method="post">
       <div class="form-group has-feedback">
-        <input type="text" class="form-control" placeholder="用户名" name="username" value="admin" th:value="${member}==null?'':${member.username}">
+        <input type="text" class="form-control" placeholder="用户名" id="username" name="username" value="admin" th:value="${member}==null?'':${member.username}">
         <span class="glyphicon glyphicon-user form-control-feedback"></span>
         <span th:text="${msg}" style="color: red"></span>
       </div>
       <div class="form-group has-feedback">
         <input type="password" class="form-control" placeholder="密&nbsp;&nbsp;&nbsp;&nbsp;码" name="password">
+        <input type="hidden" class="form-control" placeholder="头像" name="avatar" id="avatar">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row" >
@@ -98,21 +100,48 @@
     });
   });
 </script>
-<script src="layui/layui.js"></script>
+<script src="layer/layer.js"></script>
 </body>
 </html>
 <script>
-  document.getElementById('myavator').onmouseover=showit;
-  document.getElementById('myavator').onmouseout=stopit;
+  document.getElementById('myavatar').onmouseover=showit;
+  document.getElementById('myavatar').onmouseout=stopit;
   function showit () {
-    document.getElementById("myavator").className="Rotation";
+    document.getElementById("myavatar").className="Rotation";
 
   }
   function stopit () {
-    document.getElementById("myavator").className="";
+    document.getElementById("myavatar").className="";
 
   }
   function toRegister (){
     window.location.href="/toRegister";
   }
+  
+  function tip() {
+    layer.tips('点击这里获取QQ头像', '#myavatar');
+  }
+function getAvatar() {
+    layer.prompt({title: '输入QQ号获取头像', formType: 3}, function(text, index){
+      var param="http://q1.qlogo.cn/g?b=qq&nk="+text+"&s=640"
+      document.getElementById('myavatar').src=param;
+      document.getElementById('avatar').value=param;
+      layer.close(index);
+    })
+}
+  $("#username").blur(function () {
+    console.log("失去焦点")
+    $.ajax({
+      url:"/getAvatar?username="+$("#username").val(),
+      type:"get",
+      success:function(data){
+        console.log(data)
+        if(data=="获取失败"){
+          //
+        }else{
+          document.getElementById('myavatar').src=data;
+        }
+      }
+    })
+  })
 </script>

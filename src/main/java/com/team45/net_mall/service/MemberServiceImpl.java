@@ -57,4 +57,16 @@ public class MemberServiceImpl implements MemberService {
         member1.setPassword(member.getPassword());
         return memberMapper.updateByExampleSelective(member1,memberExample);
     }
+
+    @Override
+    public String getAvatarByName(String username) {
+        MemberExample memberExample = new MemberExample();
+        memberExample.createCriteria().andUsernameEqualTo(username);
+        List<Member> members = memberMapper.selectByExample(memberExample);
+        if(members.get(0).getAvatar().isEmpty()){
+            return "获取失败";
+        }else {
+            return members.get(0).getAvatar();
+        }
+    }
 }

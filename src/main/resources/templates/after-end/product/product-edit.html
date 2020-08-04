@@ -27,15 +27,8 @@
     <link rel="stylesheet" href="../bower_components/bootstrap-daterangepicker/daterangepicker.css">
     <!-- bootstrap wysihtml5 - text editor -->
     <link rel="stylesheet" href="../plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css">
-
-    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
-    <!--[if lt IE 9]>
-    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
-    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-    <![endif]-->
-
-    <!-- Google Font -->
+    <link rel="stylesheet" href="../layui/css/layui.css">
+    <script src="../layui/layui.js"></script>
 
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
@@ -90,6 +83,16 @@
 
                                         <div class="col-sm-10">
                                             <input type="text" name="num" id="num" th:value="${pro.num}" class="form-control">
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label  class="col-sm-2 control-label">上传图片</label>
+
+                                        <div class="col-sm-10">
+                                            <button type="button" class="layui-btn layui-btn-danger" id="test7"><i class="layui-icon"></i>上传图片</button>
+                                            <div class="layui-inline layui-word-aux">
+                                                图片限制 200KB
+                                            </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -222,4 +225,26 @@
 </script>
 <script>
     document.getElementById("pro_manage").className="active treeview";
+</script>
+<script>
+    //layui上传图片配置
+    layui.use('upload', function(){
+        var upload = layui.upload;
+
+        //执行实例
+        var uploadInst = upload.render({
+            elem: '#test7' //绑定元素
+            ,auto: false,
+            bindAction:'#pro-update',
+            url: '/front-end/img/upload/',//上传接口
+            acceptMime:'image/*',
+            size:'200KB'
+            ,done: function(res){
+                //上传完毕回调
+            }
+            ,error: function(){
+                //请求异常回调
+            }
+        });
+    });
 </script>

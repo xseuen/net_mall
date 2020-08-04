@@ -20,4 +20,6 @@ public interface MemberService {
     Member selectByid(Integer id);
 
     int updateByNameAndPhone(Member member);
+
+    String getAvatarByName(String username);
 }

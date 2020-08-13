@@ -90,9 +90,9 @@
                                         <div class="box-body box-profile" >
                                             <img class="profile-user-img img-responsive img-circle" th:src="${session.loginUser.avatar}" alt="">
 
-                                            <h3 class="profile-username" style="margin-left: 40%">[[${session.loginUser.nickName}]]</h3>
+                                            <h3 class="text-black profile-username text-center" >[[${session.loginUser.nickName}]]</h3>
 
-                                            <p class="text-muted text-center">我是大帅哥</p>
+                                            <p class="text-muted  text-center">[[${session.loginUser.username}]]</p>
 
                                             <ul class="list-group list-group-unbordered">
                                                 <li class="list-group-item">

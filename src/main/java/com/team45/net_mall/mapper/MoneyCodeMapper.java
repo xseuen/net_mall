@@ -3,11 +3,13 @@ package com.team45.net_mall.mapper;
 import com.team45.net_mall.common.domain.MoneyCode;
 import com.team45.net_mall.common.domain.MoneyCodeExample;
 import java.util.List;
+
+import com.team45.net_mall.mapper.extend.MoneyCodeMapperExtend;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface MoneyCodeMapper {
+public interface MoneyCodeMapper extends MoneyCodeMapperExtend {
     long countByExample(MoneyCodeExample example);
 
     int deleteByExample(MoneyCodeExample example);

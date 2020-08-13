@@ -23,8 +23,8 @@ public class MoneyCodeServiceImpl implements MoneyCodeService{
 
     @Override
     public List<MoneyCode> list() {
-        MoneyCodeExample moneyCodeExample = new MoneyCodeExample();
-        return moneyCodeMapper.selectByExample(moneyCodeExample);
+
+        return moneyCodeMapper.list();
     }
 
     @Override

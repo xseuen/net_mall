@@ -1,6 +1,7 @@
 package com.team45.net_mall.controller;
 
 import com.team45.net_mall.common.domain.Cart;
+import com.team45.net_mall.common.domain.CartItem;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.service.CartService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,11 +40,11 @@ public class CartController {
 
     @GetMapping("/editCart")
     @ResponseBody
-    public boolean editCart(int cartId,int count){
-        Cart cart = new Cart();
-        cart.setId(cartId);
-        cart.setCount(count);
-        return cartService.editCart(cart)!=0;
+    public boolean editCart(int cartItemId,int count){
+        CartItem cartItem = new CartItem();
+        cartItem.setId(cartItemId);
+        cartItem.setNum(count);
+        return cartService.editCart(cartItem)!=0;
     }
     @GetMapping(value = {"/queryCartDataAjax"})
     @ResponseBody

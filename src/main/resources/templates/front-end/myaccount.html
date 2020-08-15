@@ -596,7 +596,7 @@
                         layer.msg('充值成功！');
                         document.getElementById("page1").style="";
                         document.getElementById("page2").style="display:none";
-                        // window.location.href="#mywallet";
+                        // 局部刷新
                         $("#mywallet").load(location.href + " #mywallet")
                         $("#aside").load(location.href + " #aside")
                     }else if(data=="充值码错误"){

@@ -4,16 +4,8 @@
   <resultMap id="BaseResultMap" type="com.team45.net_mall.common.domain.Cart">
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
-    <result column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="product_name" jdbcType="VARCHAR" property="productName" />
-    <result column="product_price" jdbcType="DOUBLE" property="productPrice" />
     <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
-    <result column="count" jdbcType="INTEGER" property="count" />
-    <result column="delete_status" jdbcType="INTEGER" property="deleteStatus" />
     <result column="create_time" jdbcType="VARCHAR" property="createTime" />
-  </resultMap>
-  <resultMap extends="BaseResultMap" id="ResultMapWithBLOBs" type="com.team45.net_mall.common.domain.Cart">
-    <result column="product_pic" jdbcType="LONGVARCHAR" property="productPic" />
   </resultMap>
   <sql id="Example_Where_Clause">
     <where>
@@ -74,20 +66,14 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, member_id, product_id, product_name, product_price, member_nickname, count, delete_status, 
-    create_time
+    id, member_id, member_nickname, create_time
   </sql>
-  <sql id="Blob_Column_List">
-    product_pic
-  </sql>
-  <select id="selectByExampleWithBLOBs" parameterType="com.team45.net_mall.common.domain.CartExample" resultMap="ResultMapWithBLOBs">
+  <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.CartExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from cart
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
@@ -96,26 +82,9 @@
       order by ${orderByClause}
     </if>
   </select>
-  <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.CartExample" resultMap="ResultMapWithBLOBs">
-    select
-    <if test="distinct">
-      distinct
-    </if>
-    <include refid="Base_Column_List" />
-    <include refid="Blob_Column_List" />
-    from cart
-    <if test="_parameter != null">
-      <include refid="Example_Where_Clause" />
-    </if>
-    <if test="orderByClause != null">
-      order by ${orderByClause}
-    </if>
-  </select>
-  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="ResultMapWithBLOBs">
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    ,
-    <include refid="Blob_Column_List" />
     from cart
     where id = #{id,jdbcType=INTEGER}
   </select>
@@ -130,14 +99,10 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.Cart">
-    insert into cart (id, member_id, product_id, 
-      product_name, product_price, member_nickname, 
-      count, delete_status, create_time, 
-      product_pic)
-    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{productId,jdbcType=INTEGER}, 
-      #{productName,jdbcType=VARCHAR}, #{productPrice,jdbcType=DOUBLE}, #{memberNickname,jdbcType=VARCHAR}, 
-      #{count,jdbcType=INTEGER}, #{deleteStatus,jdbcType=INTEGER}, #{createTime,jdbcType=VARCHAR}, 
-      #{productPic,jdbcType=LONGVARCHAR})
+    insert into cart (id, member_id, member_nickname, 
+      create_time)
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{memberNickname,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Cart">
     insert into cart
@@ -148,29 +113,11 @@
       <if test="memberId != null">
         member_id,
       </if>
-      <if test="productId != null">
-        product_id,
-      </if>
-      <if test="productName != null">
-        product_name,
-      </if>
-      <if test="productPrice != null">
-        product_price,
-      </if>
       <if test="memberNickname != null">
         member_nickname,
       </if>
-      <if test="count != null">
-        count,
-      </if>
-      <if test="deleteStatus != null">
-        delete_status,
-      </if>
       <if test="createTime != null">
         create_time,
-      </if>
-      <if test="productPic != null">
-        product_pic,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides=",">
@@ -180,29 +127,11 @@
       <if test="memberId != null">
         #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="productName != null">
-        #{productName,jdbcType=VARCHAR},
-      </if>
-      <if test="productPrice != null">
-        #{productPrice,jdbcType=DOUBLE},
-      </if>
       <if test="memberNickname != null">
         #{memberNickname,jdbcType=VARCHAR},
       </if>
-      <if test="count != null">
-        #{count,jdbcType=INTEGER},
-      </if>
-      <if test="deleteStatus != null">
-        #{deleteStatus,jdbcType=INTEGER},
-      </if>
       <if test="createTime != null">
         #{createTime,jdbcType=VARCHAR},
-      </if>
-      <if test="productPic != null">
-        #{productPic,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -221,47 +150,13 @@
       <if test="record.memberId != null">
         member_id = #{record.memberId,jdbcType=INTEGER},
       </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=INTEGER},
-      </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.productPrice != null">
-        product_price = #{record.productPrice,jdbcType=DOUBLE},
-      </if>
       <if test="record.memberNickname != null">
         member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.count != null">
-        count = #{record.count,jdbcType=INTEGER},
-      </if>
-      <if test="record.deleteStatus != null">
-        delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null">
         create_time = #{record.createTime,jdbcType=VARCHAR},
       </if>
-      <if test="record.productPic != null">
-        product_pic = #{record.productPic,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    <if test="_parameter != null">
-      <include refid="Update_By_Example_Where_Clause" />
-    </if>
-  </update>
-  <update id="updateByExampleWithBLOBs" parameterType="map">
-    update cart
-    set id = #{record.id,jdbcType=INTEGER},
-      member_id = #{record.memberId,jdbcType=INTEGER},
-      product_id = #{record.productId,jdbcType=INTEGER},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_price = #{record.productPrice,jdbcType=DOUBLE},
-      member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      count = #{record.count,jdbcType=INTEGER},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=VARCHAR},
-      product_pic = #{record.productPic,jdbcType=LONGVARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -270,12 +165,7 @@
     update cart
     set id = #{record.id,jdbcType=INTEGER},
       member_id = #{record.memberId,jdbcType=INTEGER},
-      product_id = #{record.productId,jdbcType=INTEGER},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_price = #{record.productPrice,jdbcType=DOUBLE},
       member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      count = #{record.count,jdbcType=INTEGER},
-      delete_status = #{record.deleteStatus,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
@@ -287,55 +177,19 @@
       <if test="memberId != null">
         member_id = #{memberId,jdbcType=INTEGER},
       </if>
-      <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="productName != null">
-        product_name = #{productName,jdbcType=VARCHAR},
-      </if>
-      <if test="productPrice != null">
-        product_price = #{productPrice,jdbcType=DOUBLE},
-      </if>
       <if test="memberNickname != null">
         member_nickname = #{memberNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="count != null">
-        count = #{count,jdbcType=INTEGER},
-      </if>
-      <if test="deleteStatus != null">
-        delete_status = #{deleteStatus,jdbcType=INTEGER},
       </if>
       <if test="createTime != null">
         create_time = #{createTime,jdbcType=VARCHAR},
       </if>
-      <if test="productPic != null">
-        product_pic = #{productPic,jdbcType=LONGVARCHAR},
-      </if>
     </set>
-    where id = #{id,jdbcType=INTEGER}
-  </update>
-  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.team45.net_mall.common.domain.Cart">
-    update cart
-    set member_id = #{memberId,jdbcType=INTEGER},
-      product_id = #{productId,jdbcType=INTEGER},
-      product_name = #{productName,jdbcType=VARCHAR},
-      product_price = #{productPrice,jdbcType=DOUBLE},
-      member_nickname = #{memberNickname,jdbcType=VARCHAR},
-      count = #{count,jdbcType=INTEGER},
-      delete_status = #{deleteStatus,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=VARCHAR},
-      product_pic = #{productPic,jdbcType=LONGVARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.Cart">
     update cart
     set member_id = #{memberId,jdbcType=INTEGER},
-      product_id = #{productId,jdbcType=INTEGER},
-      product_name = #{productName,jdbcType=VARCHAR},
-      product_price = #{productPrice,jdbcType=DOUBLE},
       member_nickname = #{memberNickname,jdbcType=VARCHAR},
-      count = #{count,jdbcType=INTEGER},
-      delete_status = #{deleteStatus,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>

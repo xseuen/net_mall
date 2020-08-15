@@ -1,6 +1,7 @@
 package com.team45.net_mall.service;
 
 import com.team45.net_mall.common.domain.Cart;
+import com.team45.net_mall.common.domain.CartItem;
 import com.team45.net_mall.common.domain.Member;
 
 import javax.servlet.http.HttpSession;
@@ -14,6 +15,6 @@ public interface CartService {
 
     public int addCart(int productId, HttpSession session);
 
-    public int editCart(Cart cart);
+    public int editCart(CartItem cartItem);
 
 }

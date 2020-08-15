@@ -3,12 +3,8 @@
 <mapper namespace="com.team45.net_mall.mapper.OrderMapper">
   <resultMap id="BaseResultMap" type="com.team45.net_mall.common.domain.Order">
     <id column="id" jdbcType="INTEGER" property="id" />
-    <result column="cart_id" jdbcType="INTEGER" property="cartId" />
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
     <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
-    <result column="product_id" jdbcType="INTEGER" property="productId" />
-    <result column="product_name" jdbcType="VARCHAR" property="productName" />
-    <result column="product_num" jdbcType="INTEGER" property="productNum" />
     <result column="pay_amount" jdbcType="INTEGER" property="payAmount" />
     <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
@@ -72,8 +68,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, cart_id, member_id, member_nickname, product_id, product_name, product_num, pay_amount, 
-    create_time, status
+    id, member_id, member_nickname, pay_amount, create_time, status
   </sql>
   <select id="selectByExample" parameterType="com.team45.net_mall.common.domain.OrderExample" resultMap="BaseResultMap">
     select
@@ -106,14 +101,12 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.Order">
-    insert into order (id, cart_id, member_id, 
-      member_nickname, product_id, product_name, 
-      product_num, pay_amount, create_time, 
-      status)
-    values (#{id,jdbcType=INTEGER}, #{cartId,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, 
-      #{memberNickname,jdbcType=VARCHAR}, #{productId,jdbcType=INTEGER}, #{productName,jdbcType=VARCHAR}, 
-      #{productNum,jdbcType=INTEGER}, #{payAmount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{status,jdbcType=INTEGER})
+    insert into order (id, member_id, member_nickname, 
+      pay_amount, create_time, status
+      )
+    values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{memberNickname,jdbcType=VARCHAR}, 
+      #{payAmount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Order">
     insert into order
@@ -121,23 +114,11 @@
       <if test="id != null">
         id,
       </if>
-      <if test="cartId != null">
-        cart_id,
-      </if>
       <if test="memberId != null">
         member_id,
       </if>
       <if test="memberNickname != null">
         member_nickname,
-      </if>
-      <if test="productId != null">
-        product_id,
-      </if>
-      <if test="productName != null">
-        product_name,
-      </if>
-      <if test="productNum != null">
-        product_num,
       </if>
       <if test="payAmount != null">
         pay_amount,
@@ -153,23 +134,11 @@
       <if test="id != null">
         #{id,jdbcType=INTEGER},
       </if>
-      <if test="cartId != null">
-        #{cartId,jdbcType=INTEGER},
-      </if>
       <if test="memberId != null">
         #{memberId,jdbcType=INTEGER},
       </if>
       <if test="memberNickname != null">
         #{memberNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="productId != null">
-        #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="productName != null">
-        #{productName,jdbcType=VARCHAR},
-      </if>
-      <if test="productNum != null">
-        #{productNum,jdbcType=INTEGER},
       </if>
       <if test="payAmount != null">
         #{payAmount,jdbcType=INTEGER},
@@ -194,23 +163,11 @@
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
       </if>
-      <if test="record.cartId != null">
-        cart_id = #{record.cartId,jdbcType=INTEGER},
-      </if>
       <if test="record.memberId != null">
         member_id = #{record.memberId,jdbcType=INTEGER},
       </if>
       <if test="record.memberNickname != null">
         member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="record.productId != null">
-        product_id = #{record.productId,jdbcType=INTEGER},
-      </if>
-      <if test="record.productName != null">
-        product_name = #{record.productName,jdbcType=VARCHAR},
-      </if>
-      <if test="record.productNum != null">
-        product_num = #{record.productNum,jdbcType=INTEGER},
       </if>
       <if test="record.payAmount != null">
         pay_amount = #{record.payAmount,jdbcType=INTEGER},
@@ -229,12 +186,8 @@
   <update id="updateByExample" parameterType="map">
     update order
     set id = #{record.id,jdbcType=INTEGER},
-      cart_id = #{record.cartId,jdbcType=INTEGER},
       member_id = #{record.memberId,jdbcType=INTEGER},
       member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      product_id = #{record.productId,jdbcType=INTEGER},
-      product_name = #{record.productName,jdbcType=VARCHAR},
-      product_num = #{record.productNum,jdbcType=INTEGER},
       pay_amount = #{record.payAmount,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       status = #{record.status,jdbcType=INTEGER}
@@ -245,23 +198,11 @@
   <update id="updateByPrimaryKeySelective" parameterType="com.team45.net_mall.common.domain.Order">
     update order
     <set>
-      <if test="cartId != null">
-        cart_id = #{cartId,jdbcType=INTEGER},
-      </if>
       <if test="memberId != null">
         member_id = #{memberId,jdbcType=INTEGER},
       </if>
       <if test="memberNickname != null">
         member_nickname = #{memberNickname,jdbcType=VARCHAR},
-      </if>
-      <if test="productId != null">
-        product_id = #{productId,jdbcType=INTEGER},
-      </if>
-      <if test="productName != null">
-        product_name = #{productName,jdbcType=VARCHAR},
-      </if>
-      <if test="productNum != null">
-        product_num = #{productNum,jdbcType=INTEGER},
       </if>
       <if test="payAmount != null">
         pay_amount = #{payAmount,jdbcType=INTEGER},
@@ -277,12 +218,8 @@
   </update>
   <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.Order">
     update order
-    set cart_id = #{cartId,jdbcType=INTEGER},
-      member_id = #{memberId,jdbcType=INTEGER},
+    set member_id = #{memberId,jdbcType=INTEGER},
       member_nickname = #{memberNickname,jdbcType=VARCHAR},
-      product_id = #{productId,jdbcType=INTEGER},
-      product_name = #{productName,jdbcType=VARCHAR},
-      product_num = #{productNum,jdbcType=INTEGER},
       pay_amount = #{payAmount,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       status = #{status,jdbcType=INTEGER}

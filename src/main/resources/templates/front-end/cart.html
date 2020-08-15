@@ -97,9 +97,9 @@
                                     <thead>
                                     <tr>
                                         <th class="product-remove"><span class="nobr"></span></th>
-                                        <th class="product-thumbnail product-thumbnail-2"></th>
-                                        <th class="product-name product-name_2"><span class="nobr" style="font-size: large">商品</span></th>
-                                        <th class="product-price"><span class="nobr" style="font-size: large"> 价格 </span></th>
+                                        <th class="product-thumbnail product-thumbnail-2"><span class="nobr" style="font-size: large">商品图</span></th>
+                                        <th class="product-name product-name_2"><span class="nobr" style="font-size: large">商品名</span></th>
+                                        <th class="product-price"><span class="nobr" style="font-size: large"> 单价 </span></th>
                                         <th class="product-stock-stauts"><span class="nobr" style="font-size: large"> 数量 </span></th>
                                         <th class="product-add-to-cart"><span class="nobr" style="font-size: large">小计</span></th>
                                     </tr>
@@ -110,22 +110,22 @@
                                                                                        th:onclick="'javacript:delCart('+${cart.id}+',this)'">×</a>
                                         </td>
                                         <td class="product-thumbnail product-thumbnail-2"><a href="#"><img
-                                                th:src="${cart.productPic}" alt=""/></a></td>
+                                                th:src="${cart.proPic}" alt=""/></a></td>
                                         <td class="product-name product-name_2"><a href="#"
-                                                                                   th:text="${cart.productName}">Duis
+                                                                                   th:text="${cart.proName}">Duis
                                             convallis</a></td>
                                         <td class="product-price"><span class="amount-list amount-list-2"
-                                                                        th:text="${cart.productPrice}">$100.00</span>
+                                                                        th:text="${cart.proPrice}">$100.00</span>
                                         </td>
                                         <td class="product-stock-status">
                                             <div class="latest_es_from_2">
                                                 <input type="number" id="cartCount"
-                                                       th:onclick="'javacript:countChange('+${cart.id}+',this,'+${cart.productPrice}+')'"
-                                                       th:value="${cart.count}">
+                                                       th:onclick="'javacript:countChange('+${cart.id}+',this,'+${cart.proPrice}+')'"
+                                                       th:value="${cart.num}">
                                             </div>
                                         </td>
                                         <td class="product-price"><span class="amount-list amount-list-2"
-                                            th:text="'$'+(${cart.productPrice}*${cart.count})">$100.00</span></td>
+                                            th:text="'￥'+(${cart.total})">$100.00</span></td>
                                     </tr>
                                     <!--<tr>
                                         <td class="product-remove product-remove_2"><a href="#">×</a></td>
@@ -157,7 +157,7 @@
                                 </table>
                             </div>
                         </form>
-                        <div class="row">
+                        <div class="row" id="order_total">
                             <div class="col-md-6 col-xs-12">
                                 <div class="cart_totals ">
                                     <h2>购物车总计</h2>
@@ -168,7 +168,7 @@
                                             <td data-title="Subtotal">
                                                             <span class="woocommerce-Price-amount amount">
                                                             <span class="woocommerce-Price-currencySymbol"
-                                                                  id="Subtotal">$</span>
+                                                                  id="Subtotal">￥</span>
                                                             </span>
                                             </td>
                                         </tr>
@@ -178,7 +178,7 @@
                                                 <strong>
                                                             <span class="woocommerce-Price-amount amount">
                                                             <span class="woocommerce-Price-currencySymbol"
-                                                                  id="Total">$</span>
+                                                                  id="Total">￥</span>
                                                             </span>
                                                 </strong>
                                             </td>
@@ -484,10 +484,10 @@
     function getTotal(list){
         var total = 0;
         $.each(list, function (index, node) {
-            total += parseInt(node.productPrice * node.count);
+            total += parseInt(node.total);
         });
-        $('#Subtotal').text("$" + total);
-        $('#Total').text("$" + total);
+        $('#Subtotal').text("￥" + total);
+        $('#Total').text("￥" + total);
     }
 
 
@@ -501,15 +501,14 @@
                 url: 'editCart',
                 dataType: 'json',
                 data: {
-                    "cartId": cartId,
+                    "cartItemId": cartId,
                     "count": $(node).val()
                 },
                 success: function (res) {
                     if (!res) {
                         layer.alert('系统异常，请联系管理员!', {icon: 2});
                     } else {
-                        //location.reload();
-                        $(node).parent().parent().next().html("<span class=\"amount-list amount-list-2\">$"+$(node).val()*productPrice+"</span>");
+                        $(node).parent().parent().next().html("<span class=\"amount-list amount-list-2\">￥"+$(node).val()*productPrice+"</span>");
                         $.ajax({
                             type: 'get',
                             url: 'queryCartDataAjax',
@@ -529,7 +528,7 @@
 
     }
 
-    //删除商品 设置删除状态为1
+    //删除商品
     function delCart(cartId, node) {
         layer.confirm('确认要删除吗？', function (index) {
             $.ajax({
@@ -542,9 +541,11 @@
                 success: function (res) {
                     //后台响应结果为true
                     if (res) {
-                        //节点移除
-                        $(node).parents("tr").remove();
-                        layer.msg('已删除!', {icon: 1, time: 2000});
+                        layer.msg('已删除!', {icon: 1, time: 1000},function () {
+                            //节点移除
+                            $(node).parents("tr").remove();
+                            window.location.reload();
+                        });
                     } else {
                         layer.alert('系统异常，请联系管理员!', {icon: 2});
                     }

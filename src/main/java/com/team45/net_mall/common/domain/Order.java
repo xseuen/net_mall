@@ -5,17 +5,9 @@ import java.util.Date;
 public class Order {
     private Integer id;
 
-    private Integer cartId;
-
     private Integer memberId;
 
     private String memberNickname;
-
-    private Integer productId;
-
-    private String productName;
-
-    private Integer productNum;
 
     private Integer payAmount;
 
@@ -29,14 +21,6 @@ public class Order {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Integer getCartId() {
-        return cartId;
-    }
-
-    public void setCartId(Integer cartId) {
-        this.cartId = cartId;
     }
 
     public Integer getMemberId() {
@@ -53,30 +37,6 @@ public class Order {
 
     public void setMemberNickname(String memberNickname) {
         this.memberNickname = memberNickname == null ? null : memberNickname.trim();
-    }
-
-    public Integer getProductId() {
-        return productId;
-    }
-
-    public void setProductId(Integer productId) {
-        this.productId = productId;
-    }
-
-    public String getProductName() {
-        return productName;
-    }
-
-    public void setProductName(String productName) {
-        this.productName = productName == null ? null : productName.trim();
-    }
-
-    public Integer getProductNum() {
-        return productNum;
-    }
-
-    public void setProductNum(Integer productNum) {
-        this.productNum = productNum;
     }
 
     public Integer getPayAmount() {

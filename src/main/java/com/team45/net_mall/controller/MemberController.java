@@ -24,11 +24,22 @@ public class MemberController {
     @Autowired
     WalletService walletService;
 
+    /**
+     * 登录界面
+     * @return
+     */
     @RequestMapping(value = "/tologin",method = RequestMethod.GET)
     public String tologin(){
         return "front-end/login";
     }
 
+    /**
+     * 登录管理
+     * @param member
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping(value = "/login",method =RequestMethod.POST)
     public String login(Member member, Model model, HttpSession session) {
         Member memberInDB = memberService.login(member);
@@ -75,6 +86,11 @@ public class MemberController {
         return flag;
     }
 
+    /**
+     * 新注册用户钱包初始化
+     * @param member
+     * @return
+     */
     @PostMapping("/register")
     @ResponseBody
     public Boolean register(@RequestBody Member member) {
@@ -99,6 +115,12 @@ public class MemberController {
         return false;
     }
 
+    /**
+     * 后台用户列表
+     * @param model
+     * @param session
+     * @return
+     */
     @GetMapping("/user_list")
     public String list(Model model,HttpSession session) {
         //判断是否登录和权限
@@ -116,6 +138,12 @@ public class MemberController {
         return "after-end/user/user-list";
     }
 
+    /**
+     * 后台用户修改
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/user/selectByid")
     public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
@@ -124,6 +152,11 @@ public class MemberController {
         return "after-end/user/user-edit";
     }
 
+    /**
+     * 后台用户删除
+     * @param id
+     * @return
+     */
     @GetMapping("/user/deleteById")
     @ResponseBody
     public String deleteById(@RequestParam("id") Integer id) {

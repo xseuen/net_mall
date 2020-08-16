@@ -18,7 +18,12 @@ import java.util.Random;
 public class MoneyCodeController {
     @Autowired
     MoneyCodeService moneyCodeService;
-    //获取充值码列表
+    /**
+     * 获取充值码列表
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping("/code_list")
     public String list (Model model, HttpSession session){
         if (session == null) {

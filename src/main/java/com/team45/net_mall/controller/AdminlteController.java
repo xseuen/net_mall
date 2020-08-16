@@ -8,7 +8,11 @@ import javax.servlet.http.HttpSession;
 
 @Controller
 public class AdminlteController {
-
+    /**
+     * 后台登陆权限
+     * @param session
+     * @return
+     */
     @RequestMapping("/adminlte")
     public String toAdminlte(HttpSession session){
         //判断是否登录和权限

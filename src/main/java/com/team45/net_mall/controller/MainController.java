@@ -23,6 +23,11 @@ public class MainController {
     @Autowired
     CategoryService categoryService;
 
+    /**
+     * 主页
+     * @param model
+     * @return
+     */
     @RequestMapping("/")
     public String showAll(Model model){
         List<ProductWithBLOBs> list = productService.getListByCategory("c001");

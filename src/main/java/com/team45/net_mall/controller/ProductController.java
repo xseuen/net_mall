@@ -27,7 +27,12 @@ public class ProductController {
     @Autowired
     UploadService uploadService;
 
-
+    /**
+     * 后台产品列表
+     * @param model
+     * @param session
+     * @return
+     */
     @RequestMapping("/list")
     public String list(Model model,HttpSession session) {
         //判断是否登录和权限
@@ -45,6 +50,11 @@ public class ProductController {
         return "after-end/product/product-list";
     }
 
+    /**
+     * 后台产品添加
+     * @param model
+     * @return
+     */
     @RequestMapping("/productadd")
     public String selectAllCategory(Model model) {
         //获取所有类别
@@ -53,6 +63,11 @@ public class ProductController {
         return "after-end/product/product-add";
     }
 
+    /**
+     * 后台添加删除过产品更新状态
+     * @param productWithBLOBs
+     * @return
+     */
     @PostMapping("/add")
     @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public Boolean add(@RequestBody ProductWithBLOBs productWithBLOBs) {
@@ -64,6 +79,12 @@ public class ProductController {
         return i == 0 ? false : true;
     }
 
+    /**
+     * 后台产品修改
+     * @param id
+     * @param model
+     * @return
+     */
     @RequestMapping("/selectByid")
     public String selectByid(Integer id, Model model) {
         //调用服务层的获取数据的方法
@@ -75,6 +96,11 @@ public class ProductController {
         return "after-end/product/product-edit";
     }
 
+    /**
+     * 后台更新产品状态
+     * @param productWithBLOBs
+     * @return
+     */
     @PostMapping("/update")
     @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public Boolean update(@RequestBody ProductWithBLOBs productWithBLOBs) {
@@ -86,6 +112,11 @@ public class ProductController {
         return i == 0 ? false : true;
     }
 
+    /**
+     * 后台产品删除
+     * @param id
+     * @return
+     */
     @GetMapping("/deleteById")
     public String deleteById(@RequestParam("id") Integer id) {
         ProductWithBLOBs productWithBLOBs = productService.selectByid(id);
@@ -93,6 +124,13 @@ public class ProductController {
         productService.update(productWithBLOBs);
         return "forward:/product/list";
     }
+
+    /**
+     * 后台产品上传图片
+     * @param id
+     * @param file
+     * @return
+     */
     @RequestMapping("/upload")
     @ResponseBody
     public Map<String ,Object> upload(@RequestParam Integer id, MultipartFile file){

@@ -30,6 +30,11 @@ public class CartServiceImpl implements CartService {
     SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     String createTime = sdf.format(d);
 
+    /**
+     * 购物车列表
+     * @param member
+     * @return
+     */
     @Override
     public List queryCartData(Member member) {
         CartExample example = new CartExample();
@@ -50,6 +55,12 @@ public class CartServiceImpl implements CartService {
         return cartItemMapper.deleteByPrimaryKey(id);
     }
 
+    /**
+     * 购物车操作
+     * @param productId
+     * @param session
+     * @return
+     */
     @Override
     public int addCart(int productId, HttpSession session) {
         int result = 0;

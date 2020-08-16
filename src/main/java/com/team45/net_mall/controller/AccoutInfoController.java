@@ -19,6 +19,13 @@ public class AccoutInfoController {
     MemberService memberService;
     @Autowired
     WalletService walletService;
+
+    /**
+     * 获取钱包信息
+     * @param session
+     * @param model
+     * @return
+     */
     @RequestMapping("/myaccount")
     public String showAccoutInfo(HttpSession session, Model model){
         //判断是否登录
@@ -35,18 +42,36 @@ public class AccoutInfoController {
         }
         return "front-end/myaccount";
     }
+
+    /**
+     * 用户更改信息
+     * @param member
+     * @return
+     */
     @PostMapping("/userupdate")
     @ResponseBody//不跳转页面了，直接将数据返回给当前页面
     public Boolean update(@RequestBody Member member) {
        int  i = memberService.update(member);
         return i==0?false:true;
     }
+
+    /**
+     * 用户更改密码
+     * @param member
+     * @return
+     */
     @RequestMapping("/updatepassword")
     @ResponseBody
      public Boolean updateByNameAndPhone(@RequestBody Member member) {
        int i =  memberService.updateByNameAndPhone(member);
         return i==0?false:true;
     }
+
+    /**
+     * 钱包充值码
+     * @param moneyCode
+     * @return
+     */
     @RequestMapping("/charge")
     @ResponseBody
     public String charge(@RequestBody MoneyCode moneyCode){

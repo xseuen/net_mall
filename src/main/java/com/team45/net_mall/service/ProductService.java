@@ -8,6 +8,8 @@ public interface ProductService {
 
     List<ProductWithBLOBs> getList();
 
+    List<ProductWithBLOBs> getAllList(int pageNum,int pageSize);
+
     List<ProductWithBLOBs>  getListByCategory(String cid);
 
     ProductWithBLOBs selectByid(Integer id);

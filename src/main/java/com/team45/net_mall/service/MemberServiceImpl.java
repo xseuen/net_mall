@@ -1,5 +1,6 @@
 package com.team45.net_mall.service;
 
+import com.github.pagehelper.PageHelper;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.MemberExample;
 import com.team45.net_mall.mapper.MemberMapper;
@@ -40,7 +41,8 @@ public class MemberServiceImpl implements MemberService {
     }
 
     @Override
-    public List<Member> getList() {
+    public List<Member> getList(int pageNum,int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         return memberMapper.list();
     }
 

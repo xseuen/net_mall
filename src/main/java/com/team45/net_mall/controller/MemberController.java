@@ -1,6 +1,7 @@
 package com.team45.net_mall.controller;
 
 
+import com.github.pagehelper.PageInfo;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.MemberExample;
 import com.team45.net_mall.common.domain.Wallet;
@@ -122,7 +123,9 @@ public class MemberController {
      * @return
      */
     @GetMapping("/user_list")
-    public String list(Model model,HttpSession session) {
+    public String list(Model model,HttpSession session,
+                       @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                       @RequestParam(value = "pageSize",defaultValue = "5") int pageSize) {
         //判断是否登录和权限
         if (session == null) {
             return "redirect:/";
@@ -133,7 +136,9 @@ public class MemberController {
             }
         }
         //调用服务层的获取数据的方法
-        List<Member> list = memberService.getList();
+        List<Member> list = memberService.getList(pageNum,pageSize);
+        PageInfo<Member> pageInfo=new PageInfo<>(list);
+        model.addAttribute("pages",pageInfo);
         model.addAttribute("users", list);
         return "after-end/user/user-list";
     }

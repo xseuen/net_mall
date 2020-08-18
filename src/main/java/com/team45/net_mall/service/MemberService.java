@@ -14,7 +14,7 @@ public interface MemberService {
 
     int update(Member member);
 
-    List<Member> getList();
+    List<Member> getList(int pageNum,int pageSize);
 
     Member selectByid(Integer id);
 

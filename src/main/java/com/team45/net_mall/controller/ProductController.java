@@ -1,10 +1,12 @@
 package com.team45.net_mall.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.team45.net_mall.common.domain.Category;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.ProductWithBLOBs;
 import com.team45.net_mall.service.CategoryService;
 import com.team45.net_mall.service.ProductService;
+import com.team45.net_mall.service.ProductServiceImpl;
 import com.team45.net_mall.service.UploadService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,7 +23,7 @@ import java.util.Map;
 @RequestMapping("/product")
 public class ProductController {
     @Autowired
-    private ProductService productService;
+    private ProductServiceImpl productService;
     @Autowired
     private CategoryService categoryService;
     @Autowired
@@ -33,8 +35,10 @@ public class ProductController {
      * @param session
      * @return
      */
-    @RequestMapping("/list")
-    public String list(Model model,HttpSession session) {
+    @GetMapping("/list")
+    public String list(Model model,HttpSession session,
+                       @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                       @RequestParam(value = "pageSize",defaultValue = "5") int pageSize) {
         //判断是否登录和权限
         if (session == null) {
             return "redirect:/";
@@ -45,7 +49,9 @@ public class ProductController {
             }
         }
         //调用服务层的获取数据的方法
-        List<ProductWithBLOBs> list = productService.getList();
+        List<ProductWithBLOBs> list = productService.getAllList(pageNum,pageSize);
+        PageInfo<ProductWithBLOBs> pageInfo=new PageInfo<>(list);
+        model.addAttribute("pages",pageInfo);
         model.addAttribute("pros", list);
         return "after-end/product/product-list";
     }

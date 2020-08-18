@@ -17,7 +17,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public List<ProductWithBLOBs> getList() {
         //页码  页面大小
-        PageHelper.startPage(1, 15);//第1页 每页10条
+        PageHelper.startPage(1,10);//第1页 每页10条
+        return productMapper.list();
+    }
+
+    @Override
+    public List<ProductWithBLOBs> getAllList(int pageNum, int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);//第1页 每页10条
         return productMapper.list();
     }
 

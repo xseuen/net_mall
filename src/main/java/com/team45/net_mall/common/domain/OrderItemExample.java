@@ -364,52 +364,52 @@ public class OrderItemExample {
             return (Criteria) this;
         }
 
-        public Criteria andProPriceEqualTo(Long value) {
+        public Criteria andProPriceEqualTo(Double value) {
             addCriterion("pro_price =", value, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceNotEqualTo(Long value) {
+        public Criteria andProPriceNotEqualTo(Double value) {
             addCriterion("pro_price <>", value, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceGreaterThan(Long value) {
+        public Criteria andProPriceGreaterThan(Double value) {
             addCriterion("pro_price >", value, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceGreaterThanOrEqualTo(Long value) {
+        public Criteria andProPriceGreaterThanOrEqualTo(Double value) {
             addCriterion("pro_price >=", value, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceLessThan(Long value) {
+        public Criteria andProPriceLessThan(Double value) {
             addCriterion("pro_price <", value, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceLessThanOrEqualTo(Long value) {
+        public Criteria andProPriceLessThanOrEqualTo(Double value) {
             addCriterion("pro_price <=", value, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceIn(List<Long> values) {
+        public Criteria andProPriceIn(List<Double> values) {
             addCriterion("pro_price in", values, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceNotIn(List<Long> values) {
+        public Criteria andProPriceNotIn(List<Double> values) {
             addCriterion("pro_price not in", values, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceBetween(Long value1, Long value2) {
+        public Criteria andProPriceBetween(Double value1, Double value2) {
             addCriterion("pro_price between", value1, value2, "proPrice");
             return (Criteria) this;
         }
 
-        public Criteria andProPriceNotBetween(Long value1, Long value2) {
+        public Criteria andProPriceNotBetween(Double value1, Double value2) {
             addCriterion("pro_price not between", value1, value2, "proPrice");
             return (Criteria) this;
         }

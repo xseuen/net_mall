@@ -4,7 +4,9 @@ import com.team45.net_mall.common.domain.Order;
 import com.team45.net_mall.common.domain.OrderExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderMapper {
     long countByExample(OrderExample example);
 

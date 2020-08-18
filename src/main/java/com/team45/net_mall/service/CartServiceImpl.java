@@ -36,7 +36,7 @@ public class CartServiceImpl implements CartService {
      * @return
      */
     @Override
-    public List queryCartData(Member member) {
+    public List<CartItem> queryCartData(Member member) {
         CartExample example = new CartExample();
         //查询会员的购物车记录
         example.createCriteria().andMemberIdEqualTo(member.getId());
@@ -48,6 +48,15 @@ public class CartServiceImpl implements CartService {
         cartItemExample.createCriteria().andCartIdEqualTo(list.get(0).getId());
         List<CartItem> list1 =cartItemMapper.selectByExample(cartItemExample);
         return list1;
+    }
+
+    @Override
+    public Cart selectByUid(Integer uid) {
+        CartExample example = new CartExample();
+        //查询会员的购物车记录
+        example.createCriteria().andMemberIdEqualTo(uid);
+        List<Cart> list = cartMapper.selectByExample(example);
+        return list==null?null:list.get(0);
     }
 
     @Override
@@ -76,6 +85,7 @@ public class CartServiceImpl implements CartService {
             cart.setMemberNickname(member.getNickName());
             cart.setCreateTime(createTime);
             cartMapper.insert(cart);
+            result = 1;
             addCart(productId,session);
         }else {
             //先查询购物车是否有此商品
@@ -110,5 +120,10 @@ public class CartServiceImpl implements CartService {
         CartItem cartItem1 = cartItemMapper.selectByPrimaryKey(cartItem.getId());
         cartItem.setTotal(cartItem1.getProPrice().longValue()*cartItem.getNum());
         return cartItemMapper.updateByPrimaryKeySelective(cartItem);
+    }
+
+    @Override
+    public Boolean deleteById(Integer id) {
+        return cartMapper.deleteByPrimaryKey(id)<1?false:true;
     }
 }

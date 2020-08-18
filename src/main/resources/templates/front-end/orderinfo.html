@@ -37,6 +37,7 @@
 
 
 
+
 <!--header top area start-->
 <div th:replace="/common/front-end/header :: myheader"></div>
 <!--header area end-->
@@ -67,7 +68,7 @@
 <div th:replace="/common/front-end/link :: link"></div>
 <!--social design arae end-->
 <!-- comnt_area start -->
-<div class="comnt_area">
+<div class="comnt_area" id="order">
     <div id="main">
 
         <!-- begin::main-content -->
@@ -85,21 +86,20 @@
                                         <h2 class="font-weight-800 d-flex align-items-center">
                                             <img class="m-r-20" src="assets/media/image/logo-sm.png" alt="image">
                                         </h2>
-                                        <h3 class="text-xs-left m-b-0">Invoice #INV-16</h3>
+                                        <h3 class="text-xs-left m-b-0">订单详情</h3>
                                     </div>
                                     <hr class="m-t-b-50">
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <p>
-                                                <b>Protable Admin Dashboard Template</b>
-                                            </p>
-                                            <p>104,<br>Minare SK,<br>Canada, K1A 0G9.</p>
+                                            <li><b>收货信息</b></li>
+                                            <li>收货人：[[${session.loginUser.getNickName()}]]</li>
+                                            <li>手机号：[[${session.loginUser.getPhone()}]]</li>
+                                            <li>收货地址：[[${session.loginUser.getAddress()}]]</li>
                                         </div>
-                                        <div class="col-md-6">
-                                            <p class="text-right">
-                                                <b>Invoice to</b>
-                                            </p>
-                                            <p class="text-right">Gaala &amp; Sons,<br> C-201, Beykoz-34800,<br> Canada, K1A 0G9.</p>
+                                        <div class="col-md-6" style="text-align: end">
+                                            <li class="text-right" style="margin-right: 15px"><b>订单状态</b></li>
+                                            <li class="btn btn-default" id="nopay"><i class="layui-icon layui-icon-loading layui-anim layui-anim-rotate layui-anim-loop"></i>待支付 </li>
+                                            <li class="btn btn-success" id="paysuccess" style="display: none"><i class="layui-icon layui-icon-ok-circle "></i>已支付 </li>
                                         </div>
                                     </div>
                                     <div class="table-responsive">
@@ -107,64 +107,36 @@
                                             <thead class="thead-light">
                                             <tr>
                                                 <th>#</th>
-                                                <th>Description</th>
-                                                <th class="text-right">Quantity</th>
-                                                <th class="text-right">Unit cost</th>
-                                                <th class="text-right">Total</th>
+                                                <th>商品名</th>
+                                                <th class="text-right">数量</th>
+                                                <th class="text-right">单价</th>
+                                                <th class="text-right">小计</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            <tr class="text-right">
-                                                <td class="text-left">1</td>
-                                                <td class="text-left">Brochure Design</td>
-                                                <td>2</td>
-                                                <td>$20</td>
-                                                <td>$40</td>
-                                            </tr>
-                                            <tr class="text-right">
-                                                <td class="text-left">2</td>
-                                                <td class="text-left">Web Design Packages(Template) - Basic</td>
-                                                <td>05</td>
-                                                <td>$25</td>
-                                                <td>$125</td>
-                                            </tr>
-                                            <tr class="text-right">
-                                                <td class="text-left">3</td>
-                                                <td class="text-left">Print Ad - Basic - Color</td>
-                                                <td>08</td>
-                                                <td>$500</td>
-                                                <td>$4000</td>
-                                            </tr>
-                                            <tr class="text-right">
-                                                <td class="text-left">4</td>
-                                                <td class="text-left">Down Coat</td>
-                                                <td>1</td>
-                                                <td>$5</td>
-                                                <td>$5</td>
+                                            <tr class="text-right" th:each="item,stat:${Items}">
+                                                <td class="text-left" th:text="${stat.count}">1</td>
+                                                <td class="text-left" th:text="${item.proName}">Brochure Design</td>
+                                                <td th:text="${item.num}">2</td>
+                                                <td th:text="${item.proPrice}">$20</td>
+                                                <td th:text="${item.total}">$40</td>
                                             </tr>
                                             </tbody>
                                         </table>
                                     </div>
                                     <div class="text-right">
-                                        <p>Sub - Total amount: $12,348</p>
-                                        <p>vat (10%) : $138</p>
-                                        <h4 class="font-weight-800">Total : $13,986</h4>
+                                        <p id="Subtotal">小计: $13,986</p>
+                                        <p style="display: none">优惠 (10%) : $138</p>
+                                        <h4 class="font-weight-800" id="Total">共计 : $12,348</h4>
                                     </div>
-                                    <p class="text-center small text-muted  m-t-50">
-                        <span class="row">
-                            <span class="col-md-6 offset-3">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab, at.
-                            </span>
-                        </span>
-                                    </p>
                                 </div>
                                 <div class="text-right d-print-none">
                                     <hr class="mb-5 mt-5">
-                                    <a href="#" class="btn btn-primary">
-                                        <i data-feather="send" class="mr-2"></i> Send Invoice
+                                    <a href="javascript:pay()" class="btn btn-primary">
+                                        <i data-feather="send" class="mr-2"></i> 支付
                                     </a>
-                                    <a href="javascript:window.print()" class="btn btn-success m-l-5">
-                                        <i data-feather="printer" class="mr-2"></i> Print
+                                    <a href="javascript:printdiv()" class="btn btn-success m-l-5">
+                                        <i data-feather="printer" class="mr-2"></i> 打印
                                     </a>
                                 </div>
                             </div>
@@ -395,4 +367,90 @@
 <!-- main js -->
 <script src="front-end/js/main.js"></script>
 </body>
+
+<script type="text/javascript" th:inline="javascript">
+    window.onload=function () {
+        var status =[[${order.status}]];
+        if(status){
+            $('#paysuccess').attr({style:""})
+            $('#nopay').attr({style: "display: none"})
+        }
+    }
+
+    layui.use(['layer', 'form'], function(){
+        var layer = layui.layer;
+    });
+    //页面加载时，获取所有数据
+    var list = [[${Items}]];
+    getTotal(list);
+    var payAmount;
+    function getTotal(list){
+        var total = 0;
+        $.each(list, function (index, node) {
+            total += parseInt(node.total);
+        });
+        payAmount=total;
+        $('#Subtotal').text("小计:￥" + total);
+        $('#Total').text("共计:￥" + total);
+    }
+    function pay(){
+
+        $.ajax({
+            url:'/pay',
+            type:'post',
+            contentType:'application/json',
+            data:JSON.stringify({
+                "id":[[${order.id}]],
+                "payAmount":payAmount
+            }),
+            success:function (res) {
+                if(res=="支付成功"){
+                    $('#paysuccess').attr({style:""})
+                    $('#nopay').attr({style: "display: none"})
+                    layer.msg(res, {icon: 1, time: 1000})
+                }else {
+                    layer.msg(res, {icon: 2, time: 1000})
+                }
+            }
+        })
+    }
+</script>
+<script>
+    var oldstr = document.body.innerHTML;
+    $(function () {
+        var beforePrint = function() {
+            console.log('Functionality to run before printing.');
+        };
+
+        var afterPrint = function() {
+            console.log('Functionality to run after printing');
+        };
+
+        if (window.matchMedia) {
+            var mediaQueryList = window.matchMedia('print');
+            mediaQueryList.addListener(function(mql) {
+                if (mql.matches) {
+                    beforePrint();
+                } else {
+                    afterPrint();
+                    document.body.innerHTML = oldstr;
+                }
+            });
+        }
+
+        window.onbeforeprint = beforePrint;
+        window.onafterprint = afterPrint;
+    });
+
+    function printdiv() {
+        var headstr = '<html><head><title>订单详情</title></head><body>';
+        var footstr = "</body></html>";
+        var newstr = document.getElementById('order').innerHTML;
+        document.body.innerHTML = headstr + newstr + footstr;
+        console.log(headstr + newstr + footstr)
+        window.print();
+        return false;
+    }
+</script>
 </html>
+

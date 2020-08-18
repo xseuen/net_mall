@@ -1,9 +1,10 @@
 package com.team45.net_mall.controller;
 
 
-import com.team45.net_mall.common.domain.Category;
-import com.team45.net_mall.common.domain.ProductWithBLOBs;
+import com.team45.net_mall.common.domain.*;
+import com.team45.net_mall.service.CartService;
 import com.team45.net_mall.service.CategoryService;
+import com.team45.net_mall.service.OrderService;
 import com.team45.net_mall.service.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -13,15 +14,22 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
+import javax.servlet.http.HttpSession;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
 @Controller
 public class MainController {
     @Autowired
+    CartService cartService;
+    @Autowired
     ProductService productService;
     @Autowired
     CategoryService categoryService;
+    @Autowired
+    OrderService orderService;
 
     /**
      * 主页
@@ -74,7 +82,43 @@ public class MainController {
         return "front-end/simple-product";
     }
     @RequestMapping("/orderinfo")
-    public String orderInfo(){
+    public String orderInfo(HttpSession session,Model model,Integer... id){
+        Order order= new Order();
+        OrderItem orderItem = new OrderItem();
+        Member member = (Member) session.getAttribute("loginUser");
+        if(id==null){
+            List<CartItem> list = cartService.queryCartData(member);
+            model.addAttribute("Items",list);
+            double payAmount=0;
+            for (CartItem cartItem :
+                    list) {
+                payAmount += cartItem.getTotal();
+            }
+            order.setStatus(0);
+            order.setPayAmount(payAmount);
+            order.setMemberId(member.getId());
+            order.setMemberNickname(member.getNickName());
+            Date date = new Date();
+            SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+            order.setCreateTime(sdf.format(date));
+            orderService.insert(order);
+            List<Order> orders  = orderService.selectByUid(member.getId());
+            for (CartItem cartItem: list) {
+                orderItem.setOrderId(orders.get(orders.size()-1).getId());
+                orderItem.setProId(cartItem.getProId());
+                orderItem.setProName(cartItem.getProName());
+                orderItem.setProPrice(cartItem.getProPrice());
+                orderItem.setNum(cartItem.getNum());
+                orderItem.setTotal(cartItem.getTotal());
+                orderService.insertItem(orderItem);
+            }
+
+        }else {
+            List<OrderItem> list = orderService.selectAllByOid(id[0]);
+            model.addAttribute("Items",list);
+            order=orderService.selectById(id[0]);
+        }
+        model.addAttribute("order",order);
         return "front-end/orderinfo";
     }
 

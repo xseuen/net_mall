@@ -1,7 +1,6 @@
 package com.team45.net_mall.common.domain;
 
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class OrderExample {
@@ -305,52 +304,52 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountEqualTo(Integer value) {
+        public Criteria andPayAmountEqualTo(Double value) {
             addCriterion("pay_amount =", value, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountNotEqualTo(Integer value) {
+        public Criteria andPayAmountNotEqualTo(Double value) {
             addCriterion("pay_amount <>", value, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountGreaterThan(Integer value) {
+        public Criteria andPayAmountGreaterThan(Double value) {
             addCriterion("pay_amount >", value, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountGreaterThanOrEqualTo(Integer value) {
+        public Criteria andPayAmountGreaterThanOrEqualTo(Double value) {
             addCriterion("pay_amount >=", value, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountLessThan(Integer value) {
+        public Criteria andPayAmountLessThan(Double value) {
             addCriterion("pay_amount <", value, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountLessThanOrEqualTo(Integer value) {
+        public Criteria andPayAmountLessThanOrEqualTo(Double value) {
             addCriterion("pay_amount <=", value, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountIn(List<Integer> values) {
+        public Criteria andPayAmountIn(List<Double> values) {
             addCriterion("pay_amount in", values, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountNotIn(List<Integer> values) {
+        public Criteria andPayAmountNotIn(List<Double> values) {
             addCriterion("pay_amount not in", values, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountBetween(Integer value1, Integer value2) {
+        public Criteria andPayAmountBetween(Double value1, Double value2) {
             addCriterion("pay_amount between", value1, value2, "payAmount");
             return (Criteria) this;
         }
 
-        public Criteria andPayAmountNotBetween(Integer value1, Integer value2) {
+        public Criteria andPayAmountNotBetween(Double value1, Double value2) {
             addCriterion("pay_amount not between", value1, value2, "payAmount");
             return (Criteria) this;
         }
@@ -365,52 +364,62 @@ public class OrderExample {
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeEqualTo(Date value) {
+        public Criteria andCreateTimeEqualTo(String value) {
             addCriterion("create_time =", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotEqualTo(Date value) {
+        public Criteria andCreateTimeNotEqualTo(String value) {
             addCriterion("create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThan(Date value) {
+        public Criteria andCreateTimeGreaterThan(String value) {
             addCriterion("create_time >", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeGreaterThanOrEqualTo(String value) {
             addCriterion("create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThan(Date value) {
+        public Criteria andCreateTimeLessThan(String value) {
             addCriterion("create_time <", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
+        public Criteria andCreateTimeLessThanOrEqualTo(String value) {
             addCriterion("create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeIn(List<Date> values) {
+        public Criteria andCreateTimeLike(String value) {
+            addCriterion("create_time like", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeNotLike(String value) {
+            addCriterion("create_time not like", value, "createTime");
+            return (Criteria) this;
+        }
+
+        public Criteria andCreateTimeIn(List<String> values) {
             addCriterion("create_time in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotIn(List<Date> values) {
+        public Criteria andCreateTimeNotIn(List<String> values) {
             addCriterion("create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeBetween(String value1, String value2) {
             addCriterion("create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
-        public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
+        public Criteria andCreateTimeNotBetween(String value1, String value2) {
             addCriterion("create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }

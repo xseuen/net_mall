@@ -37,15 +37,15 @@
 
 
 <!--        <table tableName="cart" domainObjectName="Cart"/>-->
-        <table tableName="cart_item" domainObjectName="CartItem"/>
+<!--        <table tableName="cart_item" domainObjectName="CartItem"/>-->
 <!--        <table tableName="money_code" domainObjectName="MoneyCode"/>-->
 <!--        <table tableName="category" domainObjectName="Category"/>-->
 <!--        <table tableName="member" domainObjectName="Member"/>-->
-        <table tableName="order" domainObjectName="Order"/>
+<!--        <table tableName="order" domainObjectName="Order"/>-->
 <!--        <table tableName="product" domainObjectName="Product"/>-->
 <!--        <table tableName="wallet" domainObjectName="Wallet"/>-->
 <!--        <table tableName="comment" domainObjectName="Comment"/>-->
-<!--        <table tableName="order_item" domainObjectName="OrderItem"/>-->
+        <table tableName="order_item" domainObjectName="OrderItem"/>
 
 
         <!--  <table schema="DB2ADMIN" tableName="ALLTYPES" domainObjectName="Customer" >

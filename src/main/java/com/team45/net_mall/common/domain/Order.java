@@ -1,7 +1,5 @@
 package com.team45.net_mall.common.domain;
 
-import java.util.Date;
-
 public class Order {
     private Integer id;
 
@@ -9,9 +7,9 @@ public class Order {
 
     private String memberNickname;
 
-    private Integer payAmount;
+    private Double payAmount;
 
-    private Date createTime;
+    private String createTime;
 
     private Integer status;
 
@@ -39,20 +37,20 @@ public class Order {
         this.memberNickname = memberNickname == null ? null : memberNickname.trim();
     }
 
-    public Integer getPayAmount() {
+    public Double getPayAmount() {
         return payAmount;
     }
 
-    public void setPayAmount(Integer payAmount) {
+    public void setPayAmount(Double payAmount) {
         this.payAmount = payAmount;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
-        this.createTime = createTime;
+    public void setCreateTime(String createTime) {
+        this.createTime = createTime == null ? null : createTime.trim();
     }
 
     public Integer getStatus() {

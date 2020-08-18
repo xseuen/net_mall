@@ -99,10 +99,10 @@
                                                     <b>我的钱包</b> <a class="pull-right">[[${wallet.balance}]]</a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <b>我的订单</b> <a class="pull-right">44</a>
+                                                    <b>我的订单</b> <a class="pull-right" >[[${orders.size()}]]</a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <b>总共花费</b> <a class="pull-right">13,287</a>
+                                                    <b>总共花费</b> <a class="pull-right" id="allpay">13,287</a>
                                                 </li>
                                             </ul>
 
@@ -160,93 +160,30 @@
                                                     <ul class="timeline timeline-inverse">
                                                         <!-- timeline time label -->
                                                         <li class="time-label">
-                        <span class="bg-red">
+                        <span class="bg-red" style="display: none">
                           10 Feb. 2014
                         </span>
                                                         </li>
                                                         <!-- /.timeline-label -->
                                                         <!-- timeline item -->
-                                                        <li>
-                                                            <i class="fa fa-envelope bg-blue"></i>
+                                                        <li th:each="order,stat:${orders}">
+                                                            <i class="fa fa-shopping-cart bg-blue"></i>
 
                                                             <div class="timeline-item">
-                                                                <span class="time"><i class="fa fa-clock-o"></i> 12:05</span>
+                                                                <span class="time" th:text="${order.createTime}"><i class="fa fa-clock-o"></i> 12:05</span>
 
-                                                                <h3 class="timeline-header"><a href="#">Support Team</a> sent you an email</h3>
+                                                                <h3 class="timeline-header"><a th:href="@{'/orderinfo?id='+${order.id}}">订单[[${order.id}]]号</a> [[${order.status}==1?'状态：已支付':'状态：待支付']] </h3>
 
                                                                 <div class="timeline-body">
-                                                                    Etsy doostang zoodles disqus groupon greplin oooj voxy zoodles,
-                                                                    weebly ning heekya handango imeem plugg dopplr jibjab, movity
-                                                                    jajah plickers sifteo edmodo ifttt zimbra. Babblely odeo kaboodle
-                                                                    quora plaxo ideeli hulu weebly balihoo...
+                                                                    ...
                                                                 </div>
                                                                 <div class="timeline-footer">
-                                                                    <a class="btn btn-primary btn-xs">Read more</a>
-                                                                    <a class="btn btn-danger btn-xs">Delete</a>
+                                                                    <a class="btn btn-primary btn-xs" th:href="@{'/orderinfo?id='+${order.id}}">查看详情</a>
+                                                                    <a class="btn btn-danger btn-xs" th:onclick="del([[${order.id}]]);">移除</a>
                                                                 </div>
                                                             </div>
                                                         </li>
                                                         <!-- END timeline item -->
-                                                        <!-- timeline item -->
-                                                        <li>
-                                                            <i class="fa fa-user bg-aqua"></i>
-
-                                                            <div class="timeline-item">
-                                                                <span class="time"><i class="fa fa-clock-o"></i> 5 mins ago</span>
-
-                                                                <h3 class="timeline-header no-border"><a href="#">Sarah Young</a> accepted your friend request
-                                                                </h3>
-                                                            </div>
-                                                        </li>
-                                                        <!-- END timeline item -->
-                                                        <!-- timeline item -->
-                                                        <li>
-                                                            <i class="fa fa-comments bg-yellow"></i>
-
-                                                            <div class="timeline-item">
-                                                                <span class="time"><i class="fa fa-clock-o"></i> 27 mins ago</span>
-
-                                                                <h3 class="timeline-header"><a href="#">Jay White</a> commented on your post</h3>
-
-                                                                <div class="timeline-body">
-                                                                    Take me to your leader!
-                                                                    Switzerland is small and neutral!
-                                                                    We are more like Germany, ambitious and misunderstood!
-                                                                </div>
-                                                                <div class="timeline-footer">
-                                                                    <a class="btn btn-warning btn-flat btn-xs">View comment</a>
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <!-- END timeline item -->
-                                                        <!-- timeline time label -->
-                                                        <li class="time-label">
-                        <span class="bg-green">
-                          3 Jan. 2014
-                        </span>
-                                                        </li>
-                                                        <!-- /.timeline-label -->
-                                                        <!-- timeline item -->
-                                                        <li>
-                                                            <i class="fa fa-camera bg-purple"></i>
-
-                                                            <div class="timeline-item">
-                                                                <span class="time"><i class="fa fa-clock-o"></i> 2 days ago</span>
-
-                                                                <h3 class="timeline-header"><a href="#">Mina Lee</a> uploaded new photos</h3>
-
-                                                                <div class="timeline-body">
-                                                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                                    <img src="http://placehold.it/150x100" alt="..." class="margin">
-                                                                </div>
-                                                            </div>
-                                                        </li>
-                                                        <!-- END timeline item -->
-                                                        <li>
-                                                            <i class="fa fa-clock-o bg-gray"></i>
-                                                        </li>
                                                     </ul>
                                             </div>
                                             <!-- 我的钱包 -->
@@ -291,7 +228,7 @@
                                                         <!-- small box -->
                                                         <div class="small-box bg-yellow">
                                                             <div class="inner">
-                                                                <h3>44</h3>
+                                                                <h3 th:text="${orders.size()}">44</h3>
 
                                                                 <p>我的订单数</p>
                                                             </div>
@@ -523,9 +460,36 @@
         <!-- main js -->
         <script src="front-end/js/main.js"></script>
     </body>
+<script th:inline="javascript">
+    var list = [[${orders}]]
+    var Allpay = 0;
+    $(function(){
+        list.forEach(function (item,index,arr){
+            if(item.status==1){
+                Allpay += item.payAmount;
+            }
+        })
+        $('#allpay').text(Allpay);
+    })
+
+</script>
 </html>
 <script src="layer/layer.js"></script>
 <script>
+
+    function del(id){
+        $.ajax({
+            url:"/delorder?id="+id,
+            type:"get",
+            success:function (res) {
+                if(res=="删除成功"){
+                    layer.msg(res,{icon: 1, time: 1000},function () {
+                        window.location.reload();
+                    })
+                }
+            }
+        })
+    }
     $("#username").click(
         function () {
             layer.tips('用户名不可修改', '#username');
@@ -535,7 +499,6 @@
         $("#setting-btn").click(function () {
             var check = document.getElementById("agree");
             if(check.checked){
-                //第一、验证用户名是否存在
                 var name = $("#username").val();
                 var pwd1 = $("#pwd1").val();
                 var nickName = $("#nickName").val();
@@ -546,7 +509,7 @@
                 }else{
                     //验证密码一致
                     //假如密码一致
-                    //发送注册请求
+                    //发送更新请求
                     $.ajax({
                         url: "/userupdate",
                         type: "post",//post请求一定是携带json数据

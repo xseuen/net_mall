@@ -5,8 +5,8 @@
     <id column="id" jdbcType="INTEGER" property="id" />
     <result column="member_id" jdbcType="INTEGER" property="memberId" />
     <result column="member_nickname" jdbcType="VARCHAR" property="memberNickname" />
-    <result column="pay_amount" jdbcType="INTEGER" property="payAmount" />
-    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="pay_amount" jdbcType="DOUBLE" property="payAmount" />
+    <result column="create_time" jdbcType="VARCHAR" property="createTime" />
     <result column="status" jdbcType="INTEGER" property="status" />
   </resultMap>
   <sql id="Example_Where_Clause">
@@ -76,7 +76,7 @@
       distinct
     </if>
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -87,29 +87,29 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
-    delete from order
+    delete from `order`
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.team45.net_mall.common.domain.OrderExample">
-    delete from order
+    delete from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" parameterType="com.team45.net_mall.common.domain.Order">
-    insert into order (id, member_id, member_nickname, 
+    insert into `order` (id, member_id, member_nickname,
       pay_amount, create_time, status
       )
     values (#{id,jdbcType=INTEGER}, #{memberId,jdbcType=INTEGER}, #{memberNickname,jdbcType=VARCHAR}, 
-      #{payAmount,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{status,jdbcType=INTEGER}
+      #{payAmount,jdbcType=DOUBLE}, #{createTime,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.Order">
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
@@ -141,10 +141,10 @@
         #{memberNickname,jdbcType=VARCHAR},
       </if>
       <if test="payAmount != null">
-        #{payAmount,jdbcType=INTEGER},
+        #{payAmount,jdbcType=DOUBLE},
       </if>
       <if test="createTime != null">
-        #{createTime,jdbcType=TIMESTAMP},
+        #{createTime,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         #{status,jdbcType=INTEGER},
@@ -152,13 +152,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.team45.net_mall.common.domain.OrderExample" resultType="java.lang.Long">
-    select count(*) from order
+    select count(*) from `order`
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update order
+    update `order`
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=INTEGER},
@@ -170,10 +170,10 @@
         member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
       </if>
       <if test="record.payAmount != null">
-        pay_amount = #{record.payAmount,jdbcType=INTEGER},
+        pay_amount = #{record.payAmount,jdbcType=DOUBLE},
       </if>
       <if test="record.createTime != null">
-        create_time = #{record.createTime,jdbcType=TIMESTAMP},
+        create_time = #{record.createTime,jdbcType=VARCHAR},
       </if>
       <if test="record.status != null">
         status = #{record.status,jdbcType=INTEGER},
@@ -184,19 +184,19 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update order
+    update `order`
     set id = #{record.id,jdbcType=INTEGER},
       member_id = #{record.memberId,jdbcType=INTEGER},
       member_nickname = #{record.memberNickname,jdbcType=VARCHAR},
-      pay_amount = #{record.payAmount,jdbcType=INTEGER},
-      create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      pay_amount = #{record.payAmount,jdbcType=DOUBLE},
+      create_time = #{record.createTime,jdbcType=VARCHAR},
       status = #{record.status,jdbcType=INTEGER}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.team45.net_mall.common.domain.Order">
-    update order
+    update `order`
     <set>
       <if test="memberId != null">
         member_id = #{memberId,jdbcType=INTEGER},
@@ -205,10 +205,10 @@
         member_nickname = #{memberNickname,jdbcType=VARCHAR},
       </if>
       <if test="payAmount != null">
-        pay_amount = #{payAmount,jdbcType=INTEGER},
+        pay_amount = #{payAmount,jdbcType=DOUBLE},
       </if>
       <if test="createTime != null">
-        create_time = #{createTime,jdbcType=TIMESTAMP},
+        create_time = #{createTime,jdbcType=VARCHAR},
       </if>
       <if test="status != null">
         status = #{status,jdbcType=INTEGER},
@@ -217,11 +217,11 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.team45.net_mall.common.domain.Order">
-    update order
+    update `order`
     set member_id = #{memberId,jdbcType=INTEGER},
       member_nickname = #{memberNickname,jdbcType=VARCHAR},
-      pay_amount = #{payAmount,jdbcType=INTEGER},
-      create_time = #{createTime,jdbcType=TIMESTAMP},
+      pay_amount = #{payAmount,jdbcType=DOUBLE},
+      create_time = #{createTime,jdbcType=VARCHAR},
       status = #{status,jdbcType=INTEGER}
     where id = #{id,jdbcType=INTEGER}
   </update>

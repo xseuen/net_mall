@@ -6,7 +6,7 @@
     <result column="order_id" jdbcType="INTEGER" property="orderId" />
     <result column="pro_id" jdbcType="INTEGER" property="proId" />
     <result column="pro_name" jdbcType="VARCHAR" property="proName" />
-    <result column="pro_price" jdbcType="DECIMAL" property="proPrice" />
+    <result column="pro_price" jdbcType="DOUBLE" property="proPrice" />
     <result column="num" jdbcType="INTEGER" property="num" />
     <result column="total" jdbcType="DECIMAL" property="total" />
   </resultMap>
@@ -106,7 +106,7 @@
       pro_name, pro_price, num, 
       total)
     values (#{id,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, #{proId,jdbcType=INTEGER}, 
-      #{proName,jdbcType=VARCHAR}, #{proPrice,jdbcType=DECIMAL}, #{num,jdbcType=INTEGER}, 
+      #{proName,jdbcType=VARCHAR}, #{proPrice,jdbcType=DOUBLE}, #{num,jdbcType=INTEGER}, 
       #{total,jdbcType=DECIMAL})
   </insert>
   <insert id="insertSelective" parameterType="com.team45.net_mall.common.domain.OrderItem">
@@ -148,7 +148,7 @@
         #{proName,jdbcType=VARCHAR},
       </if>
       <if test="proPrice != null">
-        #{proPrice,jdbcType=DECIMAL},
+        #{proPrice,jdbcType=DOUBLE},
       </if>
       <if test="num != null">
         #{num,jdbcType=INTEGER},
@@ -180,7 +180,7 @@
         pro_name = #{record.proName,jdbcType=VARCHAR},
       </if>
       <if test="record.proPrice != null">
-        pro_price = #{record.proPrice,jdbcType=DECIMAL},
+        pro_price = #{record.proPrice,jdbcType=DOUBLE},
       </if>
       <if test="record.num != null">
         num = #{record.num,jdbcType=INTEGER},
@@ -199,7 +199,7 @@
       order_id = #{record.orderId,jdbcType=INTEGER},
       pro_id = #{record.proId,jdbcType=INTEGER},
       pro_name = #{record.proName,jdbcType=VARCHAR},
-      pro_price = #{record.proPrice,jdbcType=DECIMAL},
+      pro_price = #{record.proPrice,jdbcType=DOUBLE},
       num = #{record.num,jdbcType=INTEGER},
       total = #{record.total,jdbcType=DECIMAL}
     <if test="_parameter != null">
@@ -219,7 +219,7 @@
         pro_name = #{proName,jdbcType=VARCHAR},
       </if>
       <if test="proPrice != null">
-        pro_price = #{proPrice,jdbcType=DECIMAL},
+        pro_price = #{proPrice,jdbcType=DOUBLE},
       </if>
       <if test="num != null">
         num = #{num,jdbcType=INTEGER},
@@ -235,7 +235,7 @@
     set order_id = #{orderId,jdbcType=INTEGER},
       pro_id = #{proId,jdbcType=INTEGER},
       pro_name = #{proName,jdbcType=VARCHAR},
-      pro_price = #{proPrice,jdbcType=DECIMAL},
+      pro_price = #{proPrice,jdbcType=DOUBLE},
       num = #{num,jdbcType=INTEGER},
       total = #{total,jdbcType=DECIMAL}
     where id = #{id,jdbcType=INTEGER}

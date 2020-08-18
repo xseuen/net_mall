@@ -9,7 +9,9 @@ import java.util.List;
 
 public interface CartService {
 
-    public List queryCartData(Member member);
+    public List<CartItem> queryCartData(Member member);
+
+    public Cart selectByUid(Integer uid);
 
     public int delCart(int id);
 
@@ -17,4 +19,5 @@ public interface CartService {
 
     public int editCart(CartItem cartItem);
 
+    Boolean deleteById(Integer id);
 }

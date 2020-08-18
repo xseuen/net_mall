@@ -9,7 +9,7 @@ public class OrderItem {
 
     private String proName;
 
-    private Long proPrice;
+    private Double proPrice;
 
     private Integer num;
 
@@ -47,11 +47,11 @@ public class OrderItem {
         this.proName = proName == null ? null : proName.trim();
     }
 
-    public Long getProPrice() {
+    public Double getProPrice() {
         return proPrice;
     }
 
-    public void setProPrice(Long proPrice) {
+    public void setProPrice(Double proPrice) {
         this.proPrice = proPrice;
     }
 

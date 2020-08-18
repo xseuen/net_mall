@@ -48,7 +48,7 @@ public class CartController {
     }
     @GetMapping(value = {"/queryCartDataAjax"})
     @ResponseBody
-    public List queryCartDataAjax(HttpSession session, Model model){
+    public List queryCartDataAjax(HttpSession session){
         Member member = (Member) session.getAttribute("loginUser");
         return cartService.queryCartData(member);
     }

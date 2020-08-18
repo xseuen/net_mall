@@ -8,4 +8,5 @@ public interface WalletService {
     int insertWallet(Wallet wallet);
 
     String  updateByUid(Integer id, String code);
+    String  updateById(Wallet wallet);
 }

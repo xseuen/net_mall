@@ -55,4 +55,10 @@ public class WalletServiceImpl implements WalletService{
        }
 
     }
+
+    @Override
+    public String updateById(Wallet wallet) {
+       int i= walletMapper.updateByPrimaryKeySelective(wallet);
+        return i<1?"支付失败，请联系管理员":"支付成功";
+    }
 }

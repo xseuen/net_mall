@@ -5,6 +5,7 @@ import com.github.pagehelper.PageInfo;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.MemberExample;
 import com.team45.net_mall.common.domain.Wallet;
+import com.team45.net_mall.service.CartService;
 import com.team45.net_mall.service.MemberServiceImpl;
 import com.team45.net_mall.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +25,8 @@ public class MemberController {
     private MemberServiceImpl memberService;
     @Autowired
     WalletService walletService;
+    @Autowired
+    CartService cartService;
 
     /**
      * 登录界面
@@ -59,6 +62,7 @@ public class MemberController {
         }
         //登录成功
         session.setAttribute("loginUser",memberInDB);
+        session.setAttribute("cartItem",cartService.queryCartData(memberInDB));
         return "forward:/";
     }
 

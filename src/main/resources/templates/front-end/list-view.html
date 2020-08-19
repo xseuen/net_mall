@@ -326,7 +326,7 @@
                                                             </li>
                                                             <li>
                                                                 <div class="new_act">
-                                                                    <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">加入购物车</a>
+                                                                    <a class="button_act" data-quick-id="45" href="javascript:void(0)" title="" data-toggle="tooltip" data-original-title="" th:onclick="'javacript:addProToCart('+${p.id}+')'">加入购物车</a>
                                                                 </div>
                                                             </li>
                                                             <li class="addcompare">
@@ -399,7 +399,7 @@
                                                                     <ul class="add-to-links clearfix">
                                                                         <li>
                                                                             <div class="new_act">
-                                                                                <a class="button_act button_act_2 button_act_hts" data-quick-id="45" href="javascript:;" title="" data-toggle="tooltip" data-original-title="Donec non est at" th:onclick="'javacript:addProToCart('+${p.id}+')'">加入购物车</a>
+                                                                                <a class="button_act button_act_2 button_act_hts" data-quick-id="45" href="javascript:;" title="" data-toggle="tooltip" data-original-title="" th:onclick="'javacript:addProToCart('+${p.id}+')'">加入购物车</a>
                                                                             </div>
                                                                         </li>
                                                                         <li class="addwishlist">
@@ -614,6 +614,7 @@
             },
             success: function (res) {
                 if (res) {
+                    $("#topcart").load(location.href + " #topcart");
                     layer.msg('已添加!', {icon:1,time: 1000});
                 } else {
                     layer.alert('系统异常，请联系管理员!', {icon: 2});

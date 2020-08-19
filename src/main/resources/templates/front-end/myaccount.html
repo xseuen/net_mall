@@ -177,7 +177,7 @@
                                                     <b>我的钱包</b> <a class="pull-right">[[${wallet.balance}]]</a>
                                                 </li>
                                                 <li class="list-group-item">
-                                                    <b>我的订单</b> <a class="pull-right" >[[${orders.size()}]]</a>
+                                                    <b>我的订单</b> <a class="pull-right" >[[${pages.getTotal()}]]</a>
                                                 </li>
                                                 <li class="list-group-item">
                                                     <b>总共花费</b> <a class="pull-right" id="allpay">13,287</a>
@@ -314,7 +314,7 @@
                                                         <!-- small box -->
                                                         <div class="small-box bg-yellow">
                                                             <div class="inner">
-                                                                <h3 th:text="${orders.size()}">44</h3>
+                                                                <h3 th:text="${pages.getTotal()}">44</h3>
 
                                                                 <p>我的订单数</p>
                                                             </div>

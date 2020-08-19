@@ -19,6 +19,17 @@ public class CartController {
     @Autowired
     private CartService cartService;
 
+    public void saveItem(HttpSession session){
+        Member member = (Member) session.getAttribute("loginUser");
+        List<CartItem> cartItems = cartService.queryCartData(member);
+        Long total = 0l;
+        for (CartItem cartItem:cartItems
+             ) {
+            total+=cartItem.getTotal();
+        }
+        session.setAttribute("cartItem",cartItems);
+        session.setAttribute("cartTotal",total);
+    }
     @GetMapping(value = {"/queryCartData"})
     public String queryCartData(HttpSession session, Model model){
         Member member = (Member) session.getAttribute("loginUser");
@@ -29,13 +40,17 @@ public class CartController {
     @GetMapping("/addCart")
     @ResponseBody
     public boolean addCart(int productId,HttpSession session){
-        return cartService.addCart(productId,session)!=0;
+       int i = cartService.addCart(productId,session);
+        saveItem(session);
+        return i!=0;
     }
 
     @GetMapping("/delCart")
     @ResponseBody
-    public boolean delCart(int cartId){
-        return cartService.delCart(cartId)!=0;
+    public boolean delCart(int cartId,HttpSession session){
+        int i = cartService.delCart(cartId);
+        saveItem(session);
+        return i!=0;
     }
 
     @GetMapping("/editCart")

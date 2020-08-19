@@ -64,34 +64,34 @@
                             </div>
                             <div class="header_all shopping_cart_area" th:if="${session!=null && session.loginUser!=null }">
                                 <div class="widget_shopping_cart_content">
-                                    <div class="topcart">
+                                    <div class="topcart" id="topcart" >
                                         <a class="cart-toggler" href="">
                                             <i class="icon"></i>
                                             <span class="my-cart">购物车</span>
-                                            <span class="qty">0件物品</span>
+                                            <span class="qty" th:text="${session.cartItem==null?'0件物品':session.cartItem.size()+'件物品'}">0件物品</span>
                                             <span class="fa fa-angle-down"></span>
                                         </a>
-                                        <div class="new_cart_section" style="visibility: hidden">
+                                        <div class="new_cart_section" th:if="${session.cartItem!=null && session.cartItem.size()>0}">
                                             <ol class="new-list">
                                                 <!-- single item -->
-                                                <li class="wimix_area">
+                                                <li class="wimix_area" th:each="item:${session.cartItem}">
                                                     <a class="pix_product" href="">
-                                                        <img alt="" src="front-end/img/product-pic/7-150x98.jpg">
+                                                        <img alt="" th:src="${item.proPic}">
                                                     </a>
                                                     <div class="product-details">
-                                                        <a href="#">Adipiscing cursus eu</a>
-                                                        <span class="sig-price">1×$300.00</span>
+                                                        <a href="#" th:text="${item.proName}">Adipiscing cursus eu</a>
+                                                        <span class="sig-price" th:text="${item.num}+'×￥'+${item.proPrice}">1×$300.00</span>
                                                     </div>
-                                                    <div class="cart-remove">
-                                                        <a class="action" href="#">
+                                                    <div class="cart-remove" style="margin-left: 45%">
+                                                        <a class="action" th:onclick="del([[${item.id}]])">
                                                             <i class="fa fa-close"></i>
                                                         </a>
                                                     </div>
                                                 </li>
                                                 <!-- single item -->
                                             </ol>
-                                            <div class="top-subtotal">
-                                                共计: <span class="sig-price">$400.00</span>
+                                            <div class="top-subtotal" >
+                                                共计: <span class="sig-price" th:text="${session.cartTotal}"></span>
                                             </div>
                                             <div class="cart-button">
                                                 <ul>
@@ -99,10 +99,28 @@
                                                         <a href="/queryCartData">查看我的购物车<i class="fa fa-angle-right"></i></a>
                                                     </li>
                                                     <li>
-                                                        <a href="/order">下单支付<i class="fa fa-angle-right"></i></a>
+                                                        <a href="/orderinfo">下单支付<i class="fa fa-angle-right"></i></a>
                                                     </li>
                                                 </ul>
                                             </div>
+                                                <script th:inline="javascript">
+
+                                              function del(id) {
+                                                        $.ajax({
+                                                            url:"/delCart?cartId="+id,
+                                                            type:"get",
+                                                            success:function (res) {
+                                                                if(res){
+                                                                    layer.msg('已删除!', {icon: 1, time: 1000},function () {
+                                                                        window.location.reload();
+                                                                    });
+                                                                }else {
+                                                                    layer.alert('系统异常，请联系管理员!', {icon: 2});
+                                                                }
+                                                            }
+                                                        })
+                                                    }
+                                                </script>
                                         </div>
                                     </div>
                                 </div>
@@ -352,7 +370,10 @@
                     </div>
                 </div>
             </div>
+            <!--js文本-->
+
         </div>
     </div>
 </div>
+
 </html>

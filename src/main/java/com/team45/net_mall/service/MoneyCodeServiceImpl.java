@@ -1,5 +1,6 @@
 package com.team45.net_mall.service;
 
+import com.github.pagehelper.PageHelper;
 import com.team45.net_mall.common.domain.MoneyCode;
 import com.team45.net_mall.common.domain.MoneyCodeExample;
 import com.team45.net_mall.mapper.MoneyCodeMapper;
@@ -22,8 +23,8 @@ public class MoneyCodeServiceImpl implements MoneyCodeService{
     }
 
     @Override
-    public List<MoneyCode> list() {
-
+    public List<MoneyCode> list(int pageNum,int pageSize) {
+        PageHelper.startPage(pageNum,pageSize);
         return moneyCodeMapper.list();
     }
 

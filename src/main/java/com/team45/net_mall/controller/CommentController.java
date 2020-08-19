@@ -1,8 +1,10 @@
 package com.team45.net_mall.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.team45.net_mall.common.domain.Comment;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.service.CommentService;
+import com.team45.net_mall.service.CommentServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ import java.util.List;
 @Controller
 public class CommentController {
     @Autowired
-    private CommentService commentService;
+    private CommentServiceImpl commentService;
 
     /**
      * 前台提交留言反馈
@@ -38,8 +40,10 @@ public class CommentController {
      * @param session
      * @return
      */
-    @RequestMapping("/comment/commentlist")
-    public String list (Model model, HttpSession session){
+    @GetMapping("/comment_list")
+    public String list (Model model, HttpSession session,
+                        @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                        @RequestParam(value = "pageSize",defaultValue = "5") int pageSize){
         if (session == null) {
             return "redirect:/";
         } else {
@@ -48,7 +52,9 @@ public class CommentController {
                 return "redirect:/";
             }
         }
-        List<Comment> list= commentService.list();
+        List<Comment> list= commentService.list(pageNum,pageSize);
+        PageInfo<Comment> pageInfo=new PageInfo<>(list);
+        model.addAttribute("pages",pageInfo);
         model.addAttribute("comments",list);
         return "after-end/comment/comment-list";
     }

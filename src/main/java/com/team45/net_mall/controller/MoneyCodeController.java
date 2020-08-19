@@ -1,8 +1,10 @@
 package com.team45.net_mall.controller;
 
+import com.github.pagehelper.PageInfo;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.MoneyCode;
 import com.team45.net_mall.service.MoneyCodeService;
+import com.team45.net_mall.service.MoneyCodeServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,7 +18,7 @@ import java.util.Random;
 @Controller
 public class MoneyCodeController {
     @Autowired
-    MoneyCodeService moneyCodeService;
+    MoneyCodeServiceImpl moneyCodeService;
     /**
      * 获取充值码列表
      * @param model
@@ -24,7 +26,9 @@ public class MoneyCodeController {
      * @return
      */
     @RequestMapping("/code_list")
-    public String list (Model model, HttpSession session){
+    public String list (Model model, HttpSession session,
+                        @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                        @RequestParam(value = "pageSize",defaultValue = "5") int pageSize){
         if (session == null) {
             return "redirect:/";
         } else {
@@ -33,7 +37,9 @@ public class MoneyCodeController {
                 return "redirect:/";
             }
         }
-        List<MoneyCode> list= moneyCodeService.list();
+        List<MoneyCode> list= moneyCodeService.list(pageNum,pageSize);
+        PageInfo<MoneyCode> pageInfo=new PageInfo<>(list);
+        model.addAttribute("pages",pageInfo);
         model.addAttribute("codes",list);
         return "after-end/moneycode/moneycode";
     }

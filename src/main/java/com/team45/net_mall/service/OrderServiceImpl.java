@@ -1,5 +1,6 @@
 package com.team45.net_mall.service;
 
+import com.github.pagehelper.PageHelper;
 import com.team45.net_mall.common.domain.*;
 import com.team45.net_mall.mapper.OrderItemMapper;
 import com.team45.net_mall.mapper.OrderMapper;
@@ -24,6 +25,15 @@ public class OrderServiceImpl implements OrderService{
     public List<Order> selectByUid(Integer uid) {
         OrderExample orderExample = new OrderExample();
         orderExample.createCriteria().andMemberIdEqualTo(uid);
+        List<Order> orders = orderMapper.selectByExample(orderExample);
+        return orders;
+    }
+
+    @Override
+    public List<Order> selectByUidPage(Integer uid, int pageNum, int pageSize) {
+        OrderExample orderExample = new OrderExample();
+        orderExample.createCriteria().andMemberIdEqualTo(uid);
+        PageHelper.startPage(pageNum,pageSize);
         List<Order> orders = orderMapper.selectByExample(orderExample);
         return orders;
     }

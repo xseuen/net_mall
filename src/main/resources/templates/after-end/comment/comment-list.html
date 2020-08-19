@@ -34,9 +34,87 @@
   <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
   <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
+  <link rel="stylesheet" href="../../layui/css/layui.css"  media="all">
 
   <!-- Google Font -->
-  
+  <style>
+    #demo1 .layui-laypage a{
+      color: #94999F;
+      font-size: 12px;
+    }
+    #demo1 .layui-laypage em{
+      font-size: 12px;
+    }
+
+    .layui-laypage .layui-laypage-spr{
+      margin-right: 5px;
+    }
+    #demo1 .layui-laypage a{
+      margin-right: 5px;
+    }
+    #demo1 .layui-laypage-curr{
+      margin-right: 5px;
+    }
+    .layui-laypage-prev,.layui-laypage-next{
+      font-family: "fontello";
+    }
+    #demo1 .layui-laypage .layui-laypage-curr .layui-laypage-em{
+      background-color: #1FB1EA;
+    }
+
+    #demo1.layui-laypage-prev layui-disabled{
+
+    }
+    /*#demo1.layui-laypage-curr,#demo1.layui-laypage-next*/
+    #demo1 .layui-laypage-limits {
+
+      height: 26px;
+      width: 80px;
+      padding: 1px 5px;
+      line-height: 1.5;
+    }
+    #demo1  .layui-laypage .layui-laypage-count{
+      width: auto!important;
+      float: none;
+      color: #94999F;
+      font-size: 12px;
+    }
+    #demo1 .layui-laypage-btn{
+      background-color: #1FB1EA;
+      color: #FFFFFF;
+      width: 50px;
+      height: 28px;
+      padding: 1px 5px;
+      line-height: 1.5;
+    }
+
+    #demo1 .layui-laypage a,#demo1 .layui-laypage-spr{
+      border: 0px;
+    }
+    #demo1 a.layui-laypage-prev,#demo1 a.layui-laypage-next{
+
+      border: 1px solid #ddd;
+    }
+    #demo1>.layui-laypage>a:hover{
+      color: #fff;
+      background-color: #58CAF4;
+      border-color: #58CAF4;
+    }
+    #demo1 a.layui-laypage-prev:hover,#demo1 a.layui-laypage-next:hover{
+
+      color: #94999F;
+      background-color: #fff;
+      border-color: #ddd;
+    }
+    #demo1 .layui-laypage-curr em:not(.layui-laypage-em){
+      line-height: 1.328571;
+    }
+    #demo1 .layui-laypage-btn:hover{
+      color: #656A71;
+      border-color: #DEE1E3;
+      background-color: #fff;
+    }
+  </style>
 </head>
 <body class="hold-transition skin-blue sidebar-mini">
 <div class="wrapper" >
@@ -92,6 +170,7 @@
                 </tr>
                 </thead>
               </table>
+              <div id="demo1"></div>
             </div>
             <!-- /.box-body -->
           </div>
@@ -145,6 +224,33 @@
 <script src="../dist/js/demo.js"></script>
 <script src="../layer/layer.js"></script>
 </body>
+<script src="../../layui/layui.js"></script>
+<script language='javascript' th:inline="javascript">
+  layui.use(['laypage', 'layer'],(function(){
+    var laypage = layui.laypage
+            ,layer = layui.layer;
+    var count=[[${pages.getTotal()}]];
+    var pageNum=[[${pages.pageNum}]]
+    var pageSize=[[${pages.pageSize}]]
+    laypage.render({
+      elem: 'demo1'
+      ,count: count
+      ,curr:pageNum
+      ,limit:pageSize
+      ,limits:[5,10,15,20,25]
+      ,theme:'#00a1d6'
+      ,layout: ['count', 'prev', 'page', 'next', 'limit', 'refresh', 'skip']
+      ,jump: function(obj,first){
+        var pageNum=obj.curr;
+        pageSize=obj.limit;
+        if(!first){
+          window.location="/comment_list?pageNum="+pageNum+"&pageSize="+pageSize
+        }
+
+      }
+    });
+  }));
+</script>
 </html>
 <script>
 

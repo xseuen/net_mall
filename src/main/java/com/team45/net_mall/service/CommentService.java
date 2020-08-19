@@ -5,8 +5,12 @@ import com.team45.net_mall.common.domain.Comment;
 import java.util.List;
 
 public interface CommentService {
+
     int update(Comment comment);
-    List<Comment> list();
+
+    List<Comment> list(int pageNum,int pageSize);
+
     int delete(Integer id);
+
     Comment select(Integer id);
 }

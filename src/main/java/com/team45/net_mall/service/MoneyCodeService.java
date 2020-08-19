@@ -7,7 +7,7 @@ import java.util.List;
 public interface MoneyCodeService {
     MoneyCode selectByMd5(String md5Code);
 
-    List<MoneyCode> list();
+    List<MoneyCode> list(int pageNum,int pageSize);
 
     int delete(Integer id);
 

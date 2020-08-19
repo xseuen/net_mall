@@ -1,11 +1,15 @@
 package com.team45.net_mall.controller;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+import com.sun.org.apache.xpath.internal.operations.Or;
 import com.team45.net_mall.common.domain.Member;
 import com.team45.net_mall.common.domain.MoneyCode;
 import com.team45.net_mall.common.domain.Order;
 import com.team45.net_mall.common.domain.Wallet;
 import com.team45.net_mall.service.MemberService;
 import com.team45.net_mall.service.OrderService;
+import com.team45.net_mall.service.OrderServiceImpl;
 import com.team45.net_mall.service.WalletService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -25,16 +29,18 @@ public class AccoutInfoController {
     @Autowired
     WalletService walletService;
     @Autowired
-    OrderService orderService;
+    OrderServiceImpl orderService;
 
     /**
-     * 获取钱包信息
+     * 获取订单和钱包信息
      * @param session
      * @param model
      * @return
      */
     @RequestMapping("/myaccount")
-    public String showAccoutInfo(HttpSession session, Model model){
+    public String showAccoutInfo(HttpSession session, Model model,
+                                 @RequestParam(value = "pageNum",defaultValue = "1") int pageNum,
+                                 @RequestParam(value = "pageSize",defaultValue = "4") int pageSize){
         //判断是否登录
         if (session == null) {
             return "redirect:/";
@@ -47,9 +53,11 @@ public class AccoutInfoController {
             Wallet wallet = walletService.getWalletByMid(loginUser.getId());
             model.addAttribute(wallet);
             //获取订单，发送到前端
-            List<Order> orders = orderService.selectByUid(loginUser.getId());
+            List<Order> orders = orderService.selectByUidPage(loginUser.getId(),pageNum,pageSize);
+            PageInfo<Order> pageInfo=new PageInfo<>(orders);
             orders.sort(Comparator.comparingInt(Order::getId).reversed());
             model.addAttribute("orders",orders);
+            model.addAttribute("pages",pageInfo);
         }
         return "front-end/myaccount";
     }

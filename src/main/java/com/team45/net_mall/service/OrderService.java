@@ -10,6 +10,8 @@ public interface OrderService {
 
     List<Order> selectByUid(Integer uid);
 
+    List<Order> selectByUidPage(Integer uid,int pageNum,int pageSize);
+
     int insertItem(OrderItem orderItem);
 
     Boolean update(Order order);

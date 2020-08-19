@@ -121,6 +121,7 @@ public class MainController {
                 cartService.delCart(cartItem.getId());
             }
             cartService.deleteById(cart.getId());
+            session.removeAttribute("cartItem");
 
         }else {
             List<OrderItem> list = orderService.selectAllByOid(id[0]);

@@ -127,18 +127,6 @@
                                         <td class="product-price"><span class="amount-list amount-list-2"
                                             th:text="'￥'+(${cart.total})">$100.00</span></td>
                                     </tr>
-                                    <!--<tr>
-                                        <td class="product-remove product-remove_2"><a href="#">×</a></td>
-                                        <td class="product-thumbnail product-thumbnail-2"><a href="#"><img src="front-end/img/wishlist/pic-2.jpg" alt="" /></a></td>
-                                        <td class="product-name"><a href="#">Adipiscing cursus eu</a></td>
-                                        <td class="product-price"><span class="amount-list amount-list-2">$300.00</span></td>
-                                        <td class="product-stock-status">
-                                            <div class="latest_es_from_2">
-                                                <input type="number" value="1">
-                                            </div>
-                                        </td>
-                                        <td class="product-price"><span class="amount-list amount-list-2">$100.00</span></td>
-                                    </tr>-->
                                     </tbody>
                                     <tfoot>
                                     <tr>
@@ -186,7 +174,7 @@
                                         </tbody>
                                     </table>
                                     <div class="wc-proceed-to-checkout">
-                                        <a class="button_act button_act-tc " href="/orderinfo"> 进行结算</a>
+                                        <a  class="button_act button_act-tc " th:href="@{${cartList==null?'javascript:;':'/orderinfo'}}"> 进行结算</a>
                                     </div>
                                 </div>
                             </div>

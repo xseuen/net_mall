@@ -29,13 +29,19 @@ public class CartController {
     @GetMapping("/addCart")
     @ResponseBody
     public boolean addCart(int productId,HttpSession session){
-        return cartService.addCart(productId,session)!=0;
+       int i = cartService.addCart(productId,session);
+        Member member = (Member) session.getAttribute("loginUser");
+        session.setAttribute("cartItem",cartService.queryCartData(member));
+        return i!=0;
     }
 
     @GetMapping("/delCart")
     @ResponseBody
-    public boolean delCart(int cartId){
-        return cartService.delCart(cartId)!=0;
+    public boolean delCart(int cartId,HttpSession session){
+        int i = cartService.delCart(cartId);
+        Member member = (Member) session.getAttribute("loginUser");
+        session.setAttribute("cartItem",cartService.queryCartData(member));
+        return i!=0;
     }
 
     @GetMapping("/editCart")

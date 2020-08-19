@@ -101,7 +101,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="new_act">
-                                                            <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
+                                                            <a class="button_act" data-quick-id="45" href="javascript:void (0)" title="" data-toggle="tooltip" data-original-title="" th:onclick="'javacript:addProToCart('+${p.id}+')'">加入购物车</a>
                                                         </div>
                                                     </li>
                                                     <li class="addcompare">
@@ -363,7 +363,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="new_act">
-                                                            <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
+                                                            <a class="button_act" data-quick-id="45" href="javascript:void (0)" title="" data-toggle="tooltip" data-original-title="" th:onclick="'javacript:addProToCart('+${p.id}+')'">加入购物车</a>
                                                         </div>
                                                     </li>
                                                     <li class="addcompare">
@@ -634,7 +634,7 @@
                                                     </li>
                                                     <li>
                                                         <div class="new_act">
-                                                            <a class="button_act" data-quick-id="45" href="" title="" data-toggle="tooltip" data-original-title="Donec non est at">添加进购物车</a>
+                                                            <a class="button_act" data-quick-id="45" href="javascript:void (0)" title="" data-toggle="tooltip" data-original-title="" th:onclick="'javacript:addProToCart('+${p.id}+')'">加入购物车</a>
                                                         </div>
                                                     </li>
                                                     <li class="addcompare">
@@ -1692,7 +1692,7 @@
                                 <form class="cart-btn-area cart-btn-area-dec" action="#">
                                     <a class="see-all" id="pinfo">See all features</a><br>
                                     <input type="number" value="1">
-                                    <button class="add-tocart add-tocart-2" type="submit">加入购物车</button>
+                                    <button id="add-tocart" class="add-tocart add-tocart-2" type="button" >加入购物车</button>
                                 </form>
                             </div>
                             <div class="evavet_description evavet_description_dec">
@@ -1752,6 +1752,29 @@
 <script src="front-end/js/main.js"></script>
 </body>
 </html>
+<script>
+    function addProToCart(productId){
+        $.ajax({
+            type: 'get',
+            url: 'addCart',
+            dataType: 'json',
+            data: {
+                "productId": productId
+            },
+            success: function (res) {
+                if (res) {
+                    $("#topcart").load(location.href + " #topcart");
+                    layer.msg('已添加!', {icon:1,time: 1000});
+                } else {
+                    layer.alert('系统异常，请联系管理员!', {icon: 2});
+                }
+            },
+            error: function (data) {
+                console.log(data.msg);
+            },
+        });
+    }
+</script>
 <script>
     function updatesrc(pid,psrc,pname,pprice,pdesc) {
         document.getElementById("pinfo").href="/product-info?id="+pid;

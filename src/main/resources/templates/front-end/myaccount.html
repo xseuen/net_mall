@@ -269,7 +269,8 @@
                                                     <input type="text" id="code" lay-verify="required" placeholder="激活码" autocomplete="off" class="layui-input">
                                                 </p>
                                                 </div>
-                                                <button type="button" th:onclick="charge([[${session.loginUser.id}]])" class="layui-btn layui-btn-normal layui-btn-radius">点击充值</button>
+                                                <button type="button" th:onclick="charge([[${session.loginUser.id}]])" class="layui-btn layui-btn-normal layui-btn-radius">充值</button>
+                                                <button type="button" onclick="back()" class="layui-btn layui-btn-warm layui-btn-radius">返回</button>
                                                 </div>
                                             </div>
                                             <!-- /.我的钱包 -->
@@ -541,6 +542,10 @@
     function change() {
         document.getElementById("page1").style="display:none";
         document.getElementById("page2").style="";
+    }
+    function back() {
+            document.getElementById("page1").style="";
+            document.getElementById("page2").style="display:none";
     }
     function charge(id) {
         var code=$("#code").val()

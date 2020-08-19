@@ -37,13 +37,6 @@ public class OrderController {
         if (result=="支付成功"){
             order.setStatus(1);
             orderService.update(order);
-            Cart cart = cartService.selectByUid(member.getId());
-            List<CartItem> cartItems = cartService.queryCartData(member);
-            for (CartItem cartItem :
-                    cartItems) {
-                cartService.delCart(cartItem.getId());
-            }
-            cartService.deleteById(cart.getId());
         }
 
         return result;

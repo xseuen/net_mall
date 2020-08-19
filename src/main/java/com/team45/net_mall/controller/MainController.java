@@ -103,6 +103,7 @@ public class MainController {
             order.setCreateTime(sdf.format(date));
             orderService.insert(order);
             List<Order> orders  = orderService.selectByUid(member.getId());
+            order = orders.get(orders.size()-1);
             for (CartItem cartItem: list) {
                 orderItem.setOrderId(orders.get(orders.size()-1).getId());
                 orderItem.setProId(cartItem.getProId());
@@ -112,6 +113,14 @@ public class MainController {
                 orderItem.setTotal(cartItem.getTotal());
                 orderService.insertItem(orderItem);
             }
+            //订单生成完成后，清空购物车
+            Cart cart = cartService.selectByUid(member.getId());
+            List<CartItem> cartItems = cartService.queryCartData(member);
+            for (CartItem cartItem :
+                    cartItems) {
+                cartService.delCart(cartItem.getId());
+            }
+            cartService.deleteById(cart.getId());
 
         }else {
             List<OrderItem> list = orderService.selectAllByOid(id[0]);
